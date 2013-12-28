@@ -1,0 +1,10 @@
+antr4.grammar
+it.uniroma2.ConfigurationHandler
+it.uniroma2.ExecuteQueryHandler
+it.uniroma2.InferenceRulesHandler
+it.uniroma2.OutputHandler
+it.uniroma2.Reasoner.utils
+it.uniroma2.ReasonerHandler
+it.uniroma2.reasoner
+it.uniroma2.resoner.domain
+it.uniroma2.start

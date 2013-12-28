@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.1.4" icons="true" automaticImage="PNG">  
+  <object id="1" language="java" name="it.uniroma2.start.StartResoner" project="Reasoner" 
+    file="/Reasoner/src/main/java/it/uniroma2/start/StartResoner.java" binary="false" label="startResoner" type="class" 
+    autoSize="true">    
+    <position height="-1" width="-1" x="12" y="0"/>    
+    <execution id="2">      
+      <position height="587" width="0" x="0" y="75"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="530" width="0" x="0" y="113"/>    
+    </execution>  
+  </object>  
+  <object id="17" language="java" name="it.uniroma2.ConfigurationFilesHandler.ConfigurationParameter" project="Reasoner" 
+    file="/Reasoner/src/main/java/it/uniroma2/ConfigurationFilesHandler/ConfigurationParameter.java" binary="false" 
+    label="&lt;static&gt;" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="6">      
+      <position height="19" width="0" x="0" y="141"/>    
+    </execution>  
+  </object>  
+  <object id="18" language="java" name="it.uniroma2.OutputHandler.OutputHanlder" project="Reasoner" 
+    file="/Reasoner/src/main/java/it/uniroma2/OutputHandler/OutputHanlder.java" binary="false" 
+    label="inputOutputHanlder" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="8">      
+      <position height="19" width="0" x="0" y="179"/>    
+    </execution>  
+  </object>  
+  <object id="19" language="java" name="it.uniroma2.InferenceRulesHandler.ParseInferenceRulesFacade" project="Reasoner" 
+    file="/Reasoner/src/main/java/it/uniroma2/InferenceRulesHandler/ParseInferenceRulesFacade.java" binary="false" 
+    label="parseInferenceRulesFacade" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="10">      
+      <position height="19" width="0" x="0" y="217"/>    
+    </execution>    
+    <execution id="12">      
+      <position height="171" width="0" x="0" y="255"/>    
+    </execution>  
+  </object>  
+  <object id="28" language="java" name="it.uniroma2.InferenceRulesHandler.Parser" project="Reasoner" 
+    file="/Reasoner/src/main/java/it/uniroma2/InferenceRulesHandler/Parser.java" binary="false" label="parser" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="21">      
+      <position height="19" width="0" x="0" y="274"/>    
+    </execution>    
+    <execution id="23">      
+      <position height="19" width="0" x="0" y="312"/>    
+    </execution>  
+  </object>  
+  <object id="29" language="java" name="it.uniroma2.InferenceRulesHandler.Validator" project="Reasoner" 
+    file="/Reasoner/src/main/java/it/uniroma2/InferenceRulesHandler/Validator.java" binary="false" label="validator" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="25">      
+      <position height="19" width="0" x="0" y="350"/>    
+    </execution>    
+    <execution id="27">      
+      <position height="19" width="0" x="0" y="388"/>    
+    </execution>  
+  </object>  
+  <object id="30" language="java" name="it.uniroma2.ReasonerHandler.ReasonerFacade" project="Reasoner" 
+    file="/Reasoner/src/main/java/it/uniroma2/ReasonerHandler/ReasonerFacade.java" binary="false" label="reasonerFacade" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="14">      
+      <position height="19" width="0" x="0" y="445"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="141" width="0" x="0" y="483"/>    
+    </execution>  
+  </object>  
+  <object id="35" language="java" name="it.uniroma2.ReasonerHandler.Reasoner" project="Reasoner" 
+    file="/Reasoner/src/main/java/it/uniroma2/ReasonerHandler/Reasoner.java" binary="false" label="reasoner" 
+    type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="32">      
+      <position height="19" width="0" x="0" y="502"/>    
+    </execution>    
+    <execution id="34">      
+      <position height="65" width="0" x="0" y="540"/>    
+    </execution>  
+  </object>  
+  <object id="38" language="java" name="it.uniroma2.ConfigurationFilesHandler.ConfigurationParameter" project="Reasoner" 
+    file="/Reasoner/src/main/java/it/uniroma2/ConfigurationFilesHandler/ConfigurationParameter.java" binary="false" 
+    label="configurationParameter" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>  
+  </object>  
+  <object id="39" language="java" name="it.uniroma2.OntologyHandler.ExecuteQueryOntologyHandler" project="Reasoner" 
+    file="/Reasoner/src/main/java/it/uniroma2/OntologyHandler/ExecuteQueryOntologyHandler.java" binary="false" 
+    label="executeQueryOntologyHandler" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="37">      
+      <position height="19" width="0" x="0" y="567"/>    
+    </execution>  
+  </object>  
+  <message id="3" 
+    operation="starResoner(it.uniroma2.art.owlart.models.BaseRDFTripleModel):java.util.List&lt;ARTStatement&gt;">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="getIstance():it.uniroma2.ConfigurationFilesHandler.ConfigurationParameter">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="7" operation="OutputHanlder(it.uniroma2.ConfigurationFilesHandler.ConfigurationParameter)">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="9" operation="ParseInferenceRulesFacade(it.uniroma2.ConfigurationFilesHandler.ConfigurationParameter)">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="11" operation="doHandler():it.uniroma2.resoner.domain.InferenceRules">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="13" operation="ReasonerFacade()">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="15" 
+    operation="doHandler(it.uniroma2.resoner.domain.InferenceRules,it.uniroma2.ConfigurationFilesHandler.ConfigurationParameter,it.uniroma2.OutputHandler.OutputHanlder,it.uniroma2.art.owlart.models.BaseRDFTripleModel):java.util.List&lt;ARTStatement&gt;">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="20" operation="Parser()">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="21"/>  
+  </message>  
+  <message id="22" operation="parser(java.io.File):java.util.List&lt;InferenceRule&gt;">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="23"/>  
+  </message>  
+  <message id="24" operation="Validator(it.uniroma2.ConfigurationFilesHandler.ConfigurationParameter)">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="25"/>  
+  </message>  
+  <message id="26" operation="validate(java.util.List&lt;it.uniroma2.resoner.domain.InferenceRule&gt;):boolean">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="27"/>  
+  </message>  
+  <message id="31" 
+    operation="Reasoner(it.uniroma2.resoner.domain.InferenceRules,it.uniroma2.art.owlart.models.BaseRDFTripleModel,it.uniroma2.OutputHandler.OutputHanlder,it.uniroma2.ConfigurationFilesHandler.ConfigurationParameter)">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="32"/>  
+  </message>  
+  <message id="33" operation="reasoning():java.util.List&lt;ARTStatement&gt;">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="34"/>  
+  </message>  
+  <message id="36" 
+    operation="executeInferencerule(it.uniroma2.resoner.domain.InferenceRule):java.util.List&lt;ARTStatement&gt;">    
+    <end type="SOURCE" refId="34"/>    
+    <end type="TARGET" refId="37"/>  
+  </message>
+</sequence-diagram>
