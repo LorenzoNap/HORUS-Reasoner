@@ -18,3 +18,5 @@ Moreover, can be specify which inference rules execute during the reasoning oper
 The user can write a custom inference rules with a natural and human-readable language.  He can submit these rules to the reasoner before the start of the operation of reasoning.
 During the drafting of the rules, user must put the focus on the structure of the inference rules: rules follow a predetermined structure.<br>The reasoner provides the user a confortable visualization of the new information produced during  the reasonig operation. There are two type of visualization: one textual
 and one with a graph form. From these visualizations the user can watch the full history of new informations, filter the informations according to the name of the rules by which they were generated and search a single piece of information has been produced. 
+
+For all other informations, take a look to wiki pages.
