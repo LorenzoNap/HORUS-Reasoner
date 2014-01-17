@@ -1,0 +1,50 @@
+<!--+
+    |
+    |           +=======================================+
+    |           |  Semantic Turkey Extension Build System  |
+    |           +=======================================+
+    |
+    +-->
+
+<project default="final" basedir="." name="Reasoner Extension">
+
+	<target name="start" depends="init"/>
+
+	<target name="init">
+		<!-- Set the timestamps -->
+		<tstamp>
+			<format property="builddate" pattern="yyyy-MM-d" />
+		</tstamp>
+
+		<!-- Get the build properties from an external file -->
+		<property file="./build.properties" />
+	</target>
+
+	<!-- === Prepare The Distribution ================================================= -->
+
+	<target name="dist" depends="init" description="copies all files for the ST distribution">
+
+		<!-- firefox resources are now copied through resources:resource maven goal defined in the pom
+		<copy todir="../${dist}">			
+			<fileset dir="src/main/firefox" includes="**" excludes="**/*.idl"/>
+		</copy>
+		-->
+
+		<!-- touch the directory so that firefox registry reloads (helps during development) -->
+		<touch>
+			<fileset dir="${dist.client}" />
+		</touch>
+	</target>
+
+	<!-- === Package The Distribution XPI ================================================= -->
+
+	<target name="xpi_client" depends="dist" description="Create the XPI extension">
+		<zip zipfile="target/${stname}-${stpom.version}-${builddate}_b${buildversion}.xpi" basedir="${dist.client}" includes="**" />
+	</target>
+	
+	<!-- === Final Task ================================================= -->
+
+	<target name="final" depends="xpi_client">
+	</target>
+
+</project>

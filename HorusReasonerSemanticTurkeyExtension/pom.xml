@@ -1,0 +1,306 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>it.uniroma2.reasoner</groupId>
+	<artifactId>reasoner-extension</artifactId>
+	<packaging>bundle</packaging>
+	<version>0.1</version>
+	<name>Reasoner Extension</name>
+
+	<properties>
+		<spring.version>3.1.2.RELEASE</spring.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+
+		<!-- Creazione delle cartelle nell'estensione. Prese da semanticTurkey-read-only -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<dist>target</dist>
+
+		<dist.lib>components/lib</dist.lib>
+
+		<dist.client>${dist}/st-client</dist.client>
+		<dist.client.lib>${dist.client}/${dist.lib}</dist.client.lib>
+		<dist.client.applet>${dist.client.lib}/applet</dist.client.applet>
+
+	</properties>
+
+	<dependencies>
+
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>it.uniroma2.art.semanticturkey</groupId>
+			<artifactId>st-codegen-annotations</artifactId>
+			<version>0.9.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>it.uniroma2.art.semanticturkey</groupId>
+			<artifactId>st-codegen-processor</artifactId>
+			<version>0.9.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>it.uniroma2.art.semanticturkey</groupId>
+			<artifactId>st-core-framework</artifactId>
+			<version>0.9.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>it.uniroma2.art.semanticturkey</groupId>
+			<artifactId>st-core-services</artifactId>
+			<version>0.9.1-SNAPSHOT</version>
+			<scope>provided</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>it.uniroma2.reasoner</groupId>
+			<artifactId>Reasoner</artifactId>
+			<version>0.1</version>
+			<scope>compile</scope>
+		</dependency>
+		
+		 <dependency>
+	<groupId>net.sf.jung</groupId>
+	<artifactId>jung-api</artifactId>
+	<version>2.0</version>
+	<scope>compile</scope>
+</dependency>
+            <dependency>
+      <groupId>net.sf.jung</groupId>
+      <artifactId>jung-visualization</artifactId>
+      <version>2.0</version>
+      <scope>compile</scope>
+    </dependency>
+                   
+<dependency>
+	<groupId>net.sf.jung</groupId>
+	<artifactId>jung-graph-impl</artifactId>
+	<version>2.0.1</version>
+	<scope>compile</scope>
+</dependency>
+            <dependency>
+	<groupId>net.sf.jung</groupId>
+	<artifactId>jung-samples</artifactId>
+	<version>2.0.1</version>
+	<scope>compile</scope>
+</dependency>
+		
+		<dependency>
+		<groupId>org.antlr</groupId>
+		<artifactId>antlr4-runtime</artifactId>
+		<version>4.0</version>
+		<scope>compile</scope>
+	</dependency>
+	
+	<dependency>
+	<groupId>net.sourceforge.collections</groupId>
+	<artifactId>collections-generic</artifactId>
+	<version>4.01</version>
+	<scope>compile</scope>
+</dependency>
+            
+      <dependency>
+	<groupId>net.sf.jung</groupId>
+	<artifactId>jung-algorithms</artifactId>
+	<version>2.0</version>
+</dependency>
+          <dependency>
+	<groupId>commons-io</groupId>
+	<artifactId>commons-io</artifactId>
+	<version>2.4</version>
+</dependency>
+                    
+        <dependency>
+	<groupId>com.googlecode.json-simple</groupId>
+	<artifactId>json-simple</artifactId>
+	<version>1.1.1</version>
+	<scope>compile</scope>
+</dependency>
+		
+	</dependencies>
+
+	<build>
+		<resources>
+			<resource>
+				<!-- we had problems in using standard wab deployment (referencing the 
+					WEB-INF/classes from depending wabs) -->
+				<!-- thus we have manually managed the webapp directory and we still 
+					put the classes in the . position -->
+				<directory>src/main/webapp</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+			
+		<resource>
+				<directory>src/main/config</directory>
+			</resource>
+		
+		</resources>
+
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<verbose>true</verbose>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>2.3.7</version>
+				<extensions>true</extensions>
+				<configuration>
+					<!-- <_wab>src/main/webapp</_wab> could also use src/main/resources 
+						if you like -->
+						<instructions>
+<!--						<_wab>src/main/webapp</_wab>  -->
+<!-- 						<Webapp-Context>${project.name}</Webapp-Context> -->
+<!-- 						<Web-ContextPath>${project.name}</Web-ContextPath> -->
+							<Webapp-Context>${project.artifactId}</Webapp-Context>
+	 						<Web-ContextPath>${project.artifactId}</Web-ContextPath>
+						<Export-Package>!*</Export-Package>
+						<Embed-Dependency>*;scope=compile</Embed-Dependency>
+						<Embed-Directory>lib</Embed-Directory>
+						<Import-Package>
+							org.springframework.web.servlet.view,
+							org.springframework.web.servlet,
+							org.springframework.context.*,
+							org.springframework.context.support,
+							org.springframework.context.config,
+							org.springframework.core,
+							org.springframework.web.context,
+							org.springframework.osgi.web.context.support,
+							org.springframework.stereotype,
+							org.springframework.ui,
+							org.springframework.web.bind.annotation,
+							org.osgi.framework,
+							org.aopalliance.aop,
+							javax.persistence,
+							javax.validation,
+							net.sf.cglib.proxy,
+							net.sf.cglib.core,
+							net.sf.cglib.reflect,
+							org.springframework.validation.beanvalidation,
+							org.springframework.validation.annotation,
+							org.jsoup,
+							org.springframework.aop.framework,
+							org.springframework.aop,
+							javax.validation.bootstrap,
+							javax.validation.constraints,
+							javax.validation.spi,
+							org.hibernate.validator,
+							org.springframework.validation,
+							javax.inject,
+							org.springframework.beans.factory.config,
+							org.springframework.context.annotation,
+							javax.servlet.http,
+							org.springframework.core.convert,
+							<!-- The following dependencies are required by the proxy created 
+								for Example2 -->
+							it.uniroma2.art.semanticturkey.plugin.extpts,
+							it.uniroma2.art.semanticturkey.plugin,
+							it.uniroma2.art.semanticturkey.servlet,
+							it.uniroma2.art.semanticturkey.servlet.main,
+							it.uniroma2.art.semanticturkey.exceptions,
+							it.uniroma2.art.owlart.exceptions,
+							it.uniroma2.art.owlart.vocabulary,
+							it.uniroma2.art.owlart.models,
+							it.uniroma2.art.owlart.model,
+							it.uniroma2.art.owlart.navigation,
+							it.uniroma2.art.semanticturkey.ontology.utilities,
+							org.w3c.dom,
+							org.springframework.beans.factory.annotation,
+							org.springframework.beans,
+							com.google.common.collect,
+							org.slf4j,
+							javax.*,
+							*;resolution:=optional
+						</Import-Package>
+						<!-- <Bundle-ClassPath>.</Bundle-ClassPath> -->
+					</instructions>
+				</configuration>
+			</plugin>
+
+
+
+
+			<!-- Build of the xpi. -->
+
+			<plugin>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.5</version>
+				<executions>
+					<execution>
+						<id>copy-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<configuration>
+							<outputDirectory>${dist.client}</outputDirectory>
+							<includeEmptyDirs>true</includeEmptyDirs>
+							<resources>
+								<resource>
+									<directory>src/main/firefox</directory>
+									<filtering>true</filtering>
+									<includes>
+										<include>chrome.manifest</include>
+										<include>install.rdf</include>
+										<include>components/data/sturkey.properties</include>
+									</includes>
+								</resource>
+								<!-- this is to copy all the rest, being sure that we don't copy 
+									again the things which have been processed (filtering=true) for substituting 
+									Maven variables. Thus we have to copy everything, but excluding the elements 
+									above -->
+								<resource>
+									<directory>src/main/firefox</directory>
+									<filtering>false</filtering>
+									<excludes>
+										<exclude>chrome.manifest</exclude>
+										<exclude>install.rdf</exclude>
+										<exclude>components/data/sturkey.properties</exclude>
+										<exclude>**/*.idl</exclude>
+									</excludes>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<phase>install</phase>
+						<configuration>
+							<!-- Install preso da semantic turkey read only -->
+							<target>
+								<ant antfile="reasoner-extension-build.xml" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
+		</plugins>
+	</build>
+
+</project>

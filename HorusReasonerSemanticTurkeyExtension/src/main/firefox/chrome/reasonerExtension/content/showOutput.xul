@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+
+<window orient="horizontal"
+  id="show_rules_window"
+  title="Inference Rules"
+  onload="onLoad();"
+  onclose="return true;"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+
+
+  <script type="application/x-javascript"
+   src="chrome://reasonerExtension/content/scripts/showOutputOptions.js" />
+ <script type="application/x-javascript"
+   src="chrome://reasonerExtension/content/scripts/browser-overlay.js" />
+ 
+  
+  
+<groupbox id="main_groupbox">
+  <groupbox>
+    <caption label="Output informations"/>
+     <label id="Output_informations" value="New inference rule discovered:"/>
+  </groupbox>
+  
+  <caption label="Output options"/>
+              <label id="load_inference_rule_label" value="Show text Output"/>
+              <button label="Show text"
+                      oncommand="showTextOutput();"/>
+              
+              <label value="Show graph Output"/>
+              <button label="Show graph"
+                       oncommand="openGraph();"/>
+  <groupbox id="rules_filter">
+ 
+    <button label="Apply Filter" oncommand="this.close()"/>
+    
+  </groupbox>
+              
+  <groupbox id="gb_triple" style="display:none">
+    <caption label="Search Triple"/>
+     <label id="TripleSearch" value="Triple search box:"/>
+     <textbox id="TripleSearchBox" />
+     <button label="Search Triple" oncommand="searchTriple();"/>
+  </groupbox>
+  
+  <groupbox id="save_groupbox">
+    <caption label="Delete new triple"/>
+     <button label="Delete Triple" oncommand="dismissButtonNewTriple();"/>
+  </groupbox>
+      
+  <groupbox id="">
+    <caption label="Close Output window"/>
+     <button label="Close" oncommand="onClose();"/> 
+  </groupbox>   
+                          
+</groupbox>
+
+<groupbox id="show_box">
+   <caption label="Show Box"/>
+</groupbox>
+ 
+ 
+</window>

@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+
+<?xml-stylesheet type="text/css" href="chrome://reasonerExtension/skin/styles/reasonerConfigurationCSS.css" ?>
+
+
+<dialog id="Reasoner-configuration-dialog"
+  title="Reasoner Configurations"
+  buttons="accept,cancel,help"
+  buttonlabelcancel="Cancel"
+  buttonlabelaccept="StartReasoner"
+  buttonlabelhelp="Help"
+  onload="onLoad();"
+  ondialogaccept="return onOK();"
+  ondialoghelp="showHelpWindow();"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+  <script type="application/x-javascript"
+    src="chrome://reasonerExtension/content/scripts/reasonerConfiguration.js" />
+  
+   <dialogheader title="Configurations" description="Reasoner"/>
+       <groupbox>
+              <label id="load_inference_rule_label" value="Load inference rule file"/>
+              <button label="Load Inference Rule file"
+                      oncommand="loadInferenceRuleFile('false');"/>
+              
+              <label value="Show inference Rules file"/>
+              <button label="Show Rules"
+                       oncommand="showRules();"/>
+              
+              <label value="Restore default rules file"/>
+              <button label="Restore default file"
+                       oncommand="restoreDefaultRuleFiles();"/>
+              
+        </groupbox>
+        <groupbox>
+         <caption label="Configuration Parameters"/>
+           <groupbox>
+              <caption label="Output Configuration"/>
+                   <tooltip id="moretip" orient="vertical" style="background-color: #33DD00;">
+                    <label value="If selected, shows how the new triples has been generated"/>
+                   </tooltip>
+            
+               <checkbox tooltip="moretip" id="produceOutputCheckBox"
+                         label="Produce Output"
+                         checked="false" persist="checked" />
+                
+        </groupbox>
+     
+      <tooltip  id="tip_inference_rule" orient="vertical" style="background-color: #33DD00;">
+               <label  value="Choose how many time do the inference rules on ontology:" />
+               <label value="each time apply the all inference rules on ontology"/>   
+       </tooltip>
+      
+       <label tooltip="tip_inference_rule" value="How many times do the inference rules"/>
+       <textbox tooltip="tip_inference_rule" id="cycleNumberReasoning" />
+       
+       <tooltip id="whic_rule_tip" orient="vertical" style="background-color: #33DD00;">
+               <label value="From inference rule file,select the id of inference rule and write it in box."/>
+               <label  value="If you want apply more rule, divide the ids using ',': for example,"/>
+               <label value="if you want use the rule with id 2 and rule with id 5 write 2,5."/>
+               <label value="If you not specified any id rule, all rules will be apply."/>
+       </tooltip>
+       
+       <label tooltip="whic_rule_tip" value="Which rules must be executed"/>
+       <textbox tooltip="whic_rule_tip" id="wichInferenceRuleAplly" />   
+  </groupbox>
+  
+  
+</dialog>
+
+    

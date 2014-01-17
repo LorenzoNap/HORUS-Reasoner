@@ -1,0 +1,6 @@
+ #help-icon {
+   list-style-image: url("chrome://reasonerExtension/skin/images/help_icon.png");
+   width: 10px;
+   height: 10px;
+ }
+

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+	<rdf:Description rdf:about="urn:mozilla:install-manifest">
+
+		<em:name>ReasonerExtension</em:name>
+
+		<!-- The name of the addon intended for display in the UI.  -->
+		<em:id>ReasonerExtension@uniroma2.it</em:id>
+		<em:version>${project.version}</em:version>
+        <em:unpack>true</em:unpack>
+		<!-- The 2 declares that it is installing an extension -->
+		<em:type>2</em:type>
+		<em:creator>University of Rome, Tor Vergata</em:creator>
+		<em:description>A reasoner for semantic turkey extension</em:description>
+
+		<!--
+			A link to the addon's home page intended for display in the user
+			interface.
+		-->
+		<em:homepageURL>http://semanticturkey.uniroma2.it</em:homepageURL>
+		<!-- A chrome:// URL to a 32x32 icon to display in the addons list. -->
+		<em:iconURL>chrome://reasonerExtension/skin/images/Gear.png
+		</em:iconURL>
+		<!-- The chrome:// URL of the extension's about dialog box -->
+		<em:aboutURL />
+		<!--
+			The chrome:// URL of the extension's options dialog box. This is only
+			useful to extensions. If this property is specified, when the
+			extension is selected in the Extensions list, the Options button is
+			enabled and will show this.
+		-->
+		<em:optionsURL>chrome://test/content/options.xul</em:optionsURL>
+
+		<!--
+			Target application is Firefox. You can try specifying other Mozilla
+			applications such as Thunderbird and see.
+		-->
+		<em:targetApplication>
+			<rdf:Description>
+				<!-- Firefox's application ID -->
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>6.0</em:minVersion>
+				<em:maxVersion>19.*</em:maxVersion>
+			</rdf:Description>
+		</em:targetApplication>
+		
+		
+		<!-- Dipendenza da ST -->
+		<em:requires>
+			<rdf:Description>
+				<em:id>semanticturkey@art.uniroma2.it</em:id>
+				<em:minVersion>0.9.0</em:minVersion>
+				<em:maxVersion>1.0+</em:maxVersion>
+			</rdf:Description>
+		</em:requires>
+
+		<!--
+			STARRED In extensions for Firefox 1.5, this property is no longer
+			necessary: the chrome.manifest at the top level of the XPI is used to
+			locate chrome to register. If there is no chrome.manifest, this
+			property is still read by the Addon Manager and a chrome.manifest is
+			generated from old-style contents.rdf.
+		-->
+
+		<em:file>
+			<!--
+				Urn of the directory that contains the chrome package's files where
+				chrome package are bundles of user interface components which are
+				loaded via chrome:// URIs.
+			-->
+			<rdf:Description rdf:about="urn:mozilla:extension:file:test">
+				<!--
+					This object has a package property with a path within the jar file
+					or directory that leads to the location where the contents.rdf file
+					responsible for registering that package is located.
+				-->
+				<em:package>content/</em:package>
+				<!-- Locale property ditto, but to register the locale -->
+				<em:locale>locale/en-US/</em:locale>
+				<!-- A skin property ditto, but to register the theme material-->
+				<em:skin>skin/classic/</em:skin>
+			</rdf:Description>
+		</em:file>
+		<em:developer>Lorenzo Napoleoni</em:developer>		
+	</rdf:Description>
+</rdf:RDF>

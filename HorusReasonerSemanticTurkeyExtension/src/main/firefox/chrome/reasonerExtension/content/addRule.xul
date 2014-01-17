@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+
+<dialog id="addRuleWindow"
+  title="Add Inference Rule"
+  buttons="accept,cancel,help"
+  buttonlabelcancel="Cancel"
+  buttonlabelaccept="Add Rule"
+  buttonlabelhelp="Reload"
+  ondialogaccept="return addRule();"
+  ondialoghelp="refresh()"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  
+<script type="application/x-javascript"
+    src="chrome://reasonerExtension/content/scripts/reasonerConfiguration.js" />
+
+<groupbox id="rule_form" label="Add Rule">
+  <caption label="Rule configuration"/>
+  <label value="Rule Type"/>
+  <menulist>
+      <menupopup>
+        <menuitem label="new rule" id="nr" oncommand="disableConlcusion('false')"/>
+        <menuitem label="inconsitency" id="in" oncommand="disableConlcusion('true')"/>
+      </menupopup>
+  </menulist>
+  
+   <label value="Inference Rule Name"/>
+   <textbox id="rule_name" placeholder="rule name"/>
+   
+   <label value="Inference Rule ID"/>
+   <textbox id="rule_ID" placeholder="ID"/>
+   
+   <groupbox id="button_premise">
+    <hbox id="premise_box">
+      <button  label="Add Premise" oncommand="addProposition('button_premise')" />
+      <button  label="Remove Premise" oncommand="removePremise();" />
+    </hbox>
+   
+   </groupbox>
+ 
+   <groupbox id="button_conclusion">
+     <hbox id="conclusion_box">
+      <button id="btn_add" label="Add Conclusion" oncommand="addProposition('button_conclusion')"/>
+      <button id="btn_remove" label="Remove Conclusion" oncommand="addConclusion();"/>
+     </hbox>
+     
+   </groupbox>
+    
+   
+   
+</groupbox>
+  
+</dialog>

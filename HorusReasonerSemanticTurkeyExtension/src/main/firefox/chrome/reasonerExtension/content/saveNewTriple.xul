@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+
+<?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+
+<dialog id="saveNewTriple Dialog"
+  title="Reasoner Configurations"
+  buttons="accept,cancel"
+  buttonlabelcancel="Cancel"
+  buttonlabelaccept="Remove"
+  ondialogcancel="dismissWindow();return true;"
+  ondialogaccept="return removeNewTriple();"
+  onclose = "dismissWindow();return true;"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+ <script type="application/x-javascript"
+   src="chrome://reasonerExtension/content/scripts/browser-overlay.js" />
+  
+  <label value="Do you want to remove the new triples?">
+    
+  </label>
+  
+  
+</dialog>
+
+    

@@ -1,0 +1,23 @@
+#include "nsISupports.idl"
+
+//
+// Semantic Turkey UUID generated with Perl script at:
+// http://extensions.roachfiend.com/cgi-bin/guid.pl
+// 
+//
+[scriptable, uuid(bd38239a-2ccb-4d06-ac61-fb3aa82cadea)]
+interface nsISemanticTurkey : nsISupports {
+    // This is a skeleton IDL interface. We will implement
+    // it in Javascript. The implementation Javascript object
+    // will expose its own methods, so we don't really need
+    // to declare any method here.
+    
+    // Note that methods declared in IDL interfaces are
+    // limited to accept arguments of just a few types
+    // (e.g., number, string) as dictated by IDL. Our 
+    // implementation Javascript  object will be able to 
+    // expose methods accepting arguments of a lot more 
+    // types, including Java objects.
+};
+
+
