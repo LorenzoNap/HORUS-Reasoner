@@ -189,7 +189,7 @@ public class ReasonerGui {
 		
 		jPanel.add(setOutput);
 		
-		JLabel setInferenceRule = new JLabel("Select Inference Rules");
+		JLabel setInferenceRule = new JLabel("How many time apply the reasoning process");
 		
 		
 		jPanel.add(setInferenceRule);
@@ -199,6 +199,8 @@ public class ReasonerGui {
 		
 		jPanel.add(spinnerUpDown);
 		
+		JLabel rulesApply = new JLabel("Which rules must be applied");
+		jPanel.add(rulesApply);
 		final JTextArea jTextArea = new JTextArea();
 		jTextArea.setMargin(new Insets(1, 1, 1, 1));
 
@@ -229,6 +231,7 @@ public class ReasonerGui {
 						status.setText("Start Reasoning Operation....");
 						List<ARTStatement> results=  startReasonerFacade.startReasoner(ont, inferenceRuleFile);
 						if (results.size() > 0){
+							if(produceOutput){
 							Component[] com = outputPanel.getComponents();
 							//Inside you action event where you want to disable everything
 							//Do the following
@@ -239,6 +242,10 @@ public class ReasonerGui {
 							 texAreaOutputRules.setEnabled(true);
 							 scrollPaneOutput.setEnabled(true);
 							createPanelOutputOptions();
+							}
+							else{
+								JOptionPane.showMessageDialog(loadDefaultInferenceRuleButton, new JLabel("Triple founded: "+results.size()));
+							}
 						}
 						else{
 							JOptionPane.showMessageDialog(loadDefaultInferenceRuleButton, new JLabel("No new triples found"));

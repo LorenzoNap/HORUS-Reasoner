@@ -161,6 +161,20 @@ public class OntologyUtilis {
 		
 	}
 	
+	public static  String getValueFromTripleItem(ARTNode item){
+		if(item.isBlank()){
+			return item.asBNode().toString();
+		}
+		if(item.isLiteral()){
+			return item.asLiteral().getNominalValue();
+		}
+		if(item.isResource()){
+			return item.asResource().getNominalValue();
+		}
+		return item.asURIResource().getLocalName();
+		
+	}
+	
 	public static boolean isVar(String subject) {
 		if(subject.startsWith("?")){
 			return true;

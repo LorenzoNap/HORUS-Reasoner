@@ -16,13 +16,13 @@ import it.uniroma2.reasoner.domain.InferenceRule;
 import it.uniroma2.reasoner.domain.InferenceRuleOutput;
 import it.uniroma2.reasoner.domain.InferenceRuleQueryResult;
 import it.uniroma2.reasoner.domain.InferenceRules;
+import it.uniroma2.reasoner.utils.OntologyUtilis;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import edu.uci.ics.jung.graph.DirectedSparseMultigraph;
 import edu.uci.ics.jung.graph.Graph;
 import edu.uci.ics.jung.graph.util.EdgeType;
 
@@ -188,9 +188,9 @@ public class Reasoner {
 		
 		for(ARTStatement statementSource : inferenceRuleOutput.getNew_triple()){
 
-			String subject = statementSource.getSubject().asURIResource().getLocalName().replace("<", "").replace(">", "");
-			String predicate = statementSource.getPredicate().asURIResource().getLocalName().replace("<", "").replace(">", "");
-			String object = statementSource.getObject().asURIResource().getLocalName().replace("<", "").replace(">", "");
+			String subject = OntologyUtilis.getValueFromTripleItem(statementSource.getSubject()).replace("<", "").replace(">", "");
+			String predicate = OntologyUtilis.getValueFromTripleItem(statementSource.getPredicate()).replace("<", "").replace(">", "");
+			String object = OntologyUtilis.getValueFromTripleItem(statementSource.getObject()).replace("<", "").replace(">", "");
 
 			String vertexSource = subject+" "+predicate+" "+object;
 		//	vertexSource = vertexSource.replace("<", "").replace(">", "");
@@ -199,9 +199,9 @@ public class Reasoner {
 			
 			for(ARTStatement statementTarget :inferenceRuleOutput.getFromTriple()){
 				
-				subject = statementTarget.getSubject().asURIResource().getLocalName().replace("<", "").replace(">", "");
-				predicate = statementTarget.getPredicate().asURIResource().getLocalName().replace("<", "").replace(">", "");
-				object = statementTarget.getObject().asURIResource().getLocalName().replace("<", "").replace(">", "");
+				subject = OntologyUtilis.getValueFromTripleItem(statementTarget.getSubject()).replace("<", "").replace(">", "");
+				predicate = OntologyUtilis.getValueFromTripleItem(statementTarget.getPredicate()).replace("<", "").replace(">", "");
+				object = OntologyUtilis.getValueFromTripleItem(statementTarget.getObject()).replace("<", "").replace(">", "");
 
 				String vertexTarget = subject+" "+predicate+" "+object;
 				stringGraph.addVertex(vertexTarget);
