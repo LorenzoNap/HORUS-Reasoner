@@ -77,7 +77,7 @@ public class ReasonerGui {
 	private void loadDefaultInferenceRuleFile(JFrame frame) {
 		InputStream stream = getClass().getClassLoader().getResourceAsStream("default_rule_file.txt");
 
-		StringBuffer textInferenceRule= new StringBuffer();
+		StringBuilder textInferenceRule= new StringBuilder();
 		String sCurrentLine;
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(stream));
@@ -86,10 +86,10 @@ public class ReasonerGui {
 		//Read and save the inference rules file tex
 		try {
 			outputStream = new FileOutputStream(inferenceRuleFile);
-			outputStream.write((new String()).getBytes());
+			outputStream.write(("").getBytes());
 			while ((sCurrentLine = br.readLine()) != null) {
 				textInferenceRule.append(sCurrentLine);
-				outputStream.write((sCurrentLine.toString()+"\n").getBytes());
+				outputStream.write((sCurrentLine+"\n").getBytes());
 
 			}
 

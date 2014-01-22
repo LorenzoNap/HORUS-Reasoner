@@ -5,6 +5,7 @@ import it.uniroma2.art.owlart.model.ARTStatement;
 import java.util.ArrayList;
 import java.util.List;
 
+import it.uniroma2.reasoner.utils.OntologyUtilis;
 import org.apache.log4j.Logger;
 
 /**
@@ -30,31 +31,32 @@ public class ReasoningOutput {
 			output.append("Rule type: "+inferenceRuleOutput.getInferenceRule().getType()+"\n");
 			output.append("Rule name: "+inferenceRuleOutput.getInferenceRule().getInferenceRuleName()+"\n");
 			output.append("Rule ID: "+inferenceRuleOutput.getInferenceRule().getInferenceRuleID()+"\n");
-			output.append("Result: "+"\n");
+			output.append("Result: ");
+            /* Debug */
 			log.debug("###################Output#####");
 			log.debug("Rule name: "+inferenceRuleOutput.getInferenceRule().getInferenceRuleName());
 			log.debug("Rule ID: "+inferenceRuleOutput.getInferenceRule().getInferenceRuleID());
 			log.debug("Result: ");
-			
+			 /* Debug */
 			if(inferenceRuleOutput.getInferenceRule().getType() != null && 
 					inferenceRuleOutput.getInferenceRule().getType().equals(InferenceRule.TPYE_INCONSISTENCY)){
 				output.append("inconsistency generated from: "+"\n");
 	    		log.debug("inconsistency generated from: ");
 	    		for (ARTStatement stmt :inferenceRuleOutput.getFromTriple()){
 	    			log.debug(stmt);
-	    			output.append(stmt+"\n");
+	    			output.append(OntologyUtilis.convertARTStatementToString(stmt)+"\n");
 	    		}
 			}
 			else{
 				for (ARTStatement stmt :inferenceRuleOutput.getNew_triple()){
-	    			output.append(stmt+"\n");
+	    			output.append(OntologyUtilis.convertARTStatementToString(stmt)+"\n");
 	    			log.debug(stmt);
 	    		  }
 				
 				output.append("generated from: "+"\n");
 	    		for (ARTStatement stmt :inferenceRuleOutput.getFromTriple()){
 	    			log.debug(stmt);
-	    			output.append(stmt+"\n");
+	    			output.append(OntologyUtilis.convertARTStatementToString(stmt)+"\n");
 	    		}	
 	    		
     		
@@ -70,25 +72,25 @@ public class ReasoningOutput {
 		output.append("Rule type: "+inferenceRuleOutput.getInferenceRule().getType()+"\n");
 		output.append("Rule name: "+inferenceRuleOutput.getInferenceRule().getInferenceRuleName()+"\n");
 		output.append("Rule ID: "+inferenceRuleOutput.getInferenceRule().getInferenceRuleID()+"\n");
-		output.append("Result: "+"\n");
+		output.append("Result: ");
 		if(inferenceRuleOutput.getInferenceRule().getType() != null && inferenceRuleOutput.getInferenceRule().getType().equals(InferenceRule.TPYE_INCONSISTENCY)){
 			output.append("inconsistency generated from: "+"\n");
     		log.debug("inconsistency generated from: ");
     		for (ARTStatement stmt :inferenceRuleOutput.getFromTriple()){
     			log.debug(stmt);
-    			output.append(stmt+"\n");
+    			output.append(OntologyUtilis.convertARTStatementToString(stmt)+"\n");
     		}
 		}
 		else{
 			for (ARTStatement stmt :inferenceRuleOutput.getNew_triple()){
-    			output.append(stmt+"\n");
+    			output.append(OntologyUtilis.convertARTStatementToString(stmt)+"\n");
     			log.debug(stmt);
     		  }
 			
 			output.append("generated from: "+"\n");
     		for (ARTStatement stmt :inferenceRuleOutput.getFromTriple()){
     			log.debug(stmt);
-    			output.append(stmt+"\n");
+    			output.append(OntologyUtilis.convertARTStatementToString(stmt)+"\n");
     		}	
 		}
 		return output.toString();

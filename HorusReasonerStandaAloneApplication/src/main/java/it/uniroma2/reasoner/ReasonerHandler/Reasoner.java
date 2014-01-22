@@ -140,7 +140,7 @@ public class Reasoner {
 						new_information--;
 					}
 				}
-				//If no new informations have not been discovered, remove one unit from outputofRule
+				//If no new information have not been discovered, remove one unit from outputofRule
 				if (new_information <=0){
 					outputRules--;
 				}
@@ -215,22 +215,13 @@ public class Reasoner {
 		
 		for(ARTStatement statementSource : inferenceRuleOutput.getNew_triple()){
 
-			String subject = OntologyUtilis.getValueFromTripleItem(statementSource.getSubject()).replace("<", "").replace(">", "");
-			String predicate = OntologyUtilis.getValueFromTripleItem(statementSource.getPredicate()).replace("<", "").replace(">", "");
-			String object = OntologyUtilis.getValueFromTripleItem(statementSource.getObject()).replace("<", "").replace(">", "");
-
-			String vertexSource = subject+" "+predicate+" "+object;
-		//	vertexSource = vertexSource.replace("<", "").replace(">", "");
+			String vertexSource = OntologyUtilis.convertARTStatementToString(statementSource);
 			
 			stringGraph.addVertex(vertexSource);
 			
 			for(ARTStatement statementTarget :inferenceRuleOutput.getFromTriple()){
 				
-				subject = OntologyUtilis.getValueFromTripleItem(statementTarget.getSubject()).replace("<", "").replace(">", "");
-				predicate = OntologyUtilis.getValueFromTripleItem(statementTarget.getPredicate()).replace("<", "").replace(">", "");
-				object = OntologyUtilis.getValueFromTripleItem(statementTarget.getObject()).replace("<", "").replace(">", "");
-
-				String vertexTarget = subject+" "+predicate+" "+object;
+				String vertexTarget = OntologyUtilis.convertARTStatementToString(statementTarget);
 				stringGraph.addVertex(vertexTarget);
 				
 				stringGraph.addEdge(String.valueOf(count),vertexSource,vertexTarget, EdgeType.DIRECTED);

@@ -160,6 +160,14 @@ public class OntologyUtilis {
 		return statments;
 		
 	}
+
+    public static String convertARTStatementToString(ARTStatement statement){
+        String subject = getValueFromTripleItem(statement.getSubject()).replace("<", "").replace(">", "");
+        String predicate = getValueFromTripleItem(statement.getPredicate()).replace("<", "").replace(">", "");
+        String object = getValueFromTripleItem(statement.getObject()).replace("<", "").replace(">", "");
+
+        return subject+" "+predicate+" "+object;
+    }
 	
 	public static  String getValueFromTripleItem(ARTNode item){
 		if(item.isBlank()){
