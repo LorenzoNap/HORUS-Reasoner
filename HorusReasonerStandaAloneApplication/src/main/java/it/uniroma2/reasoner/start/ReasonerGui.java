@@ -235,8 +235,9 @@ public class ReasonerGui {
 						List<ARTStatement> results=  startReasonerFacade.startReasoner(ont, inferenceRuleFile);
 						if (results.size() > 0){
 							if(startReasonerFacade.getInputOutputHanlder().getNumberOfIteration() < count || count == 0 ){
-								JOptionPane.showMessageDialog(loadDefaultInferenceRuleButton, new JLabel("Have not been found new inffered triples after the execution of "+startReasonerFacade.getInputOutputHanlder().getNumberOfIteration()+
-										" reasoning iteration"));
+								JOptionPane.showMessageDialog(loadDefaultInferenceRuleButton,
+                                        new JLabel("<html>Reasoner iteration (value chosen by the user): "+count+"<br>"+
+                                                "Effective iteration: "+startReasonerFacade.getInputOutputHanlder().getNumberOfIteration()+"</html>"));
 							}
 							if(produceOutput){
 							Component[] com = outputPanel.getComponents();

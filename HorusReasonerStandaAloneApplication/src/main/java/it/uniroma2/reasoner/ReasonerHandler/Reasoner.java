@@ -97,9 +97,9 @@ public class Reasoner {
 		if(numberOfExecution == 0 ){
 			numberOfExecution = 100000000;
 		}
-		
+		int count ;
 		//Apply all inference rules on ontology as many times as expressed by the configuration parameters
-		for(int count=0;count <numberOfExecution;count++){
+		for(count = 0;count <numberOfExecution;count++){
 			//Get number of rules
 			int outputRules =  inferenceRules.getInferenceRules().size();
 			
@@ -153,7 +153,7 @@ public class Reasoner {
                 break;
             }
 		}
-    	
+        inputOutputHanlder.setNumberOfIteration(count+1);
 		//Save the results of reasoning operation
 		inputOutputHanlder.saveQuery(inferenceRulesOutuput);
 		//Return resoning result
