@@ -150,8 +150,10 @@ function removeNewTriple(){
 				 var names =  response.getElementsByTagName("startReasoning")[0].getAttribute("inferenceRulesNames");
 				 
 				 var JsonInference = response.getElementsByTagName("startReasoning")[0].getAttribute("jsonInference");
+				 
+				 var numberOfIterationOfReasoning = response.getElementsByTagName("startReasoning")[0].getAttribute("numberOfIteration");
 				 //Create an array of parameters with the information taken from the server response
-				 var parameters = {inn:{newTriple:triple_discovered, produceOutput:output,printOutput:print,nameRules:names,jsonInference:JsonInference}, out:null};
+				 var parameters = {inn:{newTriple:triple_discovered, produceOutput:output,printOutput:print,nameRules:names,jsonInference:JsonInference,iterations:numberOfIterationOfReasoning }, out:null};
 				 //If the output has not produced, show the dialog box to save the new triples discovered, else show the window output
 				 
 				 document.getElementById("deleteTriple").setAttribute("disabled","false");
@@ -162,6 +164,13 @@ function removeNewTriple(){
 						 (triple_discovered));
 				 }
 				 else{
+					 
+					if(params.out.numberOfIterationOfReasoning <  params.out.cycleNumber ||  params.out.cycleNumber == 0){
+						 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+						 prompts.alert(window,"Reasoner","Have not been found new inffered triples after the execution of "+numberOfIterationOfReasoning+" reasoning iteration");
+					}
+					 
+					
 					 window.openDialog("chrome://reasonerExtension/content/showOutput.xul",
 							 "Output window", "chrome,resizable=yes,modal",parameters);
 				 }

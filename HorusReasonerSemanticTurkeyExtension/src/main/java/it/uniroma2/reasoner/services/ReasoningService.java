@@ -259,7 +259,7 @@ public class ReasoningService extends ServiceAdapter{
 			reasonerFacade.setParameter(ConfigurationParameter.WHICHRULEEXECUTE, idsRule);
 			//Get current project to apply resoning operation
 			project = ProjectManager.getCurrentProject();
-			//check if project is exist. If true do resoning, else return a warning message
+			//check if project is exist. If true do reasoning, else return a warning message
 			if (project  == null){
 				response = createReplyResponse(RepliesStatus.warning);
 				Element dataElement = response.getDataElement();
@@ -271,7 +271,7 @@ public class ReasoningService extends ServiceAdapter{
 			baseRDFTripleModel = project.getOntModel();
 			//Apply reasoning on model
 			List<ARTStatement> new_triple = reasonerFacade.startReasoner(baseRDFTripleModel,inferenceRuleFile);
-			//Check if new triple has been discoverd. If false, return a warining messge, else return a positive response
+			//Check if new triple has been discovered. If it is false, return a warning message, else return a positive response
 			if (new_triple != null && new_triple.size() == 0){
 				response = createReplyResponse(RepliesStatus.warning);
 				Element dataElement = response.getDataElement();
@@ -285,6 +285,7 @@ public class ReasoningService extends ServiceAdapter{
 			Element reasonerElem = XMLHelp.newElement(dataElement, "startReasoning");
 			//Populate response
 			reasonerElem.setAttribute("produceOutput", output);
+			reasonerElem.setAttribute("numberOfIteration", String.valueOf(reasonerFacade.getInputOutputHanlder().getNumberOfIteration()));
 			reasonerElem.setAttribute("numberOfTriple", Integer.toString(new_triple.size()));
 			reasonerElem.setAttribute("printOutput", reasonerFacade.getOutputList().printOuput());
 			reasonerElem.setAttribute("inferenceRulesNames", reasonerFacade.getInferenceRulesName());

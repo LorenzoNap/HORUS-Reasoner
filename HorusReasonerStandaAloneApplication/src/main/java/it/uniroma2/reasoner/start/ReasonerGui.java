@@ -64,6 +64,8 @@ public class ReasonerGui {
 	private JTextArea texAreaOutputRules;
 
 	private JScrollPane scrollPaneOutput;
+
+	private JSpinner spinnerUpDown;
 	
 	public ReasonerGui(StartReasonerFacade stratReasonerFacade) {
 		this.startReasonerFacade = stratReasonerFacade;
@@ -193,14 +195,15 @@ public class ReasonerGui {
 		
 		
 		jPanel.add(setInferenceRule);
-		
-		 final JSpinner spinnerUpDown = new JSpinner();
+		spinnerUpDown = new JSpinner();
 		 
 		
 		jPanel.add(spinnerUpDown);
 		
-		JLabel rulesApply = new JLabel("Which rules must be applied");
+		JLabel rulesApply = new JLabel("Inference rules to apply");
 		jPanel.add(rulesApply);
+		
+		
 		final JTextArea jTextArea = new JTextArea();
 		jTextArea.setMargin(new Insets(1, 1, 1, 1));
 
@@ -231,6 +234,10 @@ public class ReasonerGui {
 						status.setText("Start Reasoning Operation....");
 						List<ARTStatement> results=  startReasonerFacade.startReasoner(ont, inferenceRuleFile);
 						if (results.size() > 0){
+							if(startReasonerFacade.getInputOutputHanlder().getNumberOfIteration() < count || count == 0 ){
+								JOptionPane.showMessageDialog(loadDefaultInferenceRuleButton, new JLabel("Have not been found new inffered triples after the execution of "+startReasonerFacade.getInputOutputHanlder().getNumberOfIteration()+
+										" reasoning iteration"));
+							}
 							if(produceOutput){
 							Component[] com = outputPanel.getComponents();
 							//Inside you action event where you want to disable everything
@@ -286,8 +293,8 @@ public class ReasonerGui {
 			setOutput.setSelected(Boolean.parseBoolean(startReasonerFacade.getConfigurationParameter(ConfigurationParameter.PRODUCE_OUTPUT)));
 			int count =Integer.parseInt(startReasonerFacade.getConfigurationParameter(ConfigurationParameter.NUMBER_OF_EXECUTION));
 			 jTextArea.setText(startReasonerFacade.getConfigurationParameter(ConfigurationParameter.WHICHRULEEXECUTE));
-			 spinnerUpDown.setModel(new SpinnerNumberModel(count, 1, 20, 1));
-	         spinnerUpDown.setEditor(new JSpinner.NumberEditor(spinnerUpDown, "00"));
+			 spinnerUpDown.setModel(new SpinnerNumberModel(count, 0, 20, 1));
+	         spinnerUpDown.setEditor(new JSpinner.NumberEditor(spinnerUpDown, "0"));
 		} catch (FileNotFoundException e1) {
 			JOptionPane.showMessageDialog(frame, e1.toString(), "Error", JOptionPane.ERROR_MESSAGE);
 		} catch (IOException e1) {

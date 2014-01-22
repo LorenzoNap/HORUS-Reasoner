@@ -37,6 +37,8 @@ public class OutputHanlder {
 	//Object to store output of reasoning process
 	private ReasoningOutput reasoningOutput;
 	
+	private int numberOfIteration;
+	
 	private static final Logger log = Logger.getLogger(OutputHanlder.class);
 	
 		
@@ -124,6 +126,14 @@ public class OutputHanlder {
 
 	public void setGraphOfInconsistency(Graph<String, String> graphOfInconsistency) {
 		this.graphOfInconsistency = graphOfInconsistency;
+	}
+
+	public int getNumberOfIteration() {
+		return numberOfIteration;
+	}
+
+	public void setNumberOfIteration(int numberOfIteration) {
+		this.numberOfIteration = numberOfIteration;
 	}
 
   

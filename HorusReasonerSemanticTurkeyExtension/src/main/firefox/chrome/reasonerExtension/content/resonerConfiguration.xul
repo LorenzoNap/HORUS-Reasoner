@@ -53,7 +53,7 @@
                <label value="each time apply the all inference rules on ontology"/>   
        </tooltip>
       
-       <label tooltip="tip_inference_rule" value="How many times do the inference rules"/>
+       <label tooltip="tip_inference_rule" value="How many times do the inference rules."/>
        <textbox tooltip="tip_inference_rule" id="cycleNumberReasoning" />
        
        <tooltip id="whic_rule_tip" orient="vertical" style="background-color: #33DD00;">

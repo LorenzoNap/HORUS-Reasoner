@@ -18,6 +18,10 @@ function onLoad() {
 	document.getElementById("text_box").value = "";
 	loadInferenceRulesName(window.arguments[0].inn.nameRules);
 	showTextOutput();
+	
+	
+	
+	
 }
 
 //function loadTable(jsonString) {

@@ -169,7 +169,7 @@ public class OntologyUtilis {
 			return item.asLiteral().getNominalValue();
 		}
 		if(item.isResource()){
-			return item.asResource().getNominalValue();
+			return item.asURIResource().getLocalName();
 		}
 		return item.asURIResource().getLocalName();
 		

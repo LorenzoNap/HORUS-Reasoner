@@ -46,10 +46,12 @@ public class Reasoner {
 	private ConfigurationParameter configurationParameter;
 	//Object to execute query on Ontology
 	private ExecuteQueryOntologyHandler executeQueryOntologyHandler;
+
 	
 	private static final Logger log = Logger.getLogger(Reasoner.class);
 	
 	public static final String SUPPORT_ONTOLOGY_GRAPH = "http://supportOntology";
+
 
 	int count =0;
 	public Reasoner(InferenceRules  inferenceRules, BaseRDFTripleModel baseRDFTripleModel,OutputHanlder inputOutputHanlder,ConfigurationParameter configurationParameter) {
@@ -78,6 +80,7 @@ public class Reasoner {
 
 		log.debug("Execute inference rules on Ontology");
 		
+		inputOutputHanlder.setNumberOfIteration(0);
 			
 		//Object to store the output of execution of inferenceRules
 		List<InferenceRuleOutput> inferenceRulesOutuput = new ArrayList<InferenceRuleOutput>();
@@ -89,13 +92,26 @@ public class Reasoner {
 		//Create a List that stores new generated Triple
 		List<ARTStatement> results = new ArrayList<ARTStatement>();
 		
+		//If the user has specified "0" as number of reasoning execution, execute the reasoning operation until the reasoner will not find any new 
+		//inferred triples
+		if(numberOfExecution == 0 ){
+			numberOfExecution = 100000000;
+		}
+		
 		//Apply all inference rules on ontology as many times as expressed by the configuration parameters
 		for(int count=0;count <numberOfExecution;count++){
-			//Execute each single inference rule on ontology
+			//Get number of rules
+			int outputRules =  inferenceRules.getInferenceRules().size();
+			
 			for(InferenceRule inferenceRule: inferenceRules.getInferenceRules() ){
 				//Get the result of execution of query.
 				List<InferenceRuleQueryResult> inferenceRuleQueryResults = executeQueryOntologyHandler.executeInferencerule(inferenceRule);
-				//For each output that has been generated, check if the new information is already  on the ontology, if false create new output with 
+
+			//Get the size of query results
+               int new_information = inferenceRuleQueryResults.size();
+               
+
+				//For each output that has been generated, check if the new information is already  on the ontology, if false create new output with
 				//new information and add the information (triples) on graph
 				for(InferenceRuleQueryResult inferenceRuleQueryResult:inferenceRuleQueryResults ){
 					
@@ -107,6 +123,7 @@ public class Reasoner {
 						if(checkInconsistency(inferenceRuleOutput))
 						//Add the output on the list of output
 						inferenceRulesOutuput.add(inferenceRuleOutput);		
+						new_information--;
 					}
 					
 					
@@ -118,12 +135,25 @@ public class Reasoner {
 						//Add the output on the list of output
 						inferenceRulesOutuput.add(inferenceRuleOutput);					
 					}
+					//If new information has not been discovered, remove one unit from new_information
+					else{
+						new_information--;
+					}
+				}
+				//If no new informations have not been discovered, remove one unit from outputofRule
+				if (new_information <=0){
+					outputRules--;
 				}
 
 			}
-
+            //Check if reasoner have to continue to iterate. If none information has been discovered, break the iteration
+            if(outputRules <= 0){
+            	//Set the number of iteration
+        		inputOutputHanlder.setNumberOfIteration(count+1);
+                break;
+            }
 		}
-		
+    	
 		//Save the results of reasoning operation
 		inputOutputHanlder.saveQuery(inferenceRulesOutuput);
 		//Return resoning result
@@ -151,17 +181,14 @@ public class Reasoner {
 	}
 
 
-
-
-	/**
-	 * Check if the output must be produced
-	 * 
-	 * @param produceOutput
-	 * @param inferenceRuleQueryResult
-	 * @param inferenceRule
-	 * @param stringGraph
-	 * @return
-	 */
+    /**
+     * Check if the output must be produced
+     * @param produceOutput
+     * @param inferenceRuleQueryResult
+     * @param inferenceRule
+     * @param stringGraph
+     * @return
+     */
 	public InferenceRuleOutput produceOutput(boolean produceOutput, InferenceRuleQueryResult inferenceRuleQueryResult,InferenceRule inferenceRule,
 			Graph<String, String> stringGraph){
 				
@@ -179,11 +206,11 @@ public class Reasoner {
 	}
 
 
-	/**
-	 * Add a output of execution of inference rule on a graph. Store the new triples and the triples that have generated the new triples.
-	 * @param stringGraph
-	 * @param inferenceRuleOutput
-	 */
+    /**
+     * Add a output of execution of inference rule on a graph. Store the new triples and the triples that have generated the new triples.
+     * @param stringGraph
+     * @param inferenceRuleOutput
+     */
 	private void addOnGraph(Graph<String, String> stringGraph,InferenceRuleOutput inferenceRuleOutput) {
 		
 		for(ARTStatement statementSource : inferenceRuleOutput.getNew_triple()){
@@ -219,8 +246,7 @@ public class Reasoner {
 
 	/**
 	 * Check if statment is contained in the ontology. If true, add the statment in the ontology and return true,false otherwise. 
-	 * 
-	 * @param statement RDF statment to check
+	 *
 	 * @param model ontology 
 	 * @return true if onotlogy has statement, false,otherwise
 	 * @throws ModelAccessException

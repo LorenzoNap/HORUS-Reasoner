@@ -30,7 +30,8 @@ You must  check the "Output produce" into check box. </html:li>
 <html:li> You can choose how many time execute the inference rules on ontology.
 You can specify on provided box. For example, if you choose two time, write '2' on box.
 All inference rules (or the inference rules that has been specified)
-will apply one time and another time when the first execution has finished.</html:li>
+will apply one time and another time when the first execution has finished.
+If you specify '0' the reasoning operation will be made until all the information will not be discovered</html:li>
 <html:li> You can choose which inference rule  execute.
 From the inference rules file you can pick the id of rule. The id must be written on provided box.
 For example, if you chose the rule with id equals 1 and the rule with id equals 3, you will write '1,3'.
