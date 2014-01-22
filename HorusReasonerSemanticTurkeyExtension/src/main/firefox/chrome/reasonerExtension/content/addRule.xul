@@ -39,6 +39,14 @@
     </hbox>
    
    </groupbox>
+
+    <groupbox id="button_filter">
+        <hbox id="filter_box">
+            <button  label="Add Filter condition" oncommand="addFilterCondition()" />
+            <button  label="Remove Filter condition" oncommand="removeFilterCondition();" />
+        </hbox>
+
+    </groupbox>
  
    <groupbox id="button_conclusion">
      <hbox id="conclusion_box">

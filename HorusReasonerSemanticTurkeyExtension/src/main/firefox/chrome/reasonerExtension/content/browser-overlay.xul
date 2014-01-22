@@ -23,7 +23,7 @@
                       oncommand="showReasonerConfiguration();"/>
 						 <menuitem id="deleteTriple"
                       label="Delete new Triple"
-											disabled="true"
+											disabled="false"
                       oncommand="dismissNewTriple();"/>
             </menupopup>
         </menu>

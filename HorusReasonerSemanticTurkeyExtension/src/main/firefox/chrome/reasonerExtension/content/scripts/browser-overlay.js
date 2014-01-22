@@ -167,10 +167,8 @@ function removeNewTriple(){
 					 
 					if(params.out.numberOfIterationOfReasoning <  params.out.cycleNumber ||  params.out.cycleNumber == 0){
 						 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
-						 prompts.alert(window,"Reasoner","Have not been found new inffered triples after the execution of "+numberOfIterationOfReasoning+" reasoning iteration");
+						 prompts.alert(window,"Reasoner","Reasoner iteration (value chosen by the user): "+params.out.cycleNumber+"\n"+"Effective iteration: "+numberOfIterationOfReasoning);
 					}
-					 
-					
 					 window.openDialog("chrome://reasonerExtension/content/showOutput.xul",
 							 "Output window", "chrome,resizable=yes,modal",parameters);
 				 }

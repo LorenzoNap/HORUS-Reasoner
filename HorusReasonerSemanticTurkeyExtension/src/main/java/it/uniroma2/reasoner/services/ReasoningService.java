@@ -192,6 +192,9 @@ public class ReasoningService extends ServiceAdapter{
 		XMLResponseREPLY response;
 		
 		try {
+            Project<? extends RDFModel> project= null;
+            project = ProjectManager.getCurrentProject();
+            baseRDFTripleModel = project.getOntModel();
 			//Remove triple from the ontology model
 			baseRDFTripleModel.clearRDF(baseRDFTripleModel.createURIResource(Reasoner.SUPPORT_ONTOLOGY_GRAPH));
 		} catch (ModelUpdateException e) {		

@@ -106,3 +106,11 @@ premise: subject: ?equiClass2 predicate: <http://www.w3.org/2002/07/owl#onProper
 premise: subject: ?equiClass2 predicate: <http://www.w3.org/2002/07/owl#minCardinality> object: ?card2
 filter: ?card1 >= ?card2
 conclusion: subject: ?class1 predicate: <http://www.w3.org/2000/01/rdf-schema#subClassOf> object: ?class2
+
+
+type: new rule
+name: subProp
+id: 14
+premise: subject: ?x predicate: ?p1 object: ?y
+premise: subject: ?p1 predicate: <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> object: ?p2
+conclusion: subject: ?x predicate: ?p2 object: ?y

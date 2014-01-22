@@ -187,6 +187,28 @@ function addProposition(type){
 	btn.appendChild(hbox);
 }
 
+function addFilterCondition(){
+    if(document.getElementById("filter_condition_hbox") == null){
+	var btn = document.getElementById("button_filter");
+    	var hbox = document.createElement("hbox");
+        hbox.setAttribute("id","filter_condition_hbox");
+    	var labelFilter = document.createElement("label")
+        	labelFilter.setAttribute("value","Filter condition");
+        	var filterText= document.createElement("textbox");
+        	hbox.appendChild(labelFilter);
+        	hbox.appendChild(filterText);
+        	btn.appendChild(hbox);
+        	}
+}
+
+function removeFilterCondition(){
+    if(document.getElementById("filter_condition_hbox") != null){
+        var btn = document.getElementById("button_filter");
+        var hbox = document.getElementById("filter_condition_hbox");
+        btn.removeChild(hbox);
+    }
+}
+
 function addConclusion(){
 	var btn = document.getElementById("button_conclusion");
 	var premise = document.createElement("textbox");
@@ -272,6 +294,13 @@ function addRule(){
 			break;
 		 }
   }
+  var filter = "";
+   if(document.getElementById("filter_condition_hbox") != null){
+   filter = "filter: ";
+   var box = document.getElementById("filter_condition_hbox")
+   filter = filter+box.children[1].value+"\n";
+   }
+
 	var conclusion = "";
 	if (document.getElementById("nr").selected) {
 		var element = document.getElementById("button_conclusion");
@@ -297,5 +326,5 @@ function addRule(){
 	
 	var txt = window.arguments[0].inn.txt_box;
 	
-	txt.value = txt.value+"\n"+type+name+id+premise+conclusion;
+	txt.value = txt.value+"\n"+type+name+id+premise+filter+conclusion;
 }
