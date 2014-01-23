@@ -21,6 +21,8 @@ public class InferenceRuleOutput {
 	private List<ARTStatement> new_triple;
 
 	private InferenceRule inferenceRule;
+
+    private String filterStatement;
 	
 	
 	public InferenceRuleOutput(){
@@ -63,6 +65,17 @@ public class InferenceRuleOutput {
 		}
 		return fromTriple;
 	}
+
+    public String getFilterStatement() {
+        if(filterStatement == null){
+            filterStatement = "";
+        }
+        return filterStatement;
+    }
+
+    public void setFilterStatement(String filterStatement) {
+        this.filterStatement = filterStatement;
+    }
 
 	public void setFromTriple(List<ARTStatement> fromTriple) {
 		this.fromTriple = fromTriple;

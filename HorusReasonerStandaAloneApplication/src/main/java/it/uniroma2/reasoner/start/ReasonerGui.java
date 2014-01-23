@@ -246,7 +246,7 @@ public class ReasonerGui {
 							for (int a = 0; a < com.length; a++) {
 							     com[a].setEnabled(true);
 							}
-							texAreaOutputRules.setText(startReasonerFacade.getOutputList().printOuput());
+							texAreaOutputRules.setText(startReasonerFacade.getOutputList().printOutput());
 							 texAreaOutputRules.setEnabled(true);
 							 scrollPaneOutput.setEnabled(true);
 							createPanelOutputOptions();
@@ -259,6 +259,7 @@ public class ReasonerGui {
 							JOptionPane.showMessageDialog(loadDefaultInferenceRuleButton, new JLabel("No new triples found"));
 						}
 					} catch (Exception e1) {
+                        System.out.println(e1);
 						JOptionPane.showMessageDialog(frame, e1.toString(), "Error", JOptionPane.ERROR_MESSAGE);
 					}
 				}
@@ -455,7 +456,7 @@ public class ReasonerGui {
 				 texAreaOutputRules.setEnabled(true);
 				 scrollPaneOutput.setEnabled(true);
 				
-				texAreaOutputRules.setText(startReasonerFacade.getOutputList().printOuput());
+				texAreaOutputRules.setText(startReasonerFacade.getOutputList().printOutput());
 				
 			}
 		});

@@ -85,7 +85,11 @@ public class InferenceRule {
 	}
 
 	public String getFilterCondition() {
-		return filterCondition;
+        if(filterCondition == null){
+            filterCondition = "";
+        }
+
+        return filterCondition;
 	}
 
 	public void setFilterCondition(String filterCondition) {

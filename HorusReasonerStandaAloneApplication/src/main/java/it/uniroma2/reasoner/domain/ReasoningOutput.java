@@ -22,7 +22,7 @@ public class ReasoningOutput {
 
 	
 
-	public String printOuput(){
+	public String printOutput(){
 		StringBuilder output = new StringBuilder();
 		
 		for(InferenceRuleOutput inferenceRuleOutput: getInferenceRuleOutput()){
@@ -46,6 +46,9 @@ public class ReasoningOutput {
 	    			log.debug(stmt);
 	    			output.append(OntologyUtilis.convertARTStatementToString(stmt)+"\n");
 	    		}
+                if(!inferenceRuleOutput.getFilterStatement().equals("")){
+                    output.append("filter: "+inferenceRuleOutput.getFilterStatement()+"\n");
+                }
 			}
 			else{
 				for (ARTStatement stmt :inferenceRuleOutput.getNew_triple()){
@@ -57,8 +60,10 @@ public class ReasoningOutput {
 	    		for (ARTStatement stmt :inferenceRuleOutput.getFromTriple()){
 	    			log.debug(stmt);
 	    			output.append(OntologyUtilis.convertARTStatementToString(stmt)+"\n");
-	    		}	
-	    		
+	    		}
+                if(!inferenceRuleOutput.getFilterStatement().equals("")){
+                    output.append("filter: "+inferenceRuleOutput.getFilterStatement()+"\n");
+                }
     		
 			}
     		
@@ -80,6 +85,9 @@ public class ReasoningOutput {
     			log.debug(stmt);
     			output.append(OntologyUtilis.convertARTStatementToString(stmt)+"\n");
     		}
+            if(!inferenceRuleOutput.getFilterStatement().equals("")){
+                output.append("filter: "+inferenceRuleOutput.getFilterStatement()+"\n");
+            }
 		}
 		else{
 			for (ARTStatement stmt :inferenceRuleOutput.getNew_triple()){
@@ -87,11 +95,14 @@ public class ReasoningOutput {
     			log.debug(stmt);
     		  }
 			
-			output.append("generated from: "+"\n");
+			output.append("generated from: " + "\n");
     		for (ARTStatement stmt :inferenceRuleOutput.getFromTriple()){
     			log.debug(stmt);
     			output.append(OntologyUtilis.convertARTStatementToString(stmt)+"\n");
-    		}	
+    		}
+            if(!inferenceRuleOutput.getFilterStatement().equals("")){
+                output.append("filter: "+inferenceRuleOutput.getFilterStatement()+"\n");
+            }
 		}
 		return output.toString();
 	}

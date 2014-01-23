@@ -41,8 +41,6 @@ public class ExecuteQueryOntologyHandler {
 	 * and returns the reasoner.
 	 * 
 	 * @param inferenceRule inference rule to execute.
-	 * @param produceOutput variable that express if the process of excution of inference rule must be stored.
-	 * @param outputHanlder outputhandler
 	 * @return list of new generated information
 	 * @throws UnsupportedQueryLanguageException
 	 * @throws ModelAccessException
@@ -70,11 +68,14 @@ public class ExecuteQueryOntologyHandler {
 				List<ARTStatement> tupleToPremise = OntologyUtilis.tupleToArtStatament(tuple, inferenceRule.getPremisisTriple(),baseRDFTripleModel);
 				//Convert result in ARTStatment from conclusions of inference rule
 				List<ARTStatement> tupleToConclusion = OntologyUtilis.tupleToArtStatament(tuple, inferenceRule.getConclusionTriple(),baseRDFTripleModel);
-				
+
+                String filterCondition = OntologyUtilis.getFilterCondition(tuple, inferenceRule.getFilterCondition());
+
 				InferenceRuleQueryResult inferenceRuleQueryResult = new InferenceRuleQueryResult();				
 				//Add conclusions to final Result
 				inferenceRuleQueryResult.getTupleToConclusion().addAll(tupleToConclusion);
 				inferenceRuleQueryResult.getTupleToPremise().addAll(tupleToPremise);
+                inferenceRuleQueryResult.setFilterStatement(filterCondition);
 				
 				inferenceRuleQueryResults.add(inferenceRuleQueryResult);
 			}

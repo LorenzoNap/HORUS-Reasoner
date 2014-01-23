@@ -13,13 +13,7 @@ import org.apache.log4j.Logger;
 import edu.uci.ics.jung.graph.DirectedGraph;
 import edu.uci.ics.jung.graph.DirectedSparseMultigraph;
 import edu.uci.ics.jung.graph.Graph;
-
-
-
-
-
-
-
+import sun.awt.windows.awtLocalization_es;
 
 
 /**
@@ -40,9 +34,10 @@ public class OutputHanlder {
 	private int numberOfIteration;
 	
 	private static final Logger log = Logger.getLogger(OutputHanlder.class);
-	
-		
-	public String printGraph(){
+    private Graph<String,String> alternativeGraph;
+
+
+    public String printGraph(){
 		
         log.debug("##### Print Graph ###########");
         log.debug(getGraph().toString());
@@ -136,5 +131,11 @@ public class OutputHanlder {
 		this.numberOfIteration = numberOfIteration;
 	}
 
-  
+
+    public Graph<String,String> getAlternativeGraph() {
+        if(alternativeGraph == null){
+            alternativeGraph = new DirectedSparseMultigraph<String, String>();
+        }
+        return alternativeGraph;
+    }
 }

@@ -2,8 +2,7 @@ package it.uniroma2.reasoner.InferenceRulesHandler;
 
 
 
-import it.uniroma2.reasoner.domain.InferenceRule;
-import it.uniroma2.reasoner.domain.Triple;
+import it.uniroma2.reasoner.domain.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,15 +68,20 @@ public class LoaderParser extends InferenceRulesGrammarBaseListener{
 				
 			//Get filter expression if exist
 			if( new_rule.filter() != null &&  new_rule.filter().size() > 0){
+
+
+
 				StringBuilder filter = new StringBuilder();
 				if (new_rule.filter().get(0).condition().expression() != null){
+
+
 					filter.append(new_rule.filter().get(0).condition().expression().var().get(0).VAR1().toString());
 					filter.append(new_rule.filter().get(0).condition().expression().LOGIC_OPERATOR());
 					filter.append(new_rule.filter().get(0).condition().expression().var().get(1).VAR1().toString());
 				}
 				else{
 					for (Complex_conditionContext complex_conditionContext : new_rule.filter().get(0).condition().complex_condition()){
-					
+
 				   //LEFT CONDITION
 					if(	complex_conditionContext.complex_espression_left().complex_espression().expression() != null){
 						filter.append(complex_conditionContext.complex_espression_left().complex_espression().expression().var().get(0).VAR1().toString());

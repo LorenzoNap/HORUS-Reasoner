@@ -11,6 +11,8 @@ public class InferenceRuleQueryResult {
 	
 	private List<ARTStatement> tupleToConclusion;
 
+    private String filterStatement;
+
 	
 	public InferenceRuleQueryResult(){
 		tupleToPremise = new ArrayList<ARTStatement>();
@@ -32,8 +34,18 @@ public class InferenceRuleQueryResult {
 	public void setTupleToConclusion(List<ARTStatement> tupleToConclusion) {
 		this.tupleToConclusion = tupleToConclusion;
 	}
+
+    public String getFilterStatement() {
+        return filterStatement;
+    }
+
+    public void setFilterStatement(String filterStatement) {
+        this.filterStatement = filterStatement;
+    }
 	
-	
-	
+
+
+
+
 
 }

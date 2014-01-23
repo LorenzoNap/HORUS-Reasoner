@@ -55,7 +55,7 @@ public class OntologyUtilis {
 			query.append(triple.getObject()+".\n");
 		}
 		//Check filter
-		if(inferenceRule.getFilterCondition() != null){
+		if(!inferenceRule.getFilterCondition().equals("")){
 			query.append(FILTER_CLAUSOLE+"( ");
 			query.append(inferenceRule.getFilterCondition()+ ")");
 		}
@@ -171,7 +171,7 @@ public class OntologyUtilis {
 	
 	public static  String getValueFromTripleItem(ARTNode item){
 		if(item.isBlank()){
-			return item.asBNode().toString();
+			return "BlankNode:"+item.asBNode().toString();
 		}
 		if(item.isLiteral()){
 			return item.asLiteral().getNominalValue();
@@ -191,8 +191,27 @@ public class OntologyUtilis {
 			return false;
 		}
 	}
-	
-	
 
-	
+
+    public static String getFilterCondition(TupleBindings tuple, String filterCondition) {
+        if(!filterCondition.equals("")){
+
+            Map<String,ARTNode> varMap = new HashMap<String, ARTNode>();
+            //Populate map with variables into tuple
+            for(String string : tuple.getBindingNames()) {
+
+               if( filterCondition.contains("?"+string)){
+                   String key = "?"+string;
+                   //filterCondition = filterCondition.replace("?"+string,tuple.getBinding(string).getBoundValue().toString());
+                   filterCondition = filterCondition.replaceAll("\\b"+key+"\\b",tuple.getBinding(string).getBoundValue().toString());
+
+               }
+
+
+            }
+            filterCondition =  filterCondition.replaceAll("\\?","");
+            return filterCondition;
+        }
+        return "";
+    }
 }
