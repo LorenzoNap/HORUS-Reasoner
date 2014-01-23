@@ -178,7 +178,7 @@ public class ReasoningService extends ServiceAdapter{
 		response = createReplyResponse(RepliesStatus.ok);
 		Element dataElement = response.getDataElement();
 		Element graphElem = XMLHelp.newElement(dataElement, "jsonGraph");
-		graphElem.setAttribute("jsonGraph",ServicesUtils.convertGraphToJson(reasonerFacade.getInputOutputHanlder().getGraph()).toJSONString());
+		graphElem.setAttribute("jsonGraph",ServicesUtils.convertGraphToJson(reasonerFacade.getInputOutputHanlder().getAlternativeGraph()).toJSONString());
 		return response;
 		
 	}
@@ -290,7 +290,7 @@ public class ReasoningService extends ServiceAdapter{
 			reasonerElem.setAttribute("produceOutput", output);
 			reasonerElem.setAttribute("numberOfIteration", String.valueOf(reasonerFacade.getInputOutputHanlder().getNumberOfIteration()));
 			reasonerElem.setAttribute("numberOfTriple", Integer.toString(new_triple.size()));
-			reasonerElem.setAttribute("printOutput", reasonerFacade.getOutputList().printOuput());
+			reasonerElem.setAttribute("printOutput", reasonerFacade.getOutputList().printOutput());
 			reasonerElem.setAttribute("inferenceRulesNames", reasonerFacade.getInferenceRulesName());
 			reasonerElem.setAttribute("jsonInference", ServicesUtils.convertInferenceRuleOutputToJson(reasonerFacade.getOutputList()));
 			//return response

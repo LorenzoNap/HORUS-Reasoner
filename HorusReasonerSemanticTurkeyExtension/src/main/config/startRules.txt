@@ -114,3 +114,17 @@ id: 14
 premise: subject: ?x predicate: ?p1 object: ?y
 premise: subject: ?p1 predicate: <http://www.w3.org/2000/01/rdf-schema#subPropertyOf> object: ?p2
 conclusion: subject: ?x predicate: ?p2 object: ?y
+
+type : new rule
+name: ComplexEquivalentclassNew
+id: 15
+premise: subject: ?class1 predicate: <http://www.w3.org/2002/07/owl#equivalentClass> object: ?equiClass1
+premise: subject: ?equiClass1 predicate: <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> object: <http://www.w3.org/2002/07/owl#Restriction>
+premise: subject: ?equiClass1 predicate: <http://www.w3.org/2002/07/owl#onProperty> object: ?p1
+premise: subject: ?equiClass1 predicate: <http://www.w3.org/2002/07/owl#minCardinality> object: ?card1
+premise: subject: ?class2 predicate: <http://www.w3.org/2002/07/owl#equivalentClass> object: ?equiClass2
+premise: subject: ?equiClass2 predicate: <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> object: <http://www.w3.org/2002/07/owl#Restriction>
+premise: subject: ?equiClass2 predicate: <http://www.w3.org/2002/07/owl#onProperty> object: ?p1
+premise: subject: ?equiClass2 predicate: <http://www.w3.org/2002/07/owl#minCardinality> object: ?card2
+filter: ?card1 >= ?card2
+conclusion: subject: ?class1 predicate: <http://www.w3.org/2000/01/rdf-schema#subClassOf> object: ?class2

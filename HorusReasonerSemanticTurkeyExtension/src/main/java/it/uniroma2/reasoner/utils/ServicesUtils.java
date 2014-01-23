@@ -98,7 +98,14 @@ public class ServicesUtils {
 			JSONObject data = new JSONObject();
 			if(graph.getSuccessors(vertex).size() > 0){
 			data.put("$type", "circle");
-			data.put("$color","#3207BB");
+                if(vertex.contains("###")){
+                    data.put("$color","#FFF703");
+                    vertex = vertex.replace("###","");
+                }
+                else{
+                    data.put("$color","#3207BB");
+                }
+
 			data.put("$dim",4);
 			nodo.put("data", data);
 			}
