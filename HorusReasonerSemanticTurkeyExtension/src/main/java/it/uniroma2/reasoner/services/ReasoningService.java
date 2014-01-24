@@ -89,7 +89,7 @@ public class ReasoningService extends ServiceAdapter{
 		//Flag to check whether at least one request was handled
 		boolean almostOneRequest = false;
 		if (request == null){
-			return servletUtilities.createNoSuchHandlerExceptionResponse(request);
+			return servletUtilities.createNoSuchHandlerExceptionResponse(null);
 		}
 		
 		if (request.equals(startReasoning)) {	
@@ -165,35 +165,34 @@ public class ReasoningService extends ServiceAdapter{
 		Element dataElement = response.getDataElement();
 		Element graphElem = XMLHelp.newElement(dataElement, "bfsGraph");
 		//Populate response with history of triple
-		graphElem.setAttribute("json", ServicesUtils.searchTripleOnGraph(triple, reasonerFacade.getInputOutputHanlder().getGraph()));
+		graphElem.setAttribute("json", ServicesUtils.searchTripleOnGraph(triple, reasonerFacade.getInputOutputHandler().getGraph()));
 		return response;
 	}
 
 	/**
 	 * Return a json representation of reasoning output graph
-	 * @return
+	 * @return return a response with the json representation of reasoning output graph
 	 */
 	private Response getJsonGraph() {
 		XMLResponseREPLY response;
 		response = createReplyResponse(RepliesStatus.ok);
 		Element dataElement = response.getDataElement();
 		Element graphElem = XMLHelp.newElement(dataElement, "jsonGraph");
-		graphElem.setAttribute("jsonGraph",ServicesUtils.convertGraphToJson(reasonerFacade.getInputOutputHanlder().getAlternativeGraph()).toJSONString());
+		graphElem.setAttribute("jsonGraph",ServicesUtils.convertGraphToJson(reasonerFacade.getInputOutputHandler().getAlternativeGraph()).toJSONString());
 		return response;
 		
 	}
 
 	/**
 	 * Removed the new discovered triple from ontology model.
-	 * @return
+	 * @return return a response with the result of remove operation
 	 */
 	private Response removeTriple() {
 		
 		XMLResponseREPLY response;
 		
 		try {
-            Project<? extends RDFModel> project= null;
-            project = ProjectManager.getCurrentProject();
+            Project<? extends RDFModel> project = ProjectManager.getCurrentProject();
             baseRDFTripleModel = project.getOntModel();
 			//Remove triple from the ontology model
 			baseRDFTripleModel.clearRDF(baseRDFTripleModel.createURIResource(Reasoner.SUPPORT_ONTOLOGY_GRAPH));
@@ -219,7 +218,7 @@ public class ReasoningService extends ServiceAdapter{
 	 * @param subjectTriple the subject of triple
 	 * @param predicateTriple the predicate of triple
 	 * @param objectTriple the object of triple
-	 * @return response
+	 * @return return a response with the result of searching operation
 	 */
 	private Response searchTriple(String subjectTriple, String predicateTriple,
 			String objectTriple) {
@@ -247,21 +246,21 @@ public class ReasoningService extends ServiceAdapter{
 	 * @param cycleReasoning number of how much time execute reasoning operation
 	 * @param idsRule the ids number of inference rules to apply
 	 * @param output flag to produce output
-	 * @return
+	 * @return return the response with the result of reasoning operation
 	 */
 	private Response startReasoning(String cycleReasoning, String idsRule,String output) {
 		XMLResponseREPLY response;
 		//Retrieve inference rules file
 		File inferenceRuleFile = reasonerServiceConfiguration.getInferenceRuleFile();
 		
-		Project<? extends RDFModel> project= null;
+
 		try {
 			//Set parameters of reasoning operation
 			reasonerFacade.setParameter(ConfigurationParameter.NUMBER_OF_EXECUTION, cycleReasoning);
 			reasonerFacade.setParameter(ConfigurationParameter.PRODUCE_OUTPUT, output);
 			reasonerFacade.setParameter(ConfigurationParameter.WHICHRULEEXECUTE, idsRule);
 			//Get current project to apply resoning operation
-			project = ProjectManager.getCurrentProject();
+            Project<? extends RDFModel> project = ProjectManager.getCurrentProject();
 			//check if project is exist. If true do reasoning, else return a warning message
 			if (project  == null){
 				response = createReplyResponse(RepliesStatus.warning);
@@ -282,19 +281,21 @@ public class ReasoningService extends ServiceAdapter{
 				warnElem.setAttribute("warning", "new triple have not been found");
 				return response;				
 			}
+            else {
 			//Create response
 			response = createReplyResponse(RepliesStatus.ok);
 			Element dataElement = response.getDataElement();
 			Element reasonerElem = XMLHelp.newElement(dataElement, "startReasoning");
 			//Populate response
 			reasonerElem.setAttribute("produceOutput", output);
-			reasonerElem.setAttribute("numberOfIteration", String.valueOf(reasonerFacade.getInputOutputHanlder().getNumberOfIteration()));
+			reasonerElem.setAttribute("numberOfIteration", String.valueOf(reasonerFacade.getInputOutputHandler().getNumberOfIteration()));
 			reasonerElem.setAttribute("numberOfTriple", Integer.toString(new_triple.size()));
 			reasonerElem.setAttribute("printOutput", reasonerFacade.getOutputList().printOutput());
 			reasonerElem.setAttribute("inferenceRulesNames", reasonerFacade.getInferenceRulesName());
 			reasonerElem.setAttribute("jsonInference", ServicesUtils.convertInferenceRuleOutputToJson(reasonerFacade.getOutputList()));
 			//return response
 			return response;
+            }
 			
 		} catch (Exception e) {
 			response = createReplyResponse(RepliesStatus.fail);

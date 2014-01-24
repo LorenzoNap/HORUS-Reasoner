@@ -49,9 +49,11 @@
         </groupbox>
      
       <tooltip  id="tip_inference_rule" orient="vertical" style="background-color: #33DD00;">
-               <label  value="Choose how many time do the inference rules on ontology:" />
-               <label value="each time apply the all inference rules on ontology"/>   
-       </tooltip>
+               <label  value="Choose how many time apply the inference rules on ontology." />
+               <label value="You can insert only positive value."/>
+               <label value="If you insert 0 the inference rules will be applied" />
+               <label value="until all the information will not be discovered"/>
+      </tooltip>
       
        <label tooltip="tip_inference_rule" value="How many times do the inference rules."/>
        <textbox tooltip="tip_inference_rule" id="cycleNumberReasoning" />

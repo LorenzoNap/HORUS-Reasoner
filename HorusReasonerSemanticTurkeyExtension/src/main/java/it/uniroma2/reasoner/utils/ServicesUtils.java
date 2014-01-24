@@ -1,6 +1,7 @@
 package it.uniroma2.reasoner.utils;
 
 import it.uniroma2.art.owlart.model.ARTStatement;
+import it.uniroma2.reasoner.ReasonerHandler.Reasoner;
 import it.uniroma2.reasoner.domain.InferenceRuleOutput;
 import it.uniroma2.reasoner.domain.ReasoningOutput;
 import it.uniroma2.reasoner.utils.Graph.GraphUtils;
@@ -100,7 +101,7 @@ public class ServicesUtils {
 			data.put("$type", "circle");
                 if(vertex.contains("###")){
                     data.put("$color","#FFF703");
-                    vertex = vertex.replace("###","");
+                    vertex = vertex.replace(Reasoner.FILTER_TAG,"");
                 }
                 else{
                     data.put("$color","#3207BB");
