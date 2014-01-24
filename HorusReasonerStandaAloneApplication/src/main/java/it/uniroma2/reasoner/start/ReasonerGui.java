@@ -234,10 +234,10 @@ public class ReasonerGui {
 						status.setText("Start Reasoning Operation....");
 						List<ARTStatement> results=  startReasonerFacade.startReasoner(ont, inferenceRuleFile);
 						if (results.size() > 0){
-							if(startReasonerFacade.getInputOutputHanlder().getNumberOfIteration() < count || count == 0 ){
+							if(startReasonerFacade.getInputOutputHandler().getNumberOfIteration() < count || count == 0 ){
 								JOptionPane.showMessageDialog(loadDefaultInferenceRuleButton,
                                         new JLabel("<html>Reasoner iteration (value chosen by the user): "+count+"<br>"+
-                                                "Effective iteration: "+startReasonerFacade.getInputOutputHanlder().getNumberOfIteration()+"</html>"));
+                                                "Effective iteration: "+startReasonerFacade.getInputOutputHandler().getNumberOfIteration()+"</html>"));
 							}
 							if(produceOutput){
 							Component[] com = outputPanel.getComponents();

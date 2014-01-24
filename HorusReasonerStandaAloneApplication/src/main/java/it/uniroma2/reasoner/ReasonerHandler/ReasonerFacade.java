@@ -8,7 +8,7 @@ import it.uniroma2.art.owlart.model.ARTStatement;
 import it.uniroma2.art.owlart.models.BaseRDFTripleModel;
 import it.uniroma2.art.owlart.query.MalformedQueryException;
 import it.uniroma2.reasoner.ConfigurationHandler.ConfigurationParameter;
-import it.uniroma2.reasoner.OutputHandler.OutputHanlder;
+import it.uniroma2.reasoner.OutputHandler.OutputHandler;
 import it.uniroma2.reasoner.domain.InferenceRules;
 
 import java.util.List;
@@ -32,7 +32,7 @@ public class ReasonerFacade {
 	 * 
 	 * @param inferenceRules List of inference rules to reasoning operation
 	 * @param configurationParameter configuration parameter
-	 * @param outputHanlder	output handler to store reasoning process output
+	 * @param outputHandler	output handler to store reasoning process output
 	 * @param baseRDFTripleModel ontology where will apply the reasoning operation
 	 * @return List of new information that have been generated from reasoning operation
 	 * @throws UnsupportedQueryLanguageException
@@ -42,12 +42,12 @@ public class ReasonerFacade {
 	 * @throws ModelUpdateException
 	 */
 	public List<ARTStatement> doHandler(InferenceRules inferenceRules,
-			ConfigurationParameter configurationParameter,OutputHanlder outputHanlder,BaseRDFTripleModel baseRDFTripleModel) throws UnsupportedQueryLanguageException, ModelAccessException, MalformedQueryException, QueryEvaluationException, ModelUpdateException{
+			ConfigurationParameter configurationParameter,OutputHandler outputHandler,BaseRDFTripleModel baseRDFTripleModel) throws UnsupportedQueryLanguageException, ModelAccessException, MalformedQueryException, QueryEvaluationException, ModelUpdateException{
 		
 		log.debug("Start reasoning operation");
 		
 		//Create new Reasoner
-		Reasoner reasoner = new Reasoner(inferenceRules,baseRDFTripleModel,outputHanlder,configurationParameter);
+		Reasoner reasoner = new Reasoner(inferenceRules,baseRDFTripleModel, outputHandler,configurationParameter);
 		
 		//Apply reasoning to ontology with using the inference rules
 		return reasoner.reasoning();

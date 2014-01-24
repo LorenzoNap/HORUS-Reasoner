@@ -10,7 +10,7 @@ import it.uniroma2.art.owlart.models.BaseRDFTripleModel;
 import it.uniroma2.art.owlart.query.MalformedQueryException;
 import it.uniroma2.reasoner.ConfigurationHandler.ConfigurationParameter;
 import it.uniroma2.reasoner.InferenceRulesHandler.ParseInferenceRulesFacade;
-import it.uniroma2.reasoner.OutputHandler.OutputHanlder;
+import it.uniroma2.reasoner.OutputHandler.OutputHandler;
 import it.uniroma2.reasoner.ReasonerHandler.ReasonerFacade;
 import it.uniroma2.reasoner.domain.InferenceRule;
 import it.uniroma2.reasoner.domain.InferenceRules;
@@ -41,7 +41,7 @@ import edu.uci.ics.jung.graph.Graph;
  */
 public class StartReasonerFacade {
 
-	private OutputHanlder inputOutputHanlder;
+	private OutputHandler inputOutputHandler;
 
 	private InferenceRules inferenceRules ;
 
@@ -71,7 +71,7 @@ public class StartReasonerFacade {
 		//Create new configuration Parameter
 		ConfigurationParameter configurationParameter = ConfigurationParameter.getIstance();
 		//Create Input/Output handler
-		inputOutputHanlder = new OutputHanlder();
+		inputOutputHandler = new OutputHandler();
 		//Create new parserFacade
 		ParseInferenceRulesFacade parseInferenceRulesFacade = new ParseInferenceRulesFacade(configurationParameter,inferenceRuleFile);
 		//Parse inference rules from file
@@ -80,7 +80,7 @@ public class StartReasonerFacade {
 		//Create ReasonerFacade
 		ReasonerFacade reasonerFacade = new ReasonerFacade();
 		//Reasonig on ontology
-		newInferredTriples = reasonerFacade.doHandler(inferenceRules,configurationParameter,inputOutputHanlder,inputOntology);
+		newInferredTriples = reasonerFacade.doHandler(inferenceRules,configurationParameter, inputOutputHandler,inputOntology);
 		log.debug("End reasoning operation");
 		//return new triple
 		return newInferredTriples;
@@ -89,16 +89,16 @@ public class StartReasonerFacade {
 
 	public ReasoningOutput getOutputList(){	
 
-		return inputOutputHanlder.getReasoningOutput();
+		return inputOutputHandler.getReasoningOutput();
 	}
 
 	public String printGraphOfNewTriple(){
 
-		return inputOutputHanlder.printGraph();	
+		return inputOutputHandler.printGraph();
 	}
 
 	public void showGraphOnWindow(){
-		 inputOutputHanlder.showGraphOfNewTripleOnWindows();
+		 inputOutputHandler.showGraphOfNewTripleOnWindows();
 	}
 
 	/**
@@ -114,9 +114,9 @@ public class StartReasonerFacade {
 
 		String vertexSource = subject+" "+predicate+" "+object;
 
-		if (inputOutputHanlder.getGraph().containsVertex(vertexSource)){
+		if (inputOutputHandler.getGraph().containsVertex(vertexSource)){
 
-			Graph<String,String> graph = GraphUtils.BreabreadthFirstSearch(inputOutputHanlder.getGraph(),vertexSource);
+			Graph<String,String> graph = GraphUtils.BreabreadthFirstSearch(inputOutputHandler.getGraph(),vertexSource);
 			GraphView.showGraph(graph,"History of new triple");
 		}
 		log.info("Unable to see triple. Triple doesn't exist");
@@ -136,9 +136,9 @@ public class StartReasonerFacade {
 
 		String vertexSource = subject+" "+predicate+" "+object;
 		//If the output graph contains the triple, return history, else return an empty string		
-		if (inputOutputHanlder.getGraph().containsVertex(vertexSource)){
+		if (inputOutputHandler.getGraph().containsVertex(vertexSource)){
 
-			return GraphUtils.BreabreadthFirstSearchHistoryTriple(inputOutputHanlder.getGraph(),vertexSource);		
+			return GraphUtils.BreabreadthFirstSearchHistoryTriple(inputOutputHandler.getGraph(),vertexSource);
 		}
 		return "";
 	}
@@ -174,15 +174,15 @@ public class StartReasonerFacade {
 	
 	public String filterOutput(String filters){
 		
-		return inputOutputHanlder.applyFiltersToList(filters);
+		return inputOutputHandler.applyFiltersToList(filters);
 	}
 
-	public OutputHanlder getInputOutputHanlder() {
-		return inputOutputHanlder;
+	public OutputHandler getInputOutputHandler() {
+		return inputOutputHandler;
 	}
 
-	public void setInputOutputHanlder(OutputHanlder inputOutputHanlder) {
-		this.inputOutputHanlder = inputOutputHanlder;
+	public void setInputOutputHandler(OutputHandler inputOutputHandler) {
+		this.inputOutputHandler = inputOutputHandler;
 	}
 	
 	

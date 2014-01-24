@@ -11,7 +11,7 @@ import it.uniroma2.art.owlart.models.BaseRDFTripleModel;
 import it.uniroma2.art.owlart.query.MalformedQueryException;
 import it.uniroma2.reasoner.ConfigurationHandler.ConfigurationParameter;
 import it.uniroma2.reasoner.ExecuteQueryHandler.ExecuteQueryOntologyHandler;
-import it.uniroma2.reasoner.OutputHandler.OutputHanlder;
+import it.uniroma2.reasoner.OutputHandler.OutputHandler;
 import it.uniroma2.reasoner.domain.InferenceRule;
 import it.uniroma2.reasoner.domain.InferenceRuleOutput;
 import it.uniroma2.reasoner.domain.InferenceRuleQueryResult;
@@ -36,12 +36,13 @@ import edu.uci.ics.jung.graph.util.EdgeType;
 public class Reasoner {
 
 
+
     //Object that contains list of inference rules
     private InferenceRules  inferenceRules;
     //Ontology model
     private BaseRDFTripleModel baseRDFTripleModel;
     //Output Handler
-    private OutputHanlder inputOutputHanlder;
+    private OutputHandler inputOutputHandler;
 
     private ConfigurationParameter configurationParameter;
     //Object to execute query on Ontology
@@ -52,13 +53,14 @@ public class Reasoner {
 
     public static final String SUPPORT_ONTOLOGY_GRAPH = "http://supportOntology";
 
+    public static final  String FILTER_TAG = "###filter###";
 
     int count =0;
-    public Reasoner(InferenceRules  inferenceRules, BaseRDFTripleModel baseRDFTripleModel,OutputHanlder inputOutputHanlder,ConfigurationParameter configurationParameter) {
+    public Reasoner(InferenceRules  inferenceRules, BaseRDFTripleModel baseRDFTripleModel,OutputHandler inputOutputHandler,ConfigurationParameter configurationParameter) {
         super();
         this.inferenceRules = inferenceRules;
         this.baseRDFTripleModel = baseRDFTripleModel;
-        this.inputOutputHanlder = inputOutputHanlder;
+        this.inputOutputHandler = inputOutputHandler;
         this.configurationParameter = configurationParameter;
         executeQueryOntologyHandler = new ExecuteQueryOntologyHandler(baseRDFTripleModel);
     }
@@ -80,7 +82,7 @@ public class Reasoner {
 
         log.debug("Execute inference rules on Ontology");
 
-        inputOutputHanlder.setNumberOfIteration(0);
+        inputOutputHandler.setNumberOfIteration(0);
 
         //Object to store the output of execution of inferenceRules
         List<InferenceRuleOutput> inferenceRulesOutuput = new ArrayList<InferenceRuleOutput>();
@@ -118,7 +120,7 @@ public class Reasoner {
                     //Check if a type rule is an inconsistency rule
                     if(inferenceRule.getType().equals(InferenceRule.TPYE_INCONSISTENCY)){
 
-                        InferenceRuleOutput inferenceRuleOutput = produceOutput(produceOutput, inferenceRuleQueryResult, inferenceRule, inputOutputHanlder.getAlternativeGraph(),inputOutputHanlder.getAlternativeGraph());
+                        InferenceRuleOutput inferenceRuleOutput = produceOutput(produceOutput, inferenceRuleQueryResult, inferenceRule, inputOutputHandler.getAlternativeGraph(), inputOutputHandler.getAlternativeGraph());
 
                         if(checkInconsistency(inferenceRuleOutput))
                             //Add the output on the list of output
@@ -127,11 +129,11 @@ public class Reasoner {
                     }
 
 
-                    else if( !isStatementisOnOntology(inferenceRuleQueryResult, baseRDFTripleModel)){
+                    else if( !ifStatementIsOnOntology(inferenceRuleQueryResult, baseRDFTripleModel)){
                         //Add all new triples on output result.
                         results.addAll(inferenceRuleQueryResult.getTupleToConclusion());
                         //Create new object to store the output of reasoning operation
-                        InferenceRuleOutput inferenceRuleOutput = produceOutput(produceOutput, inferenceRuleQueryResult, inferenceRule, inputOutputHanlder.getGraph(),inputOutputHanlder.getAlternativeGraph());
+                        InferenceRuleOutput inferenceRuleOutput = produceOutput(produceOutput, inferenceRuleQueryResult, inferenceRule, inputOutputHandler.getGraph(), inputOutputHandler.getAlternativeGraph());
                         //Add the output on the list of output
                         inferenceRulesOutuput.add(inferenceRuleOutput);
                     }
@@ -149,13 +151,13 @@ public class Reasoner {
             //Check if reasoner have to continue to iterate. If none information has been discovered, break the iteration
             if(outputRules <= 0){
                 //Set the number of iteration
-                inputOutputHanlder.setNumberOfIteration(count+1);
+                inputOutputHandler.setNumberOfIteration(count+1);
                 break;
             }
         }
-        inputOutputHanlder.setNumberOfIteration(count+1);
+        inputOutputHandler.setNumberOfIteration(count+1);
         //Save the results of reasoning operation
-        inputOutputHanlder.saveQuery(inferenceRulesOutuput);
+        inputOutputHandler.saveQuery(inferenceRulesOutuput);
         //Return resoning result
         return results;
     }
@@ -170,8 +172,8 @@ public class Reasoner {
             String object = triple.getObject().asURIResource().getLocalName().replace("<", "").replace(">", "");
 
             String vertexSource = subject+" "+predicate+" "+object;
-            if(!inputOutputHanlder.getGraphOfInconsistency().containsVertex(vertexSource)){
-                inputOutputHanlder.getGraphOfInconsistency().addVertex(vertexSource);
+            if(!inputOutputHandler.getGraphOfInconsistency().containsVertex(vertexSource)){
+                inputOutputHandler.getGraphOfInconsistency().addVertex(vertexSource);
                 finded = true;
             }
 
@@ -182,12 +184,13 @@ public class Reasoner {
 
 
     /**
-     * Check if the output must be produced
-     * @param produceOutput
-     * @param inferenceRuleQueryResult
-     * @param inferenceRule
-     * @param stringGraph
-     * @return
+     *
+     * @param produceOutput boolean that express if the output have to be produced
+     * @param inferenceRuleQueryResult result of application of specific inference rule
+     * @param inferenceRule inference rule applied
+     * @param stringGraph graph of new information
+     * @param alternativeStringGraph graph with filter information
+     * @return InferenceRuleOutput an object that stores the output of application of given inference rule
      */
     public InferenceRuleOutput produceOutput(boolean produceOutput, InferenceRuleQueryResult inferenceRuleQueryResult,InferenceRule inferenceRule,
                                              Graph<String, String> stringGraph,Graph<String, String> alternativeStringGraph){
@@ -210,8 +213,8 @@ public class Reasoner {
 
     /**
      * Add a output of execution of inference rule on a graph. Store the new triples and the triples that have generated the new triples.
-     * @param stringGraph
-     * @param inferenceRuleOutput
+     * @param stringGraph graph of new information
+     * @param inferenceRuleOutput an object that stores the output of application of inference rule
      */
     private void addOnGraph(Graph<String, String> stringGraph,InferenceRuleOutput inferenceRuleOutput) {
 
@@ -234,6 +237,13 @@ public class Reasoner {
 
     }
 
+    /**
+     * Add a output of execution of inference rule on a graph. Store the new triples and the triples that have generated the new triples.
+     * (with filters information)
+     *
+     * @param alternativeStringGraph graph with filter information
+     * @param inferenceRuleOutput an object that stores the output of application of inference rule
+     */
     private void addOnGraphWithFilter(Graph<String, String> alternativeStringGraph,InferenceRuleOutput inferenceRuleOutput) {
 
         for(ARTStatement statementSource : inferenceRuleOutput.getNew_triple()){
@@ -241,7 +251,7 @@ public class Reasoner {
             String vertexSource = OntologyUtilis.convertARTStatementToString(statementSource);
 
             if(!inferenceRuleOutput.getFilterStatement().equals("")){
-               vertexSource=  vertexSource+"###";
+               vertexSource=  vertexSource+FILTER_TAG;
             }
             alternativeStringGraph.addVertex(vertexSource);
             for(ARTStatement statementTarget :inferenceRuleOutput.getFromTriple()){
@@ -261,14 +271,14 @@ public class Reasoner {
 
 
     /**
-     * Check if statment is contained in the ontology. If true, add the statment in the ontology and return true,false otherwise.
+     * Check if statement is contained in the ontology. If true, add the statement in the ontology and return true,false otherwise.
      *
      * @param model ontology
-     * @return true if onotlogy has statement, false,otherwise
+     * @return true if ontology has statement, false,otherwise
      * @throws ModelAccessException
      * @throws ModelUpdateException
      */
-    private boolean isStatementisOnOntology(InferenceRuleQueryResult inferenceRuleQueryResult,BaseRDFTripleModel model) throws ModelAccessException, ModelUpdateException {
+    private boolean ifStatementIsOnOntology(InferenceRuleQueryResult inferenceRuleQueryResult, BaseRDFTripleModel model) throws ModelAccessException, ModelUpdateException {
 
         boolean isOnOntology = true;
 
@@ -296,15 +306,15 @@ public class Reasoner {
 
 
 
-    public OutputHanlder getInputOutputHanlder() {
-        return inputOutputHanlder;
+    public OutputHandler getInputOutputHandler() {
+        return inputOutputHandler;
     }
 
 
 
 
-    public void setInputOutputHanlder(OutputHanlder inputOutputHanlder) {
-        this.inputOutputHanlder = inputOutputHanlder;
+    public void setInputOutputHandler(OutputHandler inputOutputHandler) {
+        this.inputOutputHandler = inputOutputHandler;
     }
 
 

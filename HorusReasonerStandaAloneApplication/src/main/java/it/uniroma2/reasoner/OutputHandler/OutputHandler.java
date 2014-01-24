@@ -6,14 +6,11 @@ import it.uniroma2.reasoner.utils.Graph.GraphView;
 
 import java.util.List;
 
-import javax.swing.JFrame;
-
 import org.apache.log4j.Logger;
 
 import edu.uci.ics.jung.graph.DirectedGraph;
 import edu.uci.ics.jung.graph.DirectedSparseMultigraph;
 import edu.uci.ics.jung.graph.Graph;
-import sun.awt.windows.awtLocalization_es;
 
 
 /**
@@ -23,7 +20,7 @@ import sun.awt.windows.awtLocalization_es;
  * @author Giovanni Lorenzo Napoleoni
  *
  */
-public class OutputHanlder {
+public class OutputHandler {
 	//Graph of reasoning operation
 	private Graph<String, String> graph;
 	//Graph of inconsistency triple
@@ -33,7 +30,7 @@ public class OutputHanlder {
 	
 	private int numberOfIteration;
 	
-	private static final Logger log = Logger.getLogger(OutputHanlder.class);
+	private static final Logger log = Logger.getLogger(OutputHandler.class);
     private Graph<String,String> alternativeGraph;
 
 
@@ -53,26 +50,16 @@ public class OutputHanlder {
 	}
 
 	
-	public void showGraphOfSelectedTripleOnWindow(DirectedGraph<String, String> tripleGraph){
-		
-		GraphView applet = new GraphView();
-		//applet.init(tripleGraph);
-		 JFrame frame = new JFrame();
-	        frame.getContentPane().add(applet);
-	        frame.setTitle("Selected Triple");
-	        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        frame.pack();
-	        frame.setVisible(true);
-	}
+
 	
 	public String applyFiltersToList(String filters){
 		StringBuilder string = new StringBuilder();
 		String[] rulesName = filters.split(",");
 		List<InferenceRuleOutput> inferenceRuleOutputs = reasoningOutput.getInferenceRuleOutput();
 		
-		for (int i = 0; i < rulesName.length;i++){
+		for (String element:rulesName ){
 			for(InferenceRuleOutput inferenceRuleOutput: inferenceRuleOutputs){
-				if(inferenceRuleOutput.getInferenceRule().getInferenceRuleName().equals(rulesName[i])){
+				if(inferenceRuleOutput.getInferenceRule().getInferenceRuleName().equals(element)){
 					string.append(reasoningOutput.printSingleRule(inferenceRuleOutput));
 				}
 			}
