@@ -9,11 +9,11 @@ var serviceName = service.serviceName;
 
 
 function startReasoning(params){
- var howManyTimesApllyInferenceRule = "howManyTimesApllyInferenceRule="+params.out.cycleNumber;
- var whicruleApply = "whicRulesApply="+params.out.whicruleApply;
+ var howManyTimesApplyInferenceRule = "howManyTimesApplyInferenceRule="+params.out.cycleNumber;
+ var whichRuleApply = "whichRuleApply="+params.out.whichRuleApply;
  var produceOutput = "produceOutput="+params.out.outputValue;
  
-	return HttpMgr.GET(serviceName,service.startReasoner,howManyTimesApllyInferenceRule,whicruleApply,produceOutput);
+	return HttpMgr.GET(serviceName,service.startReasoner,howManyTimesApplyInferenceRule,whichRuleApply,produceOutput);
 }
 
 function searchTriple(subject,predicate,object){

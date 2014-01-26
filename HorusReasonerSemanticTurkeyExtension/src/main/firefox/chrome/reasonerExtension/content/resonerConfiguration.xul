@@ -4,68 +4,69 @@
 
 <?xml-stylesheet type="text/css" href="chrome://reasonerExtension/skin/styles/reasonerConfigurationCSS.css" ?>
 
-
+<!DOCTYPE overlay SYSTEM "chrome://reasonerExtension/locale/reasoner-configuration.dtd" >
 <dialog id="Reasoner-configuration-dialog"
-  title="Reasoner Configurations"
+  title="&reasoner.configurations.dialog.tile;"
   buttons="accept,cancel,help"
   buttonlabelcancel="Cancel"
   buttonlabelaccept="StartReasoner"
   buttonlabelhelp="Help"
   onload="onLoad();"
-  ondialogaccept="return onOK();"
+  ondialogaccept="return onAccept()"
   ondialoghelp="showHelpWindow();"
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
   <script type="application/x-javascript"
     src="chrome://reasonerExtension/content/scripts/reasonerConfiguration.js" />
+
   
-   <dialogheader title="Configurations" description="Reasoner"/>
+   <dialogheader title="&reasoner.configurations.dialogheader.title.label;" description="&reasoner.configurations.dialogheader.description.label;"/>
        <groupbox>
-              <label id="load_inference_rule_label" value="Load inference rule file"/>
-              <button label="Load Inference Rule file"
+              <label id="load_inference_rule_label" value="&reasoner.configurations.groupbox.inferencerule.load.label;"/>
+              <button label="&reasoner.configurations.groupbox.inferencerule.buttonLoad.label;"
                       oncommand="loadInferenceRuleFile('false');"/>
               
-              <label value="Show inference Rules file"/>
-              <button label="Show Rules"
+              <label value="&reasoner.configurations.groupbox.inferencerule.showRules.label;"/>
+              <button label="&reasoner.configurations.groupbox.inferencerule.showRulesButton.label;"
                        oncommand="showRules();"/>
               
-              <label value="Restore default rules file"/>
-              <button label="Restore default file"
+              <label value="&reasoner.configurations.groupbox.inferencerule.restoreRules.label;"/>
+              <button label="&reasoner.configurations.groupbox.inferencerule.restoreRulesButton.label;"
                        oncommand="restoreDefaultRuleFiles();"/>
               
         </groupbox>
         <groupbox>
-         <caption label="Configuration Parameters"/>
+         <caption label="&reasoner.configurations.groupbox.paramters.caption.label;"/>
            <groupbox>
-              <caption label="Output Configuration"/>
+              <caption label="&reasoner.configurations.groupbox.paramters.outputConfiguration.caption.label;"/>
                    <tooltip id="moretip" orient="vertical" style="background-color: #33DD00;">
-                    <label value="If selected, shows how the new triples has been generated"/>
+                    <label value="&reasoner.configurations.groupbox.paramters.outputConfiguration.tooltip.label;"/>
                    </tooltip>
             
                <checkbox tooltip="moretip" id="produceOutputCheckBox"
-                         label="Produce Output"
+                         label="&reasoner.configurations.groupbox.paramters.outputConfiguration.checkbox.label;"
                          checked="false" persist="checked" />
                 
         </groupbox>
      
       <tooltip  id="tip_inference_rule" orient="vertical" style="background-color: #33DD00;">
-               <label  value="Choose how many time apply the inference rules on ontology." />
-               <label value="You can insert only positive value."/>
-               <label value="If you insert 0 the inference rules will be applied" />
-               <label value="until all the information will not be discovered"/>
+               <label  value="&reasoner.configurations.groupbox.paramters.reasonerCycle.tooltip.one;" />
+               <label value="&reasoner.configurations.groupbox.paramters.reasonerCycle.tooltip.two;"/>
+               <label value="&reasoner.configurations.groupbox.paramters.reasonerCycle.tooltip.three;" />
+               <label value="&reasoner.configurations.groupbox.paramters.reasonerCycle.tooltip.four;"/>
       </tooltip>
       
-       <label tooltip="tip_inference_rule" value="How many times do the inference rules."/>
+       <label tooltip="tip_inference_rule" value="&reasoner.configurations.groupbox.paramters.reasonerCycle.label;"/>
        <textbox tooltip="tip_inference_rule" id="cycleNumberReasoning" />
        
        <tooltip id="whic_rule_tip" orient="vertical" style="background-color: #33DD00;">
-               <label value="From inference rule file,select the id of inference rule and write it in box."/>
-               <label  value="If you want apply more rule, divide the ids using ',': for example,"/>
-               <label value="if you want use the rule with id 2 and rule with id 5 write 2,5."/>
-               <label value="If you not specified any id rule, all rules will be apply."/>
+               <label value="&reasoner.configurations.groupbox.paramters.whichRule.tooltip.one;"/>
+               <label  value="&reasoner.configurations.groupbox.paramters.whichRule.tooltip.two;"/>
+               <label value="&reasoner.configurations.groupbox.paramters.whichRule.tooltip.three;"/>
+               <label value="&reasoner.configurations.groupbox.paramters.whichRule.tooltip.four;"/>
        </tooltip>
        
-       <label tooltip="whic_rule_tip" value="Which rules must be executed"/>
+       <label tooltip="whic_rule_tip" value="&reasoner.configurations.groupbox.paramters.whichRule.label;"/>
        <textbox tooltip="whic_rule_tip" id="wichInferenceRuleAplly" />   
   </groupbox>
   

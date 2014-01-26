@@ -47,9 +47,9 @@ public class ReasonerService extends ServiceAdapter{
 	// Parameters of the requests.
 	static final public String file = "file";
 
-	static final public String howManyTimesApllyInferenceRule = "howManyTimesApllyInferenceRule";
+	static final public String howManyTimesApplyInferenceRule = "howManyTimesApplyInferenceRule";
 
-	static final public String whicRulesApply = "whicRulesApply";
+	static final public String whichRuleApply = "whichRuleApply";
 
 	static final public String produceOutput = "produceOutput";
 
@@ -77,7 +77,7 @@ public class ReasonerService extends ServiceAdapter{
 		boolean almostOneRequest = false;
 		
 		if (request == null){
-			return servletUtilities.createNoSuchHandlerExceptionResponse(request);
+			return servletUtilities.createNoSuchHandlerExceptionResponse(null);
 		}
 		
 		
@@ -116,8 +116,8 @@ public class ReasonerService extends ServiceAdapter{
 		//Create new file
 		inferenceRuleFile = new File("inference_rule.txt");
 
-		StringBuffer textInferenceRule= new StringBuffer();
-		BufferedReader br = null;
+		StringBuilder textInferenceRule= new StringBuilder();
+		BufferedReader br;
 		//Get the stream from default rule file
 		InputStream stream = getClass().getClassLoader().getResourceAsStream("default_rule_file.txt");
 
@@ -125,14 +125,14 @@ public class ReasonerService extends ServiceAdapter{
 
 		br = new BufferedReader(new InputStreamReader(stream));
 
-		OutputStream outputStream = null;
+		OutputStream outputStream;
 		//Read and save the inference rules file tex
 		try {
 			outputStream = new FileOutputStream(inferenceRuleFile);
-			outputStream.write((new String()).getBytes());
+			outputStream.write(("").getBytes());
 			while ((sCurrentLine = br.readLine()) != null) {
 				textInferenceRule.append(sCurrentLine);
-				outputStream.write((sCurrentLine.toString()+"\n").getBytes());
+				outputStream.write((sCurrentLine+"\n").getBytes());
 
 			}
 
@@ -149,7 +149,7 @@ public class ReasonerService extends ServiceAdapter{
 	
 	/**
 	 * Load the default configuration of reasoning operation
-	 * @return
+	 * @return Response
 	 */
 	private Response loadInitialConfiguration() {
 		XMLResponseREPLY response;
@@ -191,7 +191,7 @@ public class ReasonerService extends ServiceAdapter{
 
 	/**
 	 * Get the inference rules from inference rules file.
-	 * @return
+	 * @return Response
 	 */
 	private Response getInferenceRuleFiles() {
 		XMLResponseREPLY response;

@@ -56,9 +56,9 @@ public class ReasoningService extends ServiceAdapter{
 	public static final String applyFilterToOuptut = "applyFilterToOuptut";
 	
 	
-	public static final  String howManyTimesApllyInferenceRule = "howManyTimesApllyInferenceRule";
+	public static final  String howManyTimesApplyInferenceRule = "howManyTimesApplyInferenceRule";
 	
-	public static final  String whicRulesApply = "whicRulesApply";
+	public static final  String whichRuleApply = "whichRuleApply";
 	
 	public static final  String produceOutput = "produceOutput";
 	
@@ -93,8 +93,8 @@ public class ReasoningService extends ServiceAdapter{
 		}
 		
 		if (request.equals(startReasoning)) {	
-			String cycleReasoning = setHttpPar(howManyTimesApllyInferenceRule);
-			String idsRule = setHttpPar(whicRulesApply);
+			String cycleReasoning = setHttpPar(howManyTimesApplyInferenceRule);
+			String idsRule = setHttpPar(whichRuleApply);
 			String output = setHttpPar(produceOutput);
 			response = startReasoning(cycleReasoning,idsRule,output);		
 			almostOneRequest = true;

@@ -8,7 +8,10 @@ if ("undefined" == typeof(Reasoner)) {
 
  Components.utils.import("resource://reasonerExtensionServices/SERVICE_ReasonerConfiguration.jsm",Reasoner);
 
-
+const Cc = Components.classes;
+const Ci = Components.interfaces;
+const Cu = Components.utils;
+const Cr = Components.results;
 
 /**
  * Populate the dialog window with paramters taken from reasoner configuration
@@ -18,23 +21,126 @@ function onLoad(){
   // Use the arguments passed to us by the caller
   document.getElementById("produceOutputCheckBox").checked = window.arguments[0].inn.outputValue;
   document.getElementById("cycleNumberReasoning").value = window.arguments[0].inn.cycleNumber;
-  document.getElementById("wichInferenceRuleAplly").value = window.arguments[0].inn.whicruleApply;
+  document.getElementById("wichInferenceRuleAplly").value = window.arguments[0].inn.whichRuleApply;
 }
+
+
+ function callReasoningService(params){
+	 	 if (params.out) {
+		 //Check the parameters entered by the user
+		 var goAhead = true;
+		 //If cycle number parameter is a string show an error popup
+		 if (isNaN (params.out.cycleNumber)){
+			 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+			 prompts.alert(window, "Configuration Error", "You have inserted a wrong parameter on Cycle number box");
+			 goAhead = false;
+		 }
+		 else {
+			 //Check the id of inference rule box.
+			 //Split the ids entered by the user. For each splitted id, check if it is a valid input, else show
+			 //a popup error
+			 var split = params.out.whichRuleApply.split(",");
+			 for (var i = 0; i < split.length; i++) {
+
+				 if (isNaN (split[i])){
+					 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+					 prompts.alert(window, "Configuration Error", "You have inserted a wrong id on inference rule id box");
+					 goAhead = false;
+					 break;
+				 }
+			 }
+
+		 }
+		 //Check if the all controls on parameters  are going ok.
+		 if (goAhead) {
+
+			 //Call the reasoning service from SemantickTurkey server.
+			 var response = Reasoner.Requests.ReasoningService.startReasoning(params);
+			 //If the reply is a warning show a popup with warn message.
+			 if (response.getElementsByTagName("reply")[0].getAttribute("status") == "warning") {
+				alert(response.getElementsByTagName("startReasoning")[0].getAttribute("warning"));
+				   //Open the Reasoner configuration Dialog
+				   return false;
+			 }
+			//If the reply is failed show a popup with error message.
+			 if (response.getElementsByTagName("reply")[0].getAttribute("status") == "fail") {
+				 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+				 prompts.alert(window, "Reasoner", "Unable to start reasoning.Error: "+
+						 response.getElementsByTagName("startReasoning")[0].getAttribute("error"));
+						   //Open the Reasoner configuration Dialog
+                                     	 window.openDialog("chrome://reasonerExtension/content/resonerConfiguration.xul",
+                                     			 "Reasoner Configuration", "chrome,centerscreen,dialog,modal",params).focus();
+
+                                     	return false;
+			 }
+			 //If the error is ok, show the output of reasoning operation
+			 if (response.getElementsByTagName("reply")[0].getAttribute("status") == "ok") {
+
+				 //Get the information from response
+
+				 //Number of new triples discovered
+				 var triple_discovered = response.getElementsByTagName("startReasoning")[0].getAttribute("numberOfTriple");
+				 //Boolean to represent if output has been produced
+				 var output = response.getElementsByTagName("startReasoning")[0].getAttribute("produceOutput");
+				 //The text output of reasoning
+				 var print = response.getElementsByTagName("startReasoning")[0].getAttribute("printOutput");
+				 //Get names of inferenceRules
+				 var names =  response.getElementsByTagName("startReasoning")[0].getAttribute("inferenceRulesNames");
+
+				 var JsonInference = response.getElementsByTagName("startReasoning")[0].getAttribute("jsonInference");
+
+				 var numberOfIterationOfReasoning = response.getElementsByTagName("startReasoning")[0].getAttribute("numberOfIteration");
+				 //Create an array of parameters with the information taken from the server response
+				 var parameters = {inn:{newTriple:triple_discovered, produceOutput:output,printOutput:print,nameRules:names,jsonInference:JsonInference,iterations:numberOfIterationOfReasoning }, out:null};
+				 //If the output has not produced, show the dialog box to save the new triples discovered, else show the window output
+
+
+
+				 if (output == 'false') {
+					 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+				 prompts.alert(window, "Reasoner", "Number of discovered triples: "+
+						 (triple_discovered));
+				 }
+				 else{
+
+					if(params.out.numberOfIterationOfReasoning <  params.out.cycleNumber ||  params.out.cycleNumber == 0){
+						 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+						 prompts.alert(window,"Reasoner","Reasoner iteration (value chosen by the user): "+params.out.cycleNumber+"\n"+"Effective iteration: "+numberOfIterationOfReasoning);
+					}
+					params.out.reasoningResult = parameters;
+							 return true;
+				 }
+			 }
+
+		 }
+		 else{
+		    return false;
+		 }
+
+	 }
+	 return false;
+ }
+
+
 
 /**
  * Save the paramters entered by the user.
  * @returns
  */
-function onOK() {
+function onAccept() {
    // Return the changed arguments.
    // Notice if user clicks cancel, window.arguments[0].out remains null
    // because this function is never called
    
    window.arguments[0].out = {outputValue:document.getElementById('produceOutputCheckBox').checked,
    cycleNumber:document.getElementById('cycleNumberReasoning').value,
-   whicruleApply:document.getElementById('wichInferenceRuleAplly').value};       
-   
-   return true;
+   whichRuleApply:document.getElementById('wichInferenceRuleAplly').value};
+//CONFALSE NON SI CHIUDE
+
+    window.arguments[0].out.continueOperation = callReasoningService(window.arguments[0])
+return window.arguments[0].out.continueOperation;
+//return;
+   //return
 }
 
 function onCancel() {
@@ -125,18 +231,58 @@ function showHelpWindow(){
  * @returns
  */
 function onUpdate() {
+
 	//take the text edit
 	var text = document.getElementById("text_box").value;
+
+
+    let prompts =
+       Components.classes["@mozilla.org/embedcomp/prompt-service;1"].
+        getService(Components.interfaces.nsIPromptService);
+
+    if (prompts.confirm(window, "Save inference rules file", "Before upload the modified inference rule files, do you want save it?")) {
+      saveInferenceRuleFile(text);
+    }
+
 	//call service from SemanticTurkey server
 	var response = Reasoner.Requests.ReasonerConfigurations.sendFileToReasoner(text,"false");
 	if (response.getElementsByTagName("reply")[0].getAttribute("status") == "fail") {
-		window.alert("unable to upload file");
+	     let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+        						 prompts.alert(window,"Error","unable to upload file");
 	}
 	if (response.getElementsByTagName("reply")[0].getAttribute("status") == "ok") {
-		window.alert("file uploaded");
+		let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+                						 prompts.alert(window,"Success","File has been uploaded.");
 	}
 
 }
+
+function saveInferenceRuleFile(fileToSave) {
+
+	//Opent the window file picker
+	var nsIFilePicker = Components.interfaces.nsIFilePicker;
+	var fp = Components.classes["@mozilla.org/filepicker;1"]
+	.createInstance(nsIFilePicker);
+	fp.init(window, "Save inference rules files...", nsIFilePicker.modeSave);
+	fp.appendFilter("TXT File","*.txt");
+    fp.defaultString="inference_rule_file.txt";
+	var res = fp.show();
+    if(res == nsIFilePicker.returnOK || res == nsIFilePicker.returnReplace){
+        var file = fp.file;
+        if(file.exists() == false){//create as necessary
+                file.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
+            }
+            var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
+                                                  .createInstance( Components.interfaces.nsIFileOutputStream );
+            outputStream.init( file, 0x04 | 0x08 | 0x20, 640, 0 );
+            var result = outputStream.write( fileToSave, fileToSave.length );
+            outputStream.close();
+            	let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+                            						 prompts.alert(window,"Success","File has been saved.");
+    }
+}
+
+
 /**
  * Restore the default inference rules file.
  * @returns
@@ -150,8 +296,9 @@ function restoreDefaultRuleFiles(){
 	if (response.getElementsByTagName("reply")[0].getAttribute("status") == "ok") {
 
 		document.getElementById("load_inference_rule_label").value = "default file loaded";
+        let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
+                                    						 prompts.alert(window,"Success","Default Inference Rules File has been restored");
 
-		window.alert("Default Inference Rules File has been restored");
 
 	}
 }

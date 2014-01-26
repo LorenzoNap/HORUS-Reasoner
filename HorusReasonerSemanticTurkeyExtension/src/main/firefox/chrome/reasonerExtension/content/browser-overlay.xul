@@ -9,25 +9,52 @@
 	* WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License 
 	for * the specific language governing rights and limitations under the License. 
  -->
+<!DOCTYPE overlay SYSTEM "chrome://reasonerExtension/locale/browser-overlay.dtd" >
 <overlay id="reasoner-browser-overlay"
-	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-	<script type="application/x-javascript"
-		src="chrome://reasonerExtension/content/scripts/browser-overlay.js" />
+    <script type="application/x-javascript"
+            src="chrome://reasonerExtension/content/scripts/browser-overlay.js" />
 
-	 <menupopup id="menu_ToolsPopup2">
-        <menu id="menuReasoner" label="Reasoner">
-          <menupopup>
-            <menuitem id="ReasonerMenu"
-                      label="StartReasoner"
-                      oncommand="showReasonerConfiguration();"/>
-						 <menuitem id="deleteTriple"
-                      label="Delete new Triple"
-											disabled="false"
-                      oncommand="dismissNewTriple();"/>
+    <menupopup id="menu_ToolsPopup2">
+        <menu id="menuReasoner" label="&reasoner.extension.browser.overlay.strings.reasoner.menu.label;" disabled="true">
+            <menupopup>
+                <menuitem id="ReasonerMenu"
+                          label="&reasoner.extension.browser.overlay.strings.reasoner.menu.starReasoner.item.label;"
+                          oncommand="showReasonerConfiguration();"
+                        />
+                <menuitem id="deleteTriple"
+                          label="&reasoner.extension.browser.overlay.strings.reasoner.menu.deleteTriples.item.label;"
+                          oncommand="dismissNewTriple();"
+                        />
             </menupopup>
         </menu>
-      </menupopup>
+    </menupopup>
+
+
+
+
+
+    <toolbox id="navigator-toolbox" >
+        <toolbar id="sd-toolbar" class="chromeclass-toolbar"
+                 accesskey="S" customizable="true" hidden="false" iconsize="small"
+                 inherits="collapsed,hidden" mode="full" persist="collapsed,hidden"
+                 toolbarname="SemanticTurkey Toolbar" defaultset="buttonbar">
+            <toolbarbutton id="startReasonerToolbarButton"
+                           image="chrome://reasonerExtension/skin/images/horus_icon.png"
+                           tooltiptext="Start Horus Reasoner"
+                           hidden="true"
+                           type="menu">
+                <menupopup>
+                    <menuitem   label="&reasoner.extension.browser.overlay.strings.reasoner.menu.starReasoner.item.label;"
+                                oncommand="showReasonerConfiguration();"/>
+                    <menuitem label="&reasoner.extension.browser.overlay.strings.reasoner.menu.deleteTriples.item.label;"
+                              oncommand="dismissNewTriple();"/>
+                </menupopup>
+            </toolbarbutton>
+
+        </toolbar>
+    </toolbox>
 
 </overlay>	
 	

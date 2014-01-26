@@ -28,6 +28,40 @@ if ("undefined" == typeof(Reasoner)) {
  Components.utils.import("resource://reasonerExtensionServices/SERVICE_ReasonerConfiguration.jsm",Reasoner);
  Components.utils.import("resource://reasonerExtensionServices/SERVICE_Reasoning.jsm",Reasoner);
 
+ function chkST_started(){
+     if(document.getElementById("startSTToolBarButton").hidden == true && document.getElementById("ontPanelToolBarButton").hidden == false){
+         document.getElementById('startReasonerToolbarButton').setAttribute("hidden","false");
+         document.getElementById('menuReasoner').setAttribute("disabled","false");
+    }
+ }
+
+
+Reasoner.associateEventsOnBrowserGraphicElements = function() {
+
+document.getElementById("sd-toolbar").addEventListener("popupshowing",chkST_started, true);
+document.getElementById("sd-toolbar").addEventListener("command",chkST_started, true);
+// select the target node
+var target = document.querySelector('#ontPanelToolBarButton');
+
+// create an observer instance
+var observer = new MutationObserver(function(mutations) {
+  mutations.forEach(function(mutation) {
+    //alert(mutation.type);
+    chkST_started();
+  });
+});
+
+ // configuration of the observer:
+var config = { attributes: true, childList: true, characterData: true };
+
+ // pass in the target node, as well as the observer options
+observer.observe(target, config);
+
+}
+
+window.addEventListener("load", Reasoner.associateEventsOnBrowserGraphicElements, true);
+
+
 /**
  * Open window to display the configuration of reasoning operation
  */
@@ -36,8 +70,8 @@ if ("undefined" == typeof(Reasoner)) {
 	 //Call the service from Semantic Turkey service to retrieve the configuration parameters of the Reasoner
 	 var response = Reasoner.Requests.ReasonerConfigurations.loadConfiguration();
 
-	 var howManyTimesApllyInferenceRule;
-	 var whicruleApply;
+	 var howManyTimesApplyInferenceRule;
+	 var whichRuleApply;
 	 var produceOutput;
 
 	 //Check the response from server.
@@ -48,17 +82,21 @@ if ("undefined" == typeof(Reasoner)) {
 	 }
 	 //If request is ok, get the configuration parameter from response.
 	 if (response.getElementsByTagName("reply")[0].getAttribute("status") == "ok") {
-		 howManyTimesApllyInferenceRule = response.getElementsByTagName("ConfigurationParameter")[0].getAttribute("numberOfExecution");
-		 whicruleApply = response.getElementsByTagName("ConfigurationParameter")[0].getAttribute("whichRuleApply");
+		 howManyTimesApplyInferenceRule = response.getElementsByTagName("ConfigurationParameter")[0].getAttribute("numberOfExecution");
+		 whichRuleApply = response.getElementsByTagName("ConfigurationParameter")[0].getAttribute("whichRuleApply");
 		 produceOutput = response.getElementsByTagName("ConfigurationParameter")[0].getAttribute("produceOutput");
 	 }
 	 //Create an Array of paramters with configuration parameter of reasoner.
-	 var params = {inn:{outputValue:produceOutput, cycleNumber:howManyTimesApllyInferenceRule, whicruleApply:whicruleApply}, out:null};       
+	 var params = {inn:{outputValue:produceOutput, cycleNumber:howManyTimesApplyInferenceRule, whichRuleApply:whichRuleApply, continueOperation: false, reasoningResult: null}, out:null};
 	//Open the Reasoner configuration Dialog
-	 window.openDialog("chrome://reasonerExtension/content/resonerConfiguration.xul",
-			 "Reasoner Configuration", "chrome,centerscreen,dialog,modal",params).focus();         
-	 //If user haven't chosen any parameter,stop operation, else call the reasoning service.
-	callReasoningService(params);
+	window.openDialog("chrome://reasonerExtension/content/resonerConfiguration.xul",
+			 "Reasoner Configuration", "chrome,centerscreen,dialog,modal",params).focus();
+
+		if(params.out.continueOperation){
+			 window.openDialog("chrome://reasonerExtension/content/showOutput.xul",
+             							 "Output window", "chrome,resizable=yes,modal",params.out.reasoningResult);
+        }
+
 
  }
  function dismissWindow(){
@@ -80,105 +118,19 @@ function removeNewTriple(){
 	//If remove operation fail, get the error and upadate the params window, else return true
 	if (response.getElementsByTagName("reply")[0].getAttribute("status") == "fail") {
 		var status = response.getElementsByTagName("removeTriple")[0].getAttribute("error");
-		window.arguments[0].out = {save:'cancel',message:''}; 
-		alert(status);
+		window.arguments[0].out = {save:'cancel',message:''};
+		 let prompts =Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+                            					 prompts.alert(window, "Error", status);
 	}
-	alert("triples removed");
+	let prompts =Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+                                					 prompts.alert(window, "Success", "triples removed");
+
 	window.arguments[0].out = {save:'true',message:''}; 
 	return true;
 }
  
  
- /**
-  * Call the reasoning service and show the output of operation on window.
-  * @param params the params of reasoning operation
-  */
- function callReasoningService(params){
-	 	 if (params.out) {
-		 //Check the parameters entered by the user 
-		 var goAhead = true;
-		 //If cycle number parameter is a string show an error popup
-		 if (isNaN (params.out.cycleNumber)){
-			 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
-			 prompts.alert(window, "Configuration Error", "You have inserted a wrong parameter on Cycle number box");
-			 goAhead = false;
-		 }
-		 else {
-			 //Check the id of inference rule box.
-			 //Split the ids entered by the user. For each splitted id, check if it is a valid input, else show
-			 //a popup error
-			 var split = params.out.whicruleApply.split(",");
-			 for (var i = 0; i < split.length; i++) {
 
-				 if (isNaN (split[i])){
-					 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
-					 prompts.alert(window, "Configuration Error", "You have inserted a wrong id on inference rule id box");
-					 goAhead = false;
-					 break;
-				 }
-			 } 
-
-		 }
-		 //Check if the all controls on parameters  are going ok.
-		 if (goAhead) {
-			
-			 //Call the reasoning service from SemantickTurkey server.
-			 var response = Reasoner.Requests.ReasoningService.startReasoning(params);
-			 //If the reply is a warning show a popup with warn message.
-			 if (response.getElementsByTagName("reply")[0].getAttribute("status") == "warning") {
-				 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
-				 prompts.alert(window, "Reasoner",response.getElementsByTagName("startReasoning")[0].getAttribute("warning"));
-			 }
-			//If the reply is failed show a popup with error message.
-			 if (response.getElementsByTagName("reply")[0].getAttribute("status") == "fail") {
-				 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
-				 prompts.alert(window, "Reasoner", "Unable to start reasoning.Error: "+
-						 response.getElementsByTagName("startReasoning")[0].getAttribute("error"));
-			 }
-			 //If the error is ok, show the output of reasoning operation
-			 if (response.getElementsByTagName("reply")[0].getAttribute("status") == "ok") {
-				 
-				 //Get the information from response
-				 
-				 //Number of new triples discovered
-				 var triple_discovered = response.getElementsByTagName("startReasoning")[0].getAttribute("numberOfTriple");
-				 //Boolean to represent if output has been produced
-				 var output = response.getElementsByTagName("startReasoning")[0].getAttribute("produceOutput");
-				 //The text output of reasoning
-				 var print = response.getElementsByTagName("startReasoning")[0].getAttribute("printOutput");
-				 //Get names of inferenceRules
-				 var names =  response.getElementsByTagName("startReasoning")[0].getAttribute("inferenceRulesNames");
-				 
-				 var JsonInference = response.getElementsByTagName("startReasoning")[0].getAttribute("jsonInference");
-				 
-				 var numberOfIterationOfReasoning = response.getElementsByTagName("startReasoning")[0].getAttribute("numberOfIteration");
-				 //Create an array of parameters with the information taken from the server response
-				 var parameters = {inn:{newTriple:triple_discovered, produceOutput:output,printOutput:print,nameRules:names,jsonInference:JsonInference,iterations:numberOfIterationOfReasoning }, out:null};
-				 //If the output has not produced, show the dialog box to save the new triples discovered, else show the window output
-				 
-				 document.getElementById("deleteTriple").setAttribute("disabled","false");
-				 
-				 if (output == 'false') {
-					 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
-				 prompts.alert(window, "Reasoner", "Number of discovered triples: "+
-						 (triple_discovered));
-				 }
-				 else{
-					 
-					if(params.out.numberOfIterationOfReasoning <  params.out.cycleNumber ||  params.out.cycleNumber == 0){
-						 let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Ci.nsIPromptService);
-						 prompts.alert(window,"Reasoner","Reasoner iteration (value chosen by the user): "+params.out.cycleNumber+"\n"+"Effective iteration: "+numberOfIterationOfReasoning);
-					}
-					 window.openDialog("chrome://reasonerExtension/content/showOutput.xul",
-							 "Output window", "chrome,resizable=yes,modal",parameters);
-				 }
-			 }
-
-		 }
-
-	 }
- }
-        
 
 
 

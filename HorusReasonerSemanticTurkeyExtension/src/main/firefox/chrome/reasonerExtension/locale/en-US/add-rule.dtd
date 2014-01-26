@@ -1,0 +1,34 @@
+<!--
+ /*
+  * The contents of this file are subject to the Mozilla Public License
+  * Version 1.1 (the "License");  you may not use this file except in compliance
+  * with the License.  You may obtain a copy of the License at
+  * http://www.mozilla.org/MPL/
+  *
+  * Software distributed under the License is distributed on an "AS IS" basis,
+  * WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License for
+  * the specific language governing rights and limitations under the License.
+  */
+  -->
+        <!ENTITY groupbox.caption.addrule.label			"Add new inference rule">
+        <!ENTITY groupbox.caption.addrule.typeOfRule.label			"Rule type">
+
+        <!ENTITY addRule.listbox.type.newRule		"New rule">
+        <!ENTITY addRule.listbox.type.inconsitency		"Inconsistency rule">
+
+        <!ENTITY groupbox.caption.addrule.ruleName.label			"Inference rule name">
+        <!ENTITY groupbox.caption.addrule.ruleID.label			"Rule ID">
+
+        <!ENTITY premise.groupbox.caption.label			"Premise box">
+        <!ENTITY premise.groupbox.addpremise.button.label			"Add new premise">
+        <!ENTITY premise.groupbox.removepremise.button.label		"Remove premise">
+
+        <!ENTITY filter.groupbox.caption.label			"Filter box">
+        <!ENTITY filter.groupbox.addfilter.button.label			"Add new filter">
+        <!ENTITY fitler.groupbox.removefilter.button.label		"Remove fitler">
+
+        <!ENTITY conclusion.groupbox.caption.label			"Conclusion box">
+        <!ENTITY conclusion.groupbox.addconclusion.button.label			"Add new conclusion">
+        <!ENTITY conclusion.groupbox.removeconclusion.button.label		"Remove conclusion">
+
+

@@ -22,7 +22,7 @@
 <groupbox id="main_groupbox">
   <groupbox>
     <caption label="Output informations"/>
-     <label id="Output_informations" value="New inference rule discovered:"/>
+     <label id="output_information" value="New inference rule discovered:"/>
   </groupbox>
   
   <caption label="Output options"/>

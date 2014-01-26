@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 
 <?xml-stylesheet type="text/css" href="chrome://global/skin/" ?>
+<!DOCTYPE overlay SYSTEM "chrome://reasonerExtension/locale/add-rule.dtd" >
 
 <dialog id="addRuleWindow"
   title="Add Inference Rule"
@@ -16,45 +17,45 @@
 <script type="application/x-javascript"
     src="chrome://reasonerExtension/content/scripts/reasonerConfiguration.js" />
 
-<groupbox id="rule_form" label="Add Rule">
-  <caption label="Rule configuration"/>
-  <label value="Rule Type"/>
+<groupbox id="rule_form">
+  <caption label="&groupbox.caption.addrule.label;"/>
+  <label value="&groupbox.caption.addrule.typeOfRule.label;"/>
   <menulist>
       <menupopup>
-        <menuitem label="new rule" id="nr" oncommand="disableConlcusion('false')"/>
-        <menuitem label="inconsitency" id="in" oncommand="disableConlcusion('true')"/>
+        <menuitem label="&addRule.listbox.type.newRule;" id="nr" oncommand="disableConlcusion('false')"/>
+        <menuitem label="&addRule.listbox.type.inconsitency;" id="in" oncommand="disableConlcusion('true')"/>
       </menupopup>
   </menulist>
   
-   <label value="Inference Rule Name"/>
+   <label value="&groupbox.caption.addrule.ruleName.label;"/>
    <textbox id="rule_name" placeholder="rule name"/>
    
-   <label value="Inference Rule ID"/>
+   <label value="&groupbox.caption.addrule.ruleID.label;"/>
    <textbox id="rule_ID" placeholder="ID"/>
    
    <groupbox id="button_premise">
-       <caption label="Premise Box"/>
+       <caption label="&premise.groupbox.caption.label;"/>
     <hbox id="premise_box">
-      <button  label="Add Premise" oncommand="addProposition('button_premise')" />
-      <button  label="Remove Premise" oncommand="removePremise();" />
+      <button  label="&premise.groupbox.addpremise.button.label;" oncommand="addProposition('button_premise')" />
+      <button  label="&premise.groupbox.removepremise.button.label;" oncommand="removePremise();" />
     </hbox>
    
    </groupbox>
 
     <groupbox id="button_filter">
-        <caption label="Filter Box"/>
+        <caption label="&filter.groupbox.caption.label;"/>
         <hbox id="filter_box">
-            <button  label="Add Filter condition" oncommand="addFilterCondition()" />
-            <button  label="Remove Filter condition" oncommand="removeFilterCondition();" />
+            <button  label="&filter.groupbox.addfilter.button.label;" oncommand="addFilterCondition()" />
+            <button  label="&fitler.groupbox.removefilter.button.label;" oncommand="removeFilterCondition();" />
         </hbox>
 
     </groupbox>
  
    <groupbox id="button_conclusion">
-       <caption label="Conclusion Box"/>
+       <caption label="conclusion.groupbox.caption.label"/>
      <hbox id="conclusion_box">
-      <button id="btn_add" label="Add Conclusion" oncommand="addProposition('button_conclusion')"/>
-      <button id="btn_remove" label="Remove Conclusion" oncommand="addConclusion();"/>
+      <button id="btn_add" label="&conclusion.groupbox.addconclusion.button.label;" oncommand="addProposition('button_conclusion')"/>
+      <button id="btn_remove" label="Remove conclusion" oncommand="addConclusion();"/>
      </hbox>
      
    </groupbox>

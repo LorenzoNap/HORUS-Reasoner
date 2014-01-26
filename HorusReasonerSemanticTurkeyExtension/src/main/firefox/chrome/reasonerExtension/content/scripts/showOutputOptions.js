@@ -8,12 +8,15 @@ if ("undefined" == typeof(Reasoner)) {
 
 Components.utils.import("resource://reasonerExtensionServices/SERVICE_Reasoning.jsm",Reasoner);
 
-
+const Cc = Components.classes;
+const Ci = Components.interfaces;
+const Cu = Components.utils;
+const Cr = Components.results;
 
 
 
 function onLoad() {
-	document.getElementById("Output_informations").value = "New triple discoverd: "+ window.arguments[0].inn.newTriple;
+	document.getElementById("output_information").value = "New triple discovered: "+ window.arguments[0].inn.newTriple;
 	showTextOutput();
 	document.getElementById("text_box").value = "";
 	loadInferenceRulesName(window.arguments[0].inn.nameRules);
@@ -121,7 +124,8 @@ function searchTriple(){
 	var triple = document.getElementById("TripleSearchBox").value;
 	//chek the input of user
 	if (triple == "" || triple.length <=1 || triple == undefined ) {
-		window.alert("wrong input");
+	    let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+        					 prompts.alert(window, "Error", "wrong input");
 	}
 	else {
 		//Split input in three pats. One for triple subject, One for triple predicate, one for triple object
@@ -133,7 +137,8 @@ function searchTriple(){
 		var object = txt[2];
 		//check the spiltted string
 		if (subject == undefined || predicate == undefined || object == undefined ) {
-			window.alert(" check your input");
+		    let prompts =Cc["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
+                    					 prompts.alert(window, "Error", "Check your input");
 		}
 		else{
 			//Call the searchTriple service
