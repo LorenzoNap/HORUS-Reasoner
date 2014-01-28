@@ -83,41 +83,41 @@ public class LoaderParser extends InferenceRulesGrammarBaseListener{
 					for (Complex_conditionContext complex_conditionContext : new_rule.filter().get(0).condition().complex_condition()){
 
 				   //LEFT CONDITION
-					if(	complex_conditionContext.complex_espression_left().complex_espression().expression() != null){
-						filter.append(complex_conditionContext.complex_espression_left().complex_espression().expression().var().get(0).VAR1().toString());
-						filter.append(complex_conditionContext.complex_espression_left().complex_espression().expression().LOGIC_OPERATOR().toString());
-						filter.append(complex_conditionContext.complex_espression_left().complex_espression().expression().var().get(1).VAR1().toString());
+					if(	complex_conditionContext.complex_expression_left().complex_expression().expression() != null){
+						filter.append(complex_conditionContext.complex_expression_left().complex_expression().expression().var().get(0).VAR1().toString());
+						filter.append(complex_conditionContext.complex_expression_left().complex_expression().expression().LOGIC_OPERATOR().toString());
+						filter.append(complex_conditionContext.complex_expression_left().complex_expression().expression().var().get(1).VAR1().toString());
 					}
 					else{
-						if(complex_conditionContext.complex_espression_left().complex_espression().expression_left() != null){
+						if(complex_conditionContext.complex_expression_left().complex_expression().expression_left() != null){
 						filter.append("(");
-						filter.append(complex_conditionContext.complex_espression_left().complex_espression().expression_left().expression().var().get(0).VAR1().toString());
-						filter.append(complex_conditionContext.complex_espression_left().complex_espression().expression_left().expression().LOGIC_OPERATOR().toString());
-						filter.append(complex_conditionContext.complex_espression_left().complex_espression().expression_left().expression().var().get(1).VAR1().toString());
-						filter.append(complex_conditionContext.complex_espression_left().complex_espression().BOOLEAN());
-						filter.append(complex_conditionContext.complex_espression_left().complex_espression().expression_right().expression().var().get(0).VAR1().toString());
-						filter.append(complex_conditionContext.complex_espression_left().complex_espression().expression_right().expression().LOGIC_OPERATOR());
-						filter.append(complex_conditionContext.complex_espression_left().complex_espression().expression_right().expression().var().get(1).VAR1().toString());
+						filter.append(complex_conditionContext.complex_expression_left().complex_expression().expression_left().expression().var().get(0).VAR1().toString());
+						filter.append(complex_conditionContext.complex_expression_left().complex_expression().expression_left().expression().LOGIC_OPERATOR().toString());
+						filter.append(complex_conditionContext.complex_expression_left().complex_expression().expression_left().expression().var().get(1).VAR1().toString());
+						filter.append(complex_conditionContext.complex_expression_left().complex_expression().BOOLEAN());
+						filter.append(complex_conditionContext.complex_expression_left().complex_expression().expression_right().expression().var().get(0).VAR1().toString());
+						filter.append(complex_conditionContext.complex_expression_left().complex_expression().expression_right().expression().LOGIC_OPERATOR());
+						filter.append(complex_conditionContext.complex_expression_left().complex_expression().expression_right().expression().var().get(1).VAR1().toString());
 						filter.append(")");
 						}
 					}
 					filter.append(complex_conditionContext.BOOLEAN().toString());	
-					if(complex_conditionContext.complex_espression_right().complex_espression().expression() != null){
-						if(	complex_conditionContext.complex_espression_right().complex_espression().expression() != null){
-							filter.append(complex_conditionContext.complex_espression_right().complex_espression().expression().var().get(0).VAR1().toString());
-							filter.append(complex_conditionContext.complex_espression_right().complex_espression().expression().LOGIC_OPERATOR());
-							filter.append(complex_conditionContext.complex_espression_right().complex_espression().expression().var().get(1).VAR1().toString());
+					if(complex_conditionContext.complex_expression_right().complex_expression().expression() != null){
+						if(	complex_conditionContext.complex_expression_right().complex_expression().expression() != null){
+							filter.append(complex_conditionContext.complex_expression_right().complex_expression().expression().var().get(0).VAR1().toString());
+							filter.append(complex_conditionContext.complex_expression_right().complex_expression().expression().LOGIC_OPERATOR());
+							filter.append(complex_conditionContext.complex_expression_right().complex_expression().expression().var().get(1).VAR1().toString());
 						}
 						else{
-							if(complex_conditionContext.complex_espression_right().complex_espression().expression_left() != null){
+							if(complex_conditionContext.complex_expression_right().complex_expression().expression_left() != null){
 								filter.append("(");
-							filter.append(complex_conditionContext.complex_espression_right().complex_espression().expression_left().expression().var().get(0).VAR1().toString());
-							filter.append(complex_conditionContext.complex_espression_right().complex_espression().expression_left().expression().LOGIC_OPERATOR());
-							filter.append(complex_conditionContext.complex_espression_right().complex_espression().expression_left().expression().var().get(1).VAR1().toString());
-							filter.append(complex_conditionContext.complex_espression_right().complex_espression().BOOLEAN());
-							filter.append(complex_conditionContext.complex_espression_right().complex_espression().expression_right().expression().var().get(0).VAR1().toString());
-							filter.append(complex_conditionContext.complex_espression_right().complex_espression().expression_right().expression().LOGIC_OPERATOR());
-							filter.append(complex_conditionContext.complex_espression_right().complex_espression().expression_right().expression().var().get(1).VAR1().toString());
+							filter.append(complex_conditionContext.complex_expression_right().complex_expression().expression_left().expression().var().get(0).VAR1().toString());
+							filter.append(complex_conditionContext.complex_expression_right().complex_expression().expression_left().expression().LOGIC_OPERATOR());
+							filter.append(complex_conditionContext.complex_expression_right().complex_expression().expression_left().expression().var().get(1).VAR1().toString());
+							filter.append(complex_conditionContext.complex_expression_right().complex_expression().BOOLEAN());
+							filter.append(complex_conditionContext.complex_expression_right().complex_expression().expression_right().expression().var().get(0).VAR1().toString());
+							filter.append(complex_conditionContext.complex_expression_right().complex_expression().expression_right().expression().LOGIC_OPERATOR());
+							filter.append(complex_conditionContext.complex_expression_right().complex_expression().expression_right().expression().var().get(1).VAR1().toString());
 							filter.append(")");
 							
 							}

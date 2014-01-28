@@ -13,26 +13,26 @@ new_rule : (rule_information) ((premise))+ (filter)* ((conclusion))+;
 //New rule token
 
 
-//Rule information. Each rule must have a name and a id identfication
+//Rule information. Each rule must have a name and a id identification
 rule_information : TYPE TYPE_RULE RULE_NAME LetterAndSymbol  RULE_ID NUMBER ;
 
 //Information rule tokens
 RULE_NAME : 'name : ' |'name: ';  
 RULE_ID : 'id: ' | 'id : ';
 TYPE : 'type: ' | 'type : ';
-TYPE_RULE : NEW_RULE | INCONSITENCY_RULE;
-INCONSITENCY_RULE : 'new inconsistency rule';  
+TYPE_RULE : NEW_RULE | INCONSISTENCY_RULE;
+INCONSISTENCY_RULE : 'new consistency rule';
 NEW_RULE : 'new rule';  
            
-//Premise parser rule. Eache premise must have a triple.
+//Premise parser rule. Each premise must have a triple.
 premise : (START_PREMISE triple);
 //Start premise token
 START_PREMISE : 'premise : ' | 'premise: ';
 
-//Conclusion parser rule. Each concluisone must have a triple.
+//Conclusion parser rule. Each conclusion must have a triple.
 conclusion : (START_CONCLUSION triple ) | (START_CONCLUSION FALSE );
 FALSE : 'false';
-//Start conclcusion token
+//Start conclusion token
 START_CONCLUSION : 'conclusion: ' | 'conclusion : ';
 
 //Triple parse rule. Each triple is composed by subject,object and predicate with relative values
@@ -44,10 +44,10 @@ triple: ('subject: '|'subject : ')(value)( 'predicate : ' |'predicate: ')(value)
 filter: FILTER condition;
 FILTER: 'filter: ' | 'filter : ';
 condition: expression | (complex_condition)* ;
-complex_condition : (complex_espression_left BOOLEAN complex_espression_right);
-complex_espression_left: complex_espression;
-complex_espression_right: complex_espression;
-complex_espression: expression || '(' expression_left BOOLEAN expression_right ')';
+complex_condition : (complex_expression_left BOOLEAN complex_expression_right);
+complex_expression_left: complex_expression;
+complex_expression_right: complex_expression;
+complex_expression: expression || '(' expression_left BOOLEAN expression_right ')';
 expression_left : expression;
 expression_right: expression;
 BOOLEAN: ' && ' | ' || ';

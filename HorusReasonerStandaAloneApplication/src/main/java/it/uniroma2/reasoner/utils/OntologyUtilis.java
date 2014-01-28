@@ -1,9 +1,6 @@
 package it.uniroma2.reasoner.utils;
 
-import it.uniroma2.art.owlart.model.ARTNode;
-import it.uniroma2.art.owlart.model.ARTResource;
-import it.uniroma2.art.owlart.model.ARTStatement;
-import it.uniroma2.art.owlart.model.ARTURIResource;
+import it.uniroma2.art.owlart.model.*;
 import it.uniroma2.art.owlart.models.BaseRDFTripleModel;
 import it.uniroma2.art.owlart.query.TupleBindings;
 import it.uniroma2.reasoner.domain.InferenceRule;
@@ -213,5 +210,33 @@ public class OntologyUtilis {
             return filterCondition;
         }
         return "";
+    }
+
+    public static String createASKSPARQLQuery(ARTStatement statement) {
+
+        String subject = statement.getSubject().getNominalValue().replace("<","").replace(">","");
+        String predicate = statement.getPredicate().getNominalValue().replace("<","").replace(">","");
+        String object;
+        String query = "ASK " +
+                "\nWHERE " +
+                "\n{" +
+                "\n<"+subject+"> "+
+                "<"+predicate+"> ";
+        if(statement.getObject().isURIResource()){
+            query += "<"+statement.getObject().getNominalValue()+"> .";
+        } else if(statement.getObject().isLiteral()){
+            ARTLiteral artLiteral = statement.getObject().asLiteral();
+            query += "\""+artLiteral.getLabel()+"\"";
+            if(artLiteral.getLanguage() != null){
+                query += "@"+artLiteral.getLanguage();
+            }
+            else if(artLiteral.getDatatype() != null){
+                query += "^^<"+artLiteral.getDatatype().getURI()+">";
+            }
+        }
+
+        query += "\n}";
+
+        return query;
     }
 }

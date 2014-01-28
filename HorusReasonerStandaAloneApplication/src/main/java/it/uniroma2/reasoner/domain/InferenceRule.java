@@ -27,7 +27,7 @@ public class InferenceRule {
 	
 	boolean isInconsistency;
 	
-	public static final String TPYE_INCONSISTENCY ="new inconsistency rule";
+	public static final String TPYE_INCONSISTENCY ="new consistency rule";
 	
 	
 	public List<Triple> getPremisisTriple() {

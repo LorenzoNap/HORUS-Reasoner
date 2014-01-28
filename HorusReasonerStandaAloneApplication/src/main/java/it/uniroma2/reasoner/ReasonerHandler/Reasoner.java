@@ -5,10 +5,13 @@ import it.uniroma2.art.owlart.exceptions.ModelAccessException;
 import it.uniroma2.art.owlart.exceptions.ModelUpdateException;
 import it.uniroma2.art.owlart.exceptions.QueryEvaluationException;
 import it.uniroma2.art.owlart.exceptions.UnsupportedQueryLanguageException;
+import it.uniroma2.art.owlart.model.ARTLiteral;
 import it.uniroma2.art.owlart.model.ARTStatement;
 import it.uniroma2.art.owlart.model.NodeFilters;
 import it.uniroma2.art.owlart.models.BaseRDFTripleModel;
+import it.uniroma2.art.owlart.query.BooleanQuery;
 import it.uniroma2.art.owlart.query.MalformedQueryException;
+import it.uniroma2.art.owlart.query.QueryLanguage;
 import it.uniroma2.reasoner.ConfigurationHandler.ConfigurationParameter;
 import it.uniroma2.reasoner.ExecuteQueryHandler.ExecuteQueryOntologyHandler;
 import it.uniroma2.reasoner.OutputHandler.OutputHandler;
@@ -280,6 +283,8 @@ public class Reasoner {
      */
     private boolean ifStatementIsOnOntology(InferenceRuleQueryResult inferenceRuleQueryResult, BaseRDFTripleModel model) throws ModelAccessException, ModelUpdateException {
 
+
+
         boolean isOnOntology = true;
 
         List<ARTStatement> filteredConclusion = new ArrayList<ARTStatement>();
@@ -287,19 +292,35 @@ public class Reasoner {
 
         for(ARTStatement statement : inferenceRuleQueryResult.getTupleToConclusion()){
 
-            if(model.hasStatement(statement, false, NodeFilters.MAINGRAPH) || model.hasStatement(statement, false, model.createURIResource(SUPPORT_ONTOLOGY_GRAPH)) ){
-                filteredConclusion.remove(statement);
-            }
-            else {
+            String query = OntologyUtilis.createASKSPARQLQuery(statement);
 
-                model.addStatement(statement,model.createURIResource(SUPPORT_ONTOLOGY_GRAPH) );
 
-                isOnOntology = false;
+            BooleanQuery booleanQuery ;
+            try {
+                booleanQuery = model.createBooleanQuery(QueryLanguage.SPARQL, query, model.getBaseURI());
+                isOnOntology = booleanQuery.evaluate(false);
+                if(isOnOntology){
+                    filteredConclusion.remove(statement);
+                } else {
+                    if (model.hasStatement(statement,false,model.createURIResource(SUPPORT_ONTOLOGY_GRAPH))){
+                        isOnOntology = true;
+                    }
+                    else{
+                        model.addStatement(statement,model.createURIResource(SUPPORT_ONTOLOGY_GRAPH));
+                    }
+
+                }
+            } catch (UnsupportedQueryLanguageException e) {
+                e.printStackTrace();
+            } catch (MalformedQueryException e) {
+                e.printStackTrace();
+            } catch (QueryEvaluationException e) {
+                e.printStackTrace();
             }
+
         }
         inferenceRuleQueryResult.setTupleToConclusion(filteredConclusion);
         return isOnOntology;
-
 
     }
 
