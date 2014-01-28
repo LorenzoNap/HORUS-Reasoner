@@ -420,7 +420,7 @@ function addRule(){
 		type = "type: new rule\n";
 	}
 	else{
-		type = "type: inconsistency\n";
+		type = "type: new consistency rule\n";
 	}
 	var name = "name: "+document.getElementById("rule_name").value+"\n";
 	var id = "id: "+document.getElementById("rule_ID").value+"\n";

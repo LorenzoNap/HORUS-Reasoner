@@ -274,7 +274,7 @@ public class ReasoningService extends ServiceAdapter{
 			//Apply reasoning on model
 			List<ARTStatement> new_triple = reasonerFacade.startReasoner(baseRDFTripleModel,inferenceRuleFile);
 			//Check if new triple has been discovered. If it is false, return a warning message, else return a positive response
-			if (new_triple != null && new_triple.size() == 0){
+			if (new_triple != null && new_triple.size() == 0 && reasonerFacade.getInputOutputHandler().getReasoningOutput().getInferenceRuleOutput().size() <= 0){
 				response = createReplyResponse(RepliesStatus.warning);
 				Element dataElement = response.getDataElement();
 				Element warnElem = XMLHelp.newElement(dataElement, "startReasoning");

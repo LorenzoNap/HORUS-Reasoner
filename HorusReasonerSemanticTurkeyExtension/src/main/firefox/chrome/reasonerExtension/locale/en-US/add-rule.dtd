@@ -14,7 +14,7 @@
         <!ENTITY groupbox.caption.addrule.typeOfRule.label			"Rule type">
 
         <!ENTITY addRule.listbox.type.newRule		"New rule">
-        <!ENTITY addRule.listbox.type.inconsitency		"Inconsistency rule">
+        <!ENTITY addRule.listbox.type.inconsitency		"Consistency rule">
 
         <!ENTITY groupbox.caption.addrule.ruleName.label			"Inference rule name">
         <!ENTITY groupbox.caption.addrule.ruleID.label			"Rule ID">
