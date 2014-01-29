@@ -1,5 +1,5 @@
 <h1>HORUS (Human-readable Owl-art Reasoner Unit System)</h1>
- 
+<img src="http://upload.wikimedia.org/wikipedia/commons/a/a7/Eye_of_Horus_bw.svg"/>
 <p>This reasoner  is based on  the  <b>OWL ART API</b> (<a href="http://art.uniroma2.it/owlart/">http://art.uniroma2.it/owlart/ </a>), developed from the ART Research Group at the University of Rome Tor Vergata (<a href="http://art.uniroma2.it/">http://art.uniroma2.it/</a>). These API offer an abstraction layer over different RDF triple store technologies so make the reasoner usable with all knowledge representation languages ( defined by the world web consortium) used to write ontologies.<br><p>This reasoner can be used as stand-alone application and as Semantic Turkey extension</p>
 <h2>Reasoner as an Semantic Turkey extension</h2>
 <p> Semantic Turkey (<a href="http://semanticturkey.uniroma2.it/">http://semanticturkey.uniroma2.it/</a>) is a platform for Semantic Bookmarking and Ontology Development realized by the ART Research Group at the University of Rome, Tor Vergata. 
