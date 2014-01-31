@@ -248,8 +248,14 @@ public class ReasonerGui {
 							}
 							texAreaOutputRules.setText(startReasonerFacade.getOutputList().printOutput());
 							 texAreaOutputRules.setEnabled(true);
+                                texAreaOutputRules.revalidate();
 							 scrollPaneOutput.setEnabled(true);
+                                scrollPaneOutput.revalidate();
 							createPanelOutputOptions();
+                                scrollPaneOutput.revalidate();
+                                optionsOutputPanel.revalidate();
+                                jPanel.revalidate();
+
 							}
 							else{
 								JOptionPane.showMessageDialog(loadDefaultInferenceRuleButton, new JLabel("Triple founded: "+results.size()));
@@ -488,6 +494,7 @@ public class ReasonerGui {
 	private void createPanelOutputOptions(){
 		if(optionsOutputPanel != null){
 			optionsOutputPanel.removeAll();
+            optionsOutputPanel.revalidate();
 		}
 		JPanel jPanel = new JPanel();
 		jPanel.setBorder(BorderFactory.createTitledBorder("Output options"));	
@@ -530,7 +537,7 @@ public class ReasonerGui {
 				    }
 				}
 				texAreaOutputRules.setText(startReasonerFacade.filterOutput(filters.toString()));
-				
+                texAreaOutputRules.revalidate();
 			}
 		});
 		searchTriple.add(applyFilter);
@@ -550,7 +557,7 @@ public class ReasonerGui {
 		final JTextArea searchAreaSubject = new JTextArea();
 		searchBoxPanel.add(searchAreaSubject);
 		
-		JLabel labelPredicate = new JLabel("Predictae");
+		JLabel labelPredicate = new JLabel("Predicate");
 		searchBoxPanel.add(labelPredicate);
 		final JTextArea searchAreaPredicate = new JTextArea();
 		searchBoxPanel.add(searchAreaPredicate);
@@ -585,6 +592,7 @@ public class ReasonerGui {
 					}
 					else{
 						texAreaOutputRules.setText(result);
+                        texAreaOutputRules.revalidate();
 						}
 					}
 					catch(IllegalArgumentException exception){
@@ -596,8 +604,11 @@ public class ReasonerGui {
 			}
 		});
 		searchBoxPanel.add(buttonSearch);
-		
-		
+
+        optionsOutputPanel.revalidate();
 		frame.getContentPane().add(optionsOutputPanel,BorderLayout.EAST);
+        optionsOutputPanel.revalidate();
+
 	}
+
 }

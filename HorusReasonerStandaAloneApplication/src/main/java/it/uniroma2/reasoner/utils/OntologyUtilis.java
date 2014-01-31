@@ -1,5 +1,6 @@
 package it.uniroma2.reasoner.utils;
 
+import it.uniroma2.art.owlart.io.RDFNodeSerializer;
 import it.uniroma2.art.owlart.model.*;
 import it.uniroma2.art.owlart.models.BaseRDFTripleModel;
 import it.uniroma2.art.owlart.query.TupleBindings;
@@ -158,6 +159,28 @@ public class OntologyUtilis {
 		
 	}
 
+    public static String convertARTStatementToSimpleString(ARTStatement statement){
+        String subject = getSimpleValueFromTripleItem(statement.getSubject()).replace("<", "").replace(">", "");
+        String predicate = getSimpleValueFromTripleItem(statement.getPredicate()).replace("<", "").replace(">", "");
+        String object = getSimpleValueFromTripleItem(statement.getObject()).replace("<", "").replace(">", "");
+
+        return subject+" "+predicate+" "+object;
+    }
+
+    public static  String getSimpleValueFromTripleItem(ARTNode item){
+        if(item.isBlank()){
+            return "BlankNode:"+item.asBNode().toString();
+        }
+        if(item.isLiteral()){
+            return item.asLiteral().getNominalValue();
+        }
+        if(item.isResource()){
+            return item.asURIResource().getLocalName();
+        }
+        return item.asURIResource().getLocalName();
+
+    }
+
     public static String convertARTStatementToString(ARTStatement statement){
         String subject = getValueFromTripleItem(statement.getSubject()).replace("<", "").replace(">", "");
         String predicate = getValueFromTripleItem(statement.getPredicate()).replace("<", "").replace(">", "");
@@ -171,12 +194,12 @@ public class OntologyUtilis {
 			return "BlankNode:"+item.asBNode().toString();
 		}
 		if(item.isLiteral()){
-			return item.asLiteral().getNominalValue();
+			return item.asLiteral().toString();
 		}
 		if(item.isResource()){
-			return item.asURIResource().getLocalName();
+			return item.asURIResource().getURI();
 		}
-		return item.asURIResource().getLocalName();
+		return item.asURIResource().getURI();
 		
 	}
 	
@@ -238,5 +261,17 @@ public class OntologyUtilis {
         query += "\n}";
 
         return query;
+//        String subject = RDFNodeSerializer.toNT(statement.getSubject());
+//        String predicate = RDFNodeSerializer.toNT(statement.getPredicate());
+//        String object = RDFNodeSerializer.toNT(statement.getObject());
+//
+//
+//
+//        String query = "ASK " +
+//                "\nWHERE " +
+//                "\n{" +
+//                "\n"+subject+" "+predicate+" "+object+" . "+
+//                "\n}";
+//        return query;
     }
 }

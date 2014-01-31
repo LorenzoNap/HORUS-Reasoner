@@ -223,13 +223,13 @@ public class Reasoner {
 
         for(ARTStatement statementSource : inferenceRuleOutput.getNew_triple()){
 
-            String vertexSource = OntologyUtilis.convertARTStatementToString(statementSource);
+            String vertexSource = OntologyUtilis.convertARTStatementToSimpleString(statementSource);
 
             stringGraph.addVertex(vertexSource);
 
             for(ARTStatement statementTarget :inferenceRuleOutput.getFromTriple()){
 
-                String vertexTarget = OntologyUtilis.convertARTStatementToString(statementTarget);
+                String vertexTarget = OntologyUtilis.convertARTStatementToSimpleString(statementTarget);
                 stringGraph.addVertex(vertexTarget);
 
                 stringGraph.addEdge(String.valueOf(count),vertexSource,vertexTarget, EdgeType.DIRECTED);
@@ -251,7 +251,7 @@ public class Reasoner {
 
         for(ARTStatement statementSource : inferenceRuleOutput.getNew_triple()){
 
-            String vertexSource = OntologyUtilis.convertARTStatementToString(statementSource);
+            String vertexSource = OntologyUtilis.convertARTStatementToSimpleString(statementSource);
 
             if(!inferenceRuleOutput.getFilterStatement().equals("")){
                vertexSource=  vertexSource+FILTER_TAG;
@@ -259,7 +259,7 @@ public class Reasoner {
             alternativeStringGraph.addVertex(vertexSource);
             for(ARTStatement statementTarget :inferenceRuleOutput.getFromTriple()){
 
-                String vertexTarget = OntologyUtilis.convertARTStatementToString(statementTarget);
+                String vertexTarget = OntologyUtilis.convertARTStatementToSimpleString(statementTarget);
                 alternativeStringGraph.addVertex(vertexTarget);
 
                 alternativeStringGraph.addEdge(String.valueOf(count),vertexSource,vertexTarget, EdgeType.DIRECTED);
