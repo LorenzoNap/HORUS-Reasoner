@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+    <head>
+         <!-- JQuery -->
+       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+       
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="./bootstrap-3.1.1-dist/css/bootstrap.min.css"/>
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="./bootstrap-3.1.1-dist/css/bootstrap-theme.min.css"/>
+        
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="./bootstrap-3.1.1-dist/js/bootstrap.min.js"></script>
+        
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="./css/dashboard.css"/>
+            
+        <script language="javascript" type="text/javascript" src="chrome://reasonerExtension/content/scripts/UtilFunctions.js"></script>
+        <script language="javascript" type="text/javascript" src="chrome://reasonerExtension/content/scripts/htmlScript.js"></script>
+
+    </head>
+    <body>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">HORUS Reasoner</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Help</a></li>
+            <li><a href="#">Info</a></li>
+          </ul>
+         <!-- <form class="navbar-form navbar-right">
+            <input type="text" class="form-control" placeholder="Search..."/>
+          </form>-->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="dropdown" onclick="this.setAttribute('class','active')">
+                <a id="drop6" role="button" data-toggle="dropdown" href="#">Inference Rules<b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li onclick="viewInferenceRulesFile();document.getElementById('main_jumbotron').setAttribute('style','display:none')"><a href="#">Show rules</a></li>
+                    <li onclick="uploadInferenceRulesFile();document.getElementById('main_jumbotron').setAttribute('style','display:none')"><a href="#">Load Inference Rules File</a></li>
+                </ul>
+            </li>
+            <li onclick="setReasonerParameters();document.getElementById('main_jumbotron').setAttribute('style','display:none')"><a href="#">Set Reasoner Parameters</a></li>
+            <li onclick="startReasoning();document.getElementById('main_jumbotron').setAttribute('style','display:none')"><a href="#">Start Reasoning</a></li>
+          </ul>
+          <ul class="nav nav-sidebar">
+            <li role="presentation" class="dropdown-header">Reasoning output</li>
+            <li class="dropdown" onclick="this.setAttribute('class','active')">
+                <a id="drop6" role="button" data-toggle="dropdown" href="#">Show Graphs<b class="caret"></b></a>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                    <li id="show_current_project_graph" class="disabled" ><a href="#">Show current Project Graph</a></li>
+                    <li onclick="loadAvailableGraph();document.getElementById('main_jumbotron').setAttribute('style','display:none')"><a href="#">Show other graphs</a></li>
+                </ul>
+            </li>
+            <li id="view_discovered_id_element" class="disabled" ><a href="#">View discovered Triple</a></li>
+            <li  data-toggle="modal" data-target="#deleteTripleModal"><a href="#">Remove inffered triples</a></li>
+          </ul>
+        </div>
+       
+        <div id="main_colum" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="position: absolute; width: 100%; height: 100%;">
+            <div id="main_div" style="position:absolute;height:100%;width:100%">
+                <div id = "alert_placeholder"></div>
+                
+                
+                <!-- JUMBOTRON -->
+                <div id="main_jumbotron" class="jumbotron">
+                    <h1>Horus Reasoner!</h1>
+                    <img style="float:right" alt="Responsive image" class="img-responsive" src="chrome://reasonerExtension/skin/images/horus.png"/>
+                        <p>Welcome to HORUS Reasoner main page!</p>
+                    <p><a class="btn btn-primary btn-lg" role="button" onclick="setReasonerParameters();document.getElementById('main_jumbotron').setAttribute('style','display:none')">Get started!</a></p>
+                </div>
+                <!-- END JUMBOTRON -->
+                
+                <!-- Inference Rules configurations -->
+                <div id ="reasoner_rules" style="display: none">
+                    <h1 class="page-header">Inference Rules
+                        <button id="edit_rules_button" type="button" class="btn btn-primary" onclick="editInferenceRules()" style="margin-left: 10px">Edit Rules</button>
+                        <button id="add_rules_button" type="button" class="btn btn-primary" onclick="addInferenceRule()" disabled="disabled" style="margin-left: 10px">Add rule</button>
+                        <button id="save_rules_button" type="button" class="btn btn-success" onclick="saveInferenceRules()" disabled="disabled" style="margin-left: 10px">Save</button>
+                        <button id="discard_rules_button" type="button" class="btn btn-default" onclick="discardInferenceRules()" disabled="disabled" style="margin-left: 10px">Discard Changes</button>
+                    </h1>
+                </div>
+                <!-- End Inference Rules configurations -->
+                
+                <!-- Start Reasoner parameters input -->
+                <div id="reasoner_parameters" style="display: none">                       
+                    <h1 class="page-header">Reasoning Parameters</h1>
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Number of executions
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-content="How many times the reasoning process must be executed. A single integer value must be chosen." ></span>
+                            </label>
+                            <input class="form-control" id="executions_reasoner" placeholder="0 or 1 or 2 or 3 .."/>
+                            <input type="checkbox" id="unset_iteration_check_box" style="margin:5px" > Unset Iteration
+                                <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-content="Execute reasonig operation as long as the resoner does not find any inffered triple"></span>
+                            </input>
+                    </div>
+                    <div class="form-group">
+                        <!-- MODAL DIALOG TO SHOW RULES -->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title" id="myModalLabel">Inference Rules</h4>
+                                </div>
+                                <div id="modal_body_inference_rules" class="modal-body">
+                                  <p id="paragrahp_rule_modal"></p>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        <!-- END MODAL DIALOG TO SHOW RULES -->
+                        
+                      <label for="exampleInputPassword1">Which rules apply
+                        <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-content="Choose which inference rule must be used during the reasoning operation"></span>
+                        <button id="show_popup_rules" type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal" onclick="showPopupRules()" style="margin-left: 10px">Show Rules</button>
+                      </label>
+                      <input type="" class="form-control" id="rules_to_apply" placeholder="1,2,4"/>
+                      
+                      <input type="checkbox" id="use_all_rules_checkbox" style="margin:5px"> Use all Rules</input>
+                      
+                    </div>
+                    
+                        <div class="form-group">
+                         <label> Output options </label>
+                          <br>
+                          <input type="checkbox" id="produce_output"> Produce Output
+                          <span class="glyphicon glyphicon-question-sign" data-toggle="popover" data-content="Choose to produce different visualizations of inferred triples"></span>
+                          </input>
+                        </div>
+                    
+                                       
+                    <button onclick="saveReasonerParameters()" type="button" class="btn btn-default">Save</button>
+                </form>
+                </div>
+                <!-- Reasoner parameters input -->
+
+                
+                <!-- GRAPH VIEW !-->
+                <div id="graphView" style="position:absolute;height:100%;width:100%;display:none">
+                    
+                    <iframe id="graph_view_iframe" src="chrome://reasonerextension/content/showGraph.html"  width="100%" height="100%" frameborder="0" style="position:absolute;height:100%;width:100%"></iframe>
+
+                    <script type="text/javascript">
+                        document.getElementById('graph_view_iframe').src = "chrome://reasonerextension/content/showGraph.html?graphName=graphName";
+                        removeStyleToShowGraph()
+                    </script>
+                    
+                </div>
+                <!-- END GRAPH VIEW !-->
+                
+                <!-- MODAL DIALOG TO DELETE TRIPLE -->
+                <div class="modal fade" id="deleteTripleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Remove Triple</h4>
+                        </div>
+                        <div id="modal_body_inference_rules" class="modal-body">
+                          <p id="paragrahp_rule_modal">Do you want remove all inferred triples?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="removeDiscoveredTriple()">Remove</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!-- END MODAL DIALOG TO DELETE TRIPLE -->
+                
+                <!-- TRIPLE INFERITE VIEW -->
+                <div id="infferedTriples" style="display: none">
+                    <p id="paragraph_inffered_triples"></p>
+                    
+                    <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label>Filter by new triples</label>
+                        <select onchange="filterDiscoveredTriple();document.getElementById('infferedTriplesFilter').value = this.value" class="form-control" id="infferedTriplesFilter" style="">
+                        </select>   
+                    </div>
+                    <div class="form-group">
+                        <label>Filter by inference_rules</label>
+                        <select onchange="filterDiscoveredTriple();document.getElementById('inference_rules_filter').value = this.value" class="form-control" id="inference_rules_filter" style="">
+                        </select> 
+                    </div>    
+                    </form>
+                </div>
+                <!-- END TRIPLE INFERITE VIEW -->
+           
+                <!-- MODAL DIALOG TO SEARCH TRIPLE RESULT-->
+                <div class="modal fade" id="showSearchTripleResult" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Search Result</h4>
+                        </div>
+                        <div id="modal_body_inference_rules" class="modal-body">
+                          <p id="resultSearchTriple"></p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!-- TO SEARCH TRIPLE RESULT -->
+  
+                <!-- MODAL LOAD DIFFERENT GRAPH -->
+                <div class="modal fade" id="laodGraphModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Load Graph</h4>
+                        </div>
+                        <div id="modal_body_load_different_graphs" class="modal-body">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!-- END MODAL LOAD DIFFERENT GRAPH -->
+                
+                
+                <!-- MODAL ADD RULE -->
+                <div class="modal fade" id="addRuleModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                          <h4 class="modal-title" id="myModalLabel">Add Inference Rule</h4>
+                        </div>
+                        <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                              <label for="exampleInputEmail1">Rule Name</label>
+                              <input type="email" class="form-control" id="add_rule_rule_name" placeholder="Entere Inference Rule Name"/>
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Rule ID</label>
+                              <input class="form-control" id="add_rule_id" placeholder="Rule ID"/>
+                            </div>
+                            <div class="form-group">
+                              <label for="exampleInputPassword1">Rule Type</label>
+                              <select class="form-control" id="add_rule_rule_type" onchange="hideInconstenceForm(this)">
+                                <option value="new rule">New Rule</option>
+                                <option value="new consistency rule" >Inconsistency</option>
+                              </select>  
+                            </div>
+                       
+                            <div id="preposition_box">
+                                <div id="Premises">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Premises: <span onclick="addProposition('Premises')"class="glyphicon glyphicon-plus"> </span></label>
+                                    </div>
+                                </div>
+                                <div id="Filter Condition">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Filter Conditions: <span onclick="addProposition('Filter Condition')"class="glyphicon glyphicon-plus"> </span></label>
+                                    </div>
+                                </div>
+                                <div id="Conclusion">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Conclusions: <span onclick="addProposition('Conclusion')"class="glyphicon glyphicon-plus"> </span></label>
+                                    </div>
+                                </div>
+                            </div>                          
+                        </form>
+                        </div>
+                        
+                        
+                        
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-success" data-dismiss="modal" onclick="saveAddRule()">Save</button>
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!-- END MODAL ADD RULE -->
+                
+            </div>
+        </div>
+       
+      </div>
+    </div>
+    
+   
+
+    </body>
+</html>

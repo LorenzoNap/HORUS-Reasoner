@@ -1,0 +1,414 @@
+2013-11-06 11:28:00 DEBUG ParseInferenceRulesFacade:56 - Parsing inference Rules file
+2013-11-06 11:28:00 DEBUG Parser:45 - ANTLR parsing file
+2013-11-06 11:28:00 DEBUG Validator:55 - Regole da applicare(lette da configurazione): 1
+2013-11-06 11:28:00 DEBUG ParseInferenceRulesFacade:73 - Valdation rules
+2013-11-06 11:28:00 DEBUG ParseInferenceRulesFacade:80 - Valdation OK
+2013-11-06 11:28:00 DEBUG StartReasonerFacade:63 - Inference rules parsed
+2013-11-06 11:28:00 DEBUG ReasonerFacade:47 - Start reasoning operation
+2013-11-06 11:28:00 DEBUG Reasoner:79 - Execute inference rules on Ontology
+2013-11-06 11:28:00 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:28:01 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:28:01 DEBUG StartReasonerFacade:68 - End reasoning operation
+2013-11-06 11:28:01 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 11:28:01 DEBUG ReasoningOutput:37 - Rule name: RegolaTransitiva
+2013-11-06 11:28:01 DEBUG ReasoningOutput:38 - Rule ID: 1
+2013-11-06 11:28:01 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 11:28:01 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-11-06 11:28:01 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 11:28:01 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-11-06 11:28:01 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-11-06 11:28:01 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-11-06 11:28:01 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 11:28:01 DEBUG ReasoningOutput:37 - Rule name: RegolaTransitiva
+2013-11-06 11:28:01 DEBUG ReasoningOutput:38 - Rule ID: 1
+2013-11-06 11:28:01 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 11:28:01 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-11-06 11:28:01 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 11:28:01 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-11-06 11:28:01 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-11-06 11:28:01 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-11-06 11:28:01 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 11:28:01 DEBUG ReasoningOutput:37 - Rule name: RegolaTransitiva
+2013-11-06 11:28:01 DEBUG ReasoningOutput:38 - Rule ID: 1
+2013-11-06 11:28:01 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 11:28:01 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-11-06 11:28:01 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 11:28:01 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-11-06 11:28:01 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-11-06 11:28:01 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-11-06 11:28:01 DEBUG OutputHanlder:52 - ##### Print Graph ###########
+2013-11-06 11:28:01 DEBUG OutputHanlder:53 - Vertices:Ariccia locatedIn Italia,Roma locatedIn Lazio,locatedIn type TransitiveProperty,Ariccia locatedIn Roma,Lazio locatedIn Italia,Ariccia locatedIn Lazio,Roma locatedIn Italia
+Edges:3[Ariccia locatedIn Lazio,locatedIn type TransitiveProperty] 2[Roma locatedIn Italia,Lazio locatedIn Italia] 1[Roma locatedIn Italia,Roma locatedIn Lazio] 0[Roma locatedIn Italia,locatedIn type TransitiveProperty] 7[Ariccia locatedIn Italia,Ariccia locatedIn Roma] 6[Ariccia locatedIn Italia,locatedIn type TransitiveProperty] 5[Ariccia locatedIn Lazio,Roma locatedIn Lazio] 4[Ariccia locatedIn Lazio,Ariccia locatedIn Roma] 8[Ariccia locatedIn Italia,Roma locatedIn Italia] 
+2013-11-06 11:28:01 DEBUG OutputHanlder:54 - ##### Print Graph ###########
+2013-11-06 11:29:40 DEBUG ParseInferenceRulesFacade:56 - Parsing inference Rules file
+2013-11-06 11:29:40 DEBUG Parser:45 - ANTLR parsing file
+2013-11-06 11:29:40 DEBUG Validator:55 - Regole da applicare(lette da configurazione): 
+2013-11-06 11:29:40 DEBUG ParseInferenceRulesFacade:73 - Valdation rules
+2013-11-06 11:29:40 DEBUG ParseInferenceRulesFacade:80 - Valdation OK
+2013-11-06 11:29:40 DEBUG StartReasonerFacade:63 - Inference rules parsed
+2013-11-06 11:29:40 DEBUG ReasonerFacade:47 - Start reasoning operation
+2013-11-06 11:29:40 DEBUG Reasoner:79 - Execute inference rules on Ontology
+2013-11-06 11:29:40 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:29:40 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:29:40 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:29:40 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:29:40 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:29:40 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:29:40 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:29:40 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:29:40 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:29:40 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:29:40 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:29:40 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 11:29:40 DEBUG StartReasonerFacade:68 - End reasoning operation
+2013-11-06 11:29:40 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 11:29:40 DEBUG ReasoningOutput:37 - Rule name: RegolaTransitiva
+2013-11-06 11:29:40 DEBUG ReasoningOutput:38 - Rule ID: 1
+2013-11-06 11:29:40 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 11:29:40 DEBUG ReasoningOutput:37 - Rule name: RegolaTransitiva
+2013-11-06 11:29:40 DEBUG ReasoningOutput:38 - Rule ID: 1
+2013-11-06 11:29:40 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 11:29:40 DEBUG ReasoningOutput:37 - Rule name: simmetrica
+2013-11-06 11:29:40 DEBUG ReasoningOutput:38 - Rule ID: 2
+2013-11-06 11:29:40 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Albano)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#SymmetricProperty>)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Albano, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 11:29:40 DEBUG ReasoningOutput:37 - Rule name: fooRule
+2013-11-06 11:29:40 DEBUG ReasoningOutput:38 - Rule ID: 6
+2013-11-06 11:29:40 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio, <http://www.w3.org/2002/07/owl#Class>, <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasThings>)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio, <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn>, _:p1)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 11:29:40 DEBUG ReasoningOutput:37 - Rule name: fooRule
+2013-11-06 11:29:40 DEBUG ReasoningOutput:38 - Rule ID: 6
+2013-11-06 11:29:40 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, <http://www.w3.org/2002/07/owl#Class>, <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasThings>)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn>, _:p1)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 11:29:40 DEBUG ReasoningOutput:37 - Rule name: fooRule
+2013-11-06 11:29:40 DEBUG ReasoningOutput:38 - Rule ID: 6
+2013-11-06 11:29:40 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, <http://www.w3.org/2002/07/owl#Class>, <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasThings>)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn>, _:p1)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 11:29:40 DEBUG ReasoningOutput:37 - Rule name: RegolaTransitiva
+2013-11-06 11:29:40 DEBUG ReasoningOutput:38 - Rule ID: 1
+2013-11-06 11:29:40 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-11-06 11:29:40 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-11-06 11:29:40 DEBUG OutputHanlder:52 - ##### Print Graph ###########
+2013-11-06 11:29:40 DEBUG OutputHanlder:53 - Vertices:Lazio locatedIn p1,Ariccia locatedIn Italia,Albano isAdiacent Ariccia,Roma Class TexasThings,Lazio locatedIn Italia,Ariccia locatedIn Lazio,Ariccia Class TexasThings,isAdiacent type SymmetricProperty,Lazio Class TexasThings,Ariccia locatedIn p1,Roma locatedIn Lazio,Roma locatedIn p1,locatedIn type TransitiveProperty,Ariccia locatedIn Roma,Ariccia isAdiacent Albano,Roma locatedIn Italia
+Edges:3[Ariccia locatedIn Lazio,locatedIn type TransitiveProperty] 2[Roma locatedIn Italia,Lazio locatedIn Italia] 10[Ariccia Class TexasThings,Ariccia locatedIn p1] 1[Roma locatedIn Italia,Roma locatedIn Lazio] 0[Roma locatedIn Italia,locatedIn type TransitiveProperty] 7[Ariccia isAdiacent Albano,Albano isAdiacent Ariccia] 6[Ariccia isAdiacent Albano,isAdiacent type SymmetricProperty] 5[Ariccia locatedIn Lazio,Roma locatedIn Lazio] 4[Ariccia locatedIn Lazio,Ariccia locatedIn Roma] 9[Roma Class TexasThings,Roma locatedIn p1] 8[Lazio Class TexasThings,Lazio locatedIn p1] 13[Ariccia locatedIn Italia,Roma locatedIn Italia] 11[Ariccia locatedIn Italia,locatedIn type TransitiveProperty] 12[Ariccia locatedIn Italia,Ariccia locatedIn Roma] 
+2013-11-06 11:29:40 DEBUG OutputHanlder:54 - ##### Print Graph ###########
+2013-11-06 13:06:59 DEBUG ParseInferenceRulesFacade:56 - Parsing inference Rules file
+2013-11-06 13:06:59 DEBUG Parser:45 - ANTLR parsing file
+2013-11-06 13:06:59 DEBUG Validator:55 - Regole da applicare(lette da configurazione): 
+2013-11-06 13:06:59 DEBUG ParseInferenceRulesFacade:73 - Valdation rules
+2013-11-06 13:06:59 DEBUG ParseInferenceRulesFacade:80 - Valdation OK
+2013-11-06 13:06:59 DEBUG StartReasonerFacade:63 - Inference rules parsed
+2013-11-06 13:06:59 DEBUG ReasonerFacade:47 - Start reasoning operation
+2013-11-06 13:06:59 DEBUG Reasoner:79 - Execute inference rules on Ontology
+2013-11-06 13:06:59 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 13:06:59 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 13:06:59 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 13:06:59 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 13:06:59 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 13:06:59 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 13:06:59 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 13:06:59 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 13:06:59 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 13:06:59 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 13:06:59 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 13:06:59 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-11-06 13:06:59 DEBUG StartReasonerFacade:68 - End reasoning operation
+2013-11-06 13:06:59 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 13:06:59 DEBUG ReasoningOutput:37 - Rule name: RegolaTransitiva
+2013-11-06 13:06:59 DEBUG ReasoningOutput:38 - Rule ID: 1
+2013-11-06 13:06:59 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 13:06:59 DEBUG ReasoningOutput:37 - Rule name: RegolaTransitiva
+2013-11-06 13:06:59 DEBUG ReasoningOutput:38 - Rule ID: 1
+2013-11-06 13:06:59 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 13:06:59 DEBUG ReasoningOutput:37 - Rule name: simmetrica
+2013-11-06 13:06:59 DEBUG ReasoningOutput:38 - Rule ID: 2
+2013-11-06 13:06:59 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Albano)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#SymmetricProperty>)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Albano, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 13:06:59 DEBUG ReasoningOutput:37 - Rule name: fooRule
+2013-11-06 13:06:59 DEBUG ReasoningOutput:38 - Rule ID: 6
+2013-11-06 13:06:59 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio, <http://www.w3.org/2002/07/owl#Class>, <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasThings>)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio, <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn>, _:p1)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 13:06:59 DEBUG ReasoningOutput:37 - Rule name: fooRule
+2013-11-06 13:06:59 DEBUG ReasoningOutput:38 - Rule ID: 6
+2013-11-06 13:06:59 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, <http://www.w3.org/2002/07/owl#Class>, <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasThings>)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn>, _:p1)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 13:06:59 DEBUG ReasoningOutput:37 - Rule name: fooRule
+2013-11-06 13:06:59 DEBUG ReasoningOutput:38 - Rule ID: 6
+2013-11-06 13:06:59 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, <http://www.w3.org/2002/07/owl#Class>, <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#TexasThings>)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn>, _:p1)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:36 - ###################Output#####
+2013-11-06 13:06:59 DEBUG ReasoningOutput:37 - Rule name: RegolaTransitiva
+2013-11-06 13:06:59 DEBUG ReasoningOutput:38 - Rule ID: 1
+2013-11-06 13:06:59 DEBUG ReasoningOutput:39 - Result: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:41 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:43 - generatedFrom: 
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-11-06 13:06:59 DEBUG ReasoningOutput:45 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-11-06 13:06:59 DEBUG OutputHanlder:52 - ##### Print Graph ###########
+2013-11-06 13:06:59 DEBUG OutputHanlder:53 - Vertices:Lazio locatedIn p1,Ariccia locatedIn Italia,Albano isAdiacent Ariccia,Roma Class TexasThings,Lazio locatedIn Italia,Ariccia locatedIn Lazio,Ariccia Class TexasThings,isAdiacent type SymmetricProperty,Lazio Class TexasThings,Ariccia locatedIn p1,Roma locatedIn Lazio,Roma locatedIn p1,locatedIn type TransitiveProperty,Ariccia locatedIn Roma,Ariccia isAdiacent Albano,Roma locatedIn Italia
+Edges:3[Ariccia locatedIn Lazio,locatedIn type TransitiveProperty] 2[Roma locatedIn Italia,Lazio locatedIn Italia] 10[Ariccia Class TexasThings,Ariccia locatedIn p1] 1[Roma locatedIn Italia,Roma locatedIn Lazio] 0[Roma locatedIn Italia,locatedIn type TransitiveProperty] 7[Ariccia isAdiacent Albano,Albano isAdiacent Ariccia] 6[Ariccia isAdiacent Albano,isAdiacent type SymmetricProperty] 5[Ariccia locatedIn Lazio,Roma locatedIn Lazio] 4[Ariccia locatedIn Lazio,Ariccia locatedIn Roma] 9[Roma Class TexasThings,Roma locatedIn p1] 8[Lazio Class TexasThings,Lazio locatedIn p1] 13[Ariccia locatedIn Italia,Roma locatedIn Italia] 11[Ariccia locatedIn Italia,locatedIn type TransitiveProperty] 12[Ariccia locatedIn Italia,Ariccia locatedIn Roma] 
+2013-11-06 13:06:59 DEBUG OutputHanlder:54 - ##### Print Graph ###########
+2013-12-02 10:55:20 DEBUG ParseInferenceRulesFacade:59 - Parsing inference Rules file
+2013-12-02 10:55:20 DEBUG Parser:46 - ANTLR parsing file
+2013-12-02 10:56:06 DEBUG ParseInferenceRulesFacade:59 - Parsing inference Rules file
+2013-12-02 10:56:06 DEBUG Parser:46 - ANTLR parsing file
+2013-12-02 10:56:07 DEBUG Validator:55 - Regole da applicare(lette da configurazione): 1,2
+2013-12-02 10:56:07 DEBUG ParseInferenceRulesFacade:79 - Valdation rules
+2013-12-02 10:56:07 DEBUG ParseInferenceRulesFacade:86 - Valdation OK
+2013-12-02 10:56:07 DEBUG StartReasonerFacade:81 - Inference rules parsed
+2013-12-02 10:56:07 DEBUG ReasonerFacade:47 - Start reasoning operation
+2013-12-02 10:56:07 DEBUG Reasoner:79 - Execute inference rules on Ontology
+2013-12-02 10:56:07 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 10:56:07 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 10:56:07 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 10:56:07 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 10:56:07 DEBUG StartReasonerFacade:86 - End reasoning operation
+2013-12-02 10:56:07 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 10:56:07 DEBUG ReasoningOutput:41 - Rule name: RegolaTransitiva
+2013-12-02 10:56:07 DEBUG ReasoningOutput:42 - Rule ID: 1
+2013-12-02 10:56:07 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 10:56:07 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 10:56:07 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 10:56:07 DEBUG ReasoningOutput:41 - Rule name: RegolaTransitiva
+2013-12-02 10:56:07 DEBUG ReasoningOutput:42 - Rule ID: 1
+2013-12-02 10:56:07 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 10:56:07 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 10:56:07 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 10:56:07 DEBUG ReasoningOutput:41 - Rule name: simmetrica
+2013-12-02 10:56:07 DEBUG ReasoningOutput:42 - Rule ID: 2
+2013-12-02 10:56:07 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 10:56:07 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Albano)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 10:56:07 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#SymmetricProperty>)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Albano, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 10:56:07 DEBUG ReasoningOutput:41 - Rule name: RegolaTransitiva
+2013-12-02 10:56:07 DEBUG ReasoningOutput:42 - Rule ID: 1
+2013-12-02 10:56:07 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 10:56:07 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 10:56:07 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-12-02 10:56:07 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 10:56:07 DEBUG OutputHanlder:52 - ##### Print Graph ###########
+2013-12-02 10:56:07 DEBUG OutputHanlder:53 - Vertices:isAdiacent type SymmetricProperty,Ariccia locatedIn Italia,Albano isAdiacent Ariccia,Roma locatedIn Lazio,locatedIn type TransitiveProperty,Ariccia isAdiacent Albano,Ariccia locatedIn Roma,Lazio locatedIn Italia,Ariccia locatedIn Lazio,Roma locatedIn Italia
+Edges:3[Ariccia locatedIn Lazio,locatedIn type TransitiveProperty] 2[Roma locatedIn Italia,Lazio locatedIn Italia] 10[Ariccia locatedIn Italia,Roma locatedIn Italia] 1[Roma locatedIn Italia,Roma locatedIn Lazio] 0[Roma locatedIn Italia,locatedIn type TransitiveProperty] 7[Ariccia isAdiacent Albano,Albano isAdiacent Ariccia] 6[Ariccia isAdiacent Albano,isAdiacent type SymmetricProperty] 5[Ariccia locatedIn Lazio,Roma locatedIn Lazio] 4[Ariccia locatedIn Lazio,Ariccia locatedIn Roma] 9[Ariccia locatedIn Italia,Ariccia locatedIn Roma] 8[Ariccia locatedIn Italia,locatedIn type TransitiveProperty] 
+2013-12-02 10:56:07 DEBUG OutputHanlder:54 - ##### Print Graph ###########
+2013-12-02 11:03:47 DEBUG ParseInferenceRulesFacade:59 - Parsing inference Rules file
+2013-12-02 11:03:47 DEBUG Parser:46 - ANTLR parsing file
+2013-12-02 11:03:47 DEBUG Validator:55 - Regole da applicare(lette da configurazione): 1,2
+2013-12-02 11:03:47 DEBUG ParseInferenceRulesFacade:79 - Valdation rules
+2013-12-02 11:03:47 DEBUG ParseInferenceRulesFacade:86 - Valdation OK
+2013-12-02 11:03:47 DEBUG StartReasonerFacade:81 - Inference rules parsed
+2013-12-02 11:03:47 DEBUG ReasonerFacade:47 - Start reasoning operation
+2013-12-02 11:03:47 DEBUG Reasoner:79 - Execute inference rules on Ontology
+2013-12-02 11:03:47 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 11:03:47 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 11:03:47 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 11:03:47 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 11:03:47 DEBUG StartReasonerFacade:86 - End reasoning operation
+2013-12-02 11:03:47 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 11:03:47 DEBUG ReasoningOutput:41 - Rule name: RegolaTransitiva
+2013-12-02 11:03:47 DEBUG ReasoningOutput:42 - Rule ID: 1
+2013-12-02 11:03:47 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 11:03:47 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 11:03:47 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 11:03:47 DEBUG ReasoningOutput:41 - Rule name: RegolaTransitiva
+2013-12-02 11:03:47 DEBUG ReasoningOutput:42 - Rule ID: 1
+2013-12-02 11:03:47 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 11:03:47 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 11:03:47 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 11:03:47 DEBUG ReasoningOutput:41 - Rule name: simmetrica
+2013-12-02 11:03:47 DEBUG ReasoningOutput:42 - Rule ID: 2
+2013-12-02 11:03:47 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 11:03:47 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Albano)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 11:03:47 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#SymmetricProperty>)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Albano, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 11:03:47 DEBUG ReasoningOutput:41 - Rule name: RegolaTransitiva
+2013-12-02 11:03:47 DEBUG ReasoningOutput:42 - Rule ID: 1
+2013-12-02 11:03:47 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 11:03:47 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 11:03:47 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-12-02 11:03:47 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 11:03:47 DEBUG OutputHanlder:52 - ##### Print Graph ###########
+2013-12-02 11:03:47 DEBUG OutputHanlder:53 - Vertices:isAdiacent type SymmetricProperty,Ariccia locatedIn Italia,Albano isAdiacent Ariccia,Roma locatedIn Lazio,locatedIn type TransitiveProperty,Ariccia isAdiacent Albano,Ariccia locatedIn Roma,Lazio locatedIn Italia,Ariccia locatedIn Lazio,Roma locatedIn Italia
+Edges:3[Ariccia locatedIn Lazio,locatedIn type TransitiveProperty] 2[Roma locatedIn Italia,Lazio locatedIn Italia] 10[Ariccia locatedIn Italia,Roma locatedIn Italia] 1[Roma locatedIn Italia,Roma locatedIn Lazio] 0[Roma locatedIn Italia,locatedIn type TransitiveProperty] 7[Ariccia isAdiacent Albano,Albano isAdiacent Ariccia] 6[Ariccia isAdiacent Albano,isAdiacent type SymmetricProperty] 5[Ariccia locatedIn Lazio,Roma locatedIn Lazio] 4[Ariccia locatedIn Lazio,Ariccia locatedIn Roma] 9[Ariccia locatedIn Italia,Ariccia locatedIn Roma] 8[Ariccia locatedIn Italia,locatedIn type TransitiveProperty] 
+2013-12-02 11:03:47 DEBUG OutputHanlder:54 - ##### Print Graph ###########
+2013-12-02 11:04:01 DEBUG ParseInferenceRulesFacade:59 - Parsing inference Rules file
+2013-12-02 11:04:01 DEBUG Parser:46 - ANTLR parsing file
+2013-12-02 11:04:01 DEBUG Validator:55 - Regole da applicare(lette da configurazione): 1,2
+2013-12-02 11:04:01 DEBUG ParseInferenceRulesFacade:79 - Valdation rules
+2013-12-02 11:04:01 DEBUG ParseInferenceRulesFacade:86 - Valdation OK
+2013-12-02 11:04:01 DEBUG StartReasonerFacade:81 - Inference rules parsed
+2013-12-02 11:04:01 DEBUG ReasonerFacade:47 - Start reasoning operation
+2013-12-02 11:04:01 DEBUG Reasoner:79 - Execute inference rules on Ontology
+2013-12-02 11:04:01 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 11:04:01 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 11:04:01 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 11:04:01 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 11:04:01 DEBUG StartReasonerFacade:86 - End reasoning operation
+2013-12-02 11:04:01 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 11:04:01 DEBUG ReasoningOutput:41 - Rule name: RegolaTransitiva
+2013-12-02 11:04:01 DEBUG ReasoningOutput:42 - Rule ID: 1
+2013-12-02 11:04:01 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 11:04:01 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 11:04:01 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 11:04:01 DEBUG ReasoningOutput:41 - Rule name: RegolaTransitiva
+2013-12-02 11:04:01 DEBUG ReasoningOutput:42 - Rule ID: 1
+2013-12-02 11:04:01 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 11:04:01 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 11:04:01 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 11:04:01 DEBUG ReasoningOutput:41 - Rule name: simmetrica
+2013-12-02 11:04:01 DEBUG ReasoningOutput:42 - Rule ID: 2
+2013-12-02 11:04:01 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 11:04:01 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Albano)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 11:04:01 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#SymmetricProperty>)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Albano, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 11:04:01 DEBUG ReasoningOutput:41 - Rule name: RegolaTransitiva
+2013-12-02 11:04:01 DEBUG ReasoningOutput:42 - Rule ID: 1
+2013-12-02 11:04:01 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 11:04:01 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 11:04:01 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-12-02 11:04:01 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 11:04:01 DEBUG OutputHanlder:52 - ##### Print Graph ###########
+2013-12-02 11:04:01 DEBUG OutputHanlder:53 - Vertices:isAdiacent type SymmetricProperty,Ariccia locatedIn Italia,Albano isAdiacent Ariccia,Roma locatedIn Lazio,locatedIn type TransitiveProperty,Ariccia isAdiacent Albano,Ariccia locatedIn Roma,Lazio locatedIn Italia,Ariccia locatedIn Lazio,Roma locatedIn Italia
+Edges:3[Ariccia locatedIn Lazio,locatedIn type TransitiveProperty] 2[Roma locatedIn Italia,Lazio locatedIn Italia] 10[Ariccia locatedIn Italia,Roma locatedIn Italia] 1[Roma locatedIn Italia,Roma locatedIn Lazio] 0[Roma locatedIn Italia,locatedIn type TransitiveProperty] 7[Ariccia isAdiacent Albano,Albano isAdiacent Ariccia] 6[Ariccia isAdiacent Albano,isAdiacent type SymmetricProperty] 5[Ariccia locatedIn Lazio,Roma locatedIn Lazio] 4[Ariccia locatedIn Lazio,Ariccia locatedIn Roma] 9[Ariccia locatedIn Italia,Ariccia locatedIn Roma] 8[Ariccia locatedIn Italia,locatedIn type TransitiveProperty] 
+2013-12-02 11:04:01 DEBUG OutputHanlder:54 - ##### Print Graph ###########
+2013-12-02 11:04:40 DEBUG ParseInferenceRulesFacade:59 - Parsing inference Rules file
+2013-12-02 11:04:40 DEBUG Parser:46 - ANTLR parsing file
+2013-12-02 11:04:41 DEBUG Validator:55 - Regole da applicare(lette da configurazione): 1,2
+2013-12-02 11:04:41 DEBUG ParseInferenceRulesFacade:79 - Valdation rules
+2013-12-02 11:04:41 DEBUG ParseInferenceRulesFacade:86 - Valdation OK
+2013-12-02 11:04:41 DEBUG StartReasonerFacade:81 - Inference rules parsed
+2013-12-02 11:04:41 DEBUG ReasonerFacade:47 - Start reasoning operation
+2013-12-02 11:04:41 DEBUG Reasoner:79 - Execute inference rules on Ontology
+2013-12-02 11:04:41 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 11:04:41 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 11:04:41 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 11:04:41 DEBUG ExecuteQueryOntologyHandler:52 - Execute Queries
+2013-12-02 11:04:41 DEBUG StartReasonerFacade:86 - End reasoning operation
+2013-12-02 11:04:41 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 11:04:41 DEBUG ReasoningOutput:41 - Rule name: RegolaTransitiva
+2013-12-02 11:04:41 DEBUG ReasoningOutput:42 - Rule ID: 1
+2013-12-02 11:04:41 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 11:04:41 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 11:04:41 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 11:04:41 DEBUG ReasoningOutput:41 - Rule name: RegolaTransitiva
+2013-12-02 11:04:41 DEBUG ReasoningOutput:42 - Rule ID: 1
+2013-12-02 11:04:41 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 11:04:41 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 11:04:41 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Lazio)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 11:04:41 DEBUG ReasoningOutput:41 - Rule name: simmetrica
+2013-12-02 11:04:41 DEBUG ReasoningOutput:42 - Rule ID: 2
+2013-12-02 11:04:41 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 11:04:41 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Albano)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 11:04:41 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#SymmetricProperty>)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Albano, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:40 - ###################Output#####
+2013-12-02 11:04:41 DEBUG ReasoningOutput:41 - Rule name: RegolaTransitiva
+2013-12-02 11:04:41 DEBUG ReasoningOutput:42 - Rule ID: 1
+2013-12-02 11:04:41 DEBUG ReasoningOutput:43 - Result: 
+2013-12-02 11:04:41 DEBUG ReasoningOutput:46 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:49 - generatedFrom: 
+2013-12-02 11:04:41 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>, <http://www.w3.org/2002/07/owl#TransitiveProperty>)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Ariccia, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma)
+2013-12-02 11:04:41 DEBUG ReasoningOutput:51 - (http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Roma, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn, http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#Italia)
+2013-12-02 11:04:41 DEBUG OutputHanlder:52 - ##### Print Graph ###########
+2013-12-02 11:04:41 DEBUG OutputHanlder:53 - Vertices:isAdiacent type SymmetricProperty,Ariccia locatedIn Italia,Albano isAdiacent Ariccia,Roma locatedIn Lazio,locatedIn type TransitiveProperty,Ariccia isAdiacent Albano,Ariccia locatedIn Roma,Lazio locatedIn Italia,Ariccia locatedIn Lazio,Roma locatedIn Italia
+Edges:3[Ariccia locatedIn Lazio,locatedIn type TransitiveProperty] 2[Roma locatedIn Italia,Lazio locatedIn Italia] 10[Ariccia locatedIn Italia,Roma locatedIn Italia] 1[Roma locatedIn Italia,Roma locatedIn Lazio] 0[Roma locatedIn Italia,locatedIn type TransitiveProperty] 7[Ariccia isAdiacent Albano,Albano isAdiacent Ariccia] 6[Ariccia isAdiacent Albano,isAdiacent type SymmetricProperty] 5[Ariccia locatedIn Lazio,Roma locatedIn Lazio] 4[Ariccia locatedIn Lazio,Ariccia locatedIn Roma] 9[Ariccia locatedIn Italia,Ariccia locatedIn Roma] 8[Ariccia locatedIn Italia,locatedIn type TransitiveProperty] 
+2013-12-02 11:04:41 DEBUG OutputHanlder:54 - ##### Print Graph ###########

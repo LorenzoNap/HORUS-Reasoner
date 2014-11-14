@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:osgi="http://www.springframework.org/schema/osgi"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<!-- Imports the conversion service from the service registry -->
+	<osgi:reference id="conversionService"
+		interface="org.springframework.core.convert.ConversionService" />
+
+	<!-- A ValidatorFactory whose products (Validators) support dependency injection 
+		on constraint validators, through the use of SpringConstraintValidatorFactory 
+		for instantiating them. (See: http://stackoverflow.com/a/13361762) -->
+	<bean id="validatorFactory"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+	<!-- Enables annotation driven MVC, supplying the right conversion service -->
+	<mvc:annotation-driven conversion-service="conversionService" />
+
+	<!-- Scans the main package of this extension, and some packages provided 
+		by ST framework -->
+	<context:component-scan
+		base-package="it.uniroma2.reasoner.services,it.uniroma2.art.semanticturkey.mvc" />
+	
+	<!-- Instantiates Reasoner service -->
+	<bean id="reasonerService" class="it.uniroma2.reasoner.services.ReasonerService" />
+	
+	<bean id="reasoningService" class="it.uniroma2.reasoner.services.ReasoningService">
+		<property name="reasonerServiceConfiguration" ref="reasonerService"/>
+	</bean>
+	
+	
+	<bean id="reasonerGraphService" class="it.uniroma2.reasoner.services.GraphServices" />
+	
+	<osgi:service ref="reasonerService" interface="it.uniroma2.art.semanticturkey.plugin.extpts.ServiceInterface" />
+	<osgi:service ref="reasoningService" interface="it.uniroma2.art.semanticturkey.plugin.extpts.ServiceInterface" />
+	<osgi:service ref="reasonerGraphService" interface="it.uniroma2.art.semanticturkey.plugin.extpts.ServiceInterface" />
+
+	<!-- Enables bean validation -->
+	<bean id="validator"
+		class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+	<!-- Enables method validation -->
+	<bean
+		class="org.springframework.validation.beanvalidation.MethodValidationPostProcessor">
+		<property name="proxyTargetClass" value="true"></property>
+		<!-- Use explicitly the ValidatorFactory enabling dependency injection 
+			on constraint validators -->
+		<property name="validatorFactory" ref="validatorFactory"></property>
+	</bean>
+
+
+	<!-- TEST STServiceHTTPContext -->
+	<bean
+		class="it.uniroma2.art.semanticturkey.services.http.STServiceHTTPContext">
+	</bean>
+</beans>

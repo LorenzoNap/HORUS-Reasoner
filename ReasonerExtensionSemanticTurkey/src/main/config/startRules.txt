@@ -1,0 +1,131 @@
+type : new rule
+name: RegolaTransitiva
+id: 1
+premise:  ?p  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/2002/07/owl#TransitiveProperty>
+premise:  ?a  ?p  ?b
+premise:  ?b  ?p  ?c
+conclusion:  ?a  ?p  ?c
+
+type : new rule
+name: simmetrica 
+id: 2
+premise:  ?p  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/2002/07/owl#SymmetricProperty>
+premise:  ?a  ?p  ?b
+conclusion:  ?b  ?p  ?a
+
+
+type : new rule
+name: inverseOf 
+id: 3
+premise:  ?p1  <http://www.w3.org/2002/07/owl#inverseOf>  ?p2
+premise:  ?a  ?p2  ?b
+conclusion:  ?a   ?p1  ?b
+
+type : new rule
+name: subClass 
+id: 4
+premise:  ?a  <http://www.w3.org/2000/01/rdf-schema#subClassOf>  ?b
+premise:  ?b  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/2002/07/owl#Class>
+premise:  ?b  <http://www.w3.org/2000/01/rdf-schema#subClassOf>  ?c
+premise:  ?c  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/2002/07/owl#Class>
+conclusion:  ?a  <http://www.w3.org/2000/01/rdf-schema#subClassOf>  ?c
+
+type : new rule
+name: InverseFunctionalProperty 
+id: 5
+premise:  ?p1  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>   <http://www.w3.org/2002/07/owl#InverseFunctionalProperty>
+premise:  ?y  ?p1  ?x
+premise:  ?z  ?p1  ?x
+conclusion:  ?a  <http://www.w3.org/2002/07/owl#sameAs>  ?z
+
+type : new consistency rule
+name: inconsistency 
+id: 6 
+premise:  ?a  <http://www.w3.org/2002/07/owl#sameAs>  ?b
+premise:  ?a  <http://www.w3.org/2002/07/owl#differentFrom>  ?b
+conclusion: false
+
+type : new rule
+name: FunctionalProperty 
+id: 7 
+premise:  ?p  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/2002/07/owl#FunctionalProperty>
+premise:  ?x  ?p  ?y
+premise:  ?x  ?p  ?z
+filter: ?y != ?z
+conclusion:  ?y  <http://www.w3.org/2002/07/owl#sameAs>  ?z
+
+
+type : new rule
+name: EquivalentProperty
+id: 9
+premise:  ?p1  <http://www.w3.org/2002/07/owl#equivalentProperty>  ?p2
+conclusion:  ?p1  <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>  ?p2
+conclusion:  ?p2  <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>  ?p1
+
+
+type : new rule
+name: FilterExampleRule
+id: 10
+premise:  ?p  <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#locatedIn>  ?o
+premise:  ?a  <http://www.w3.org/TR/2003/PR-owl-guide-20031209/wine#isAdiacent>  ?b
+filter: ?p != ?b
+conclusion:  ?a  ?p  ?o
+
+
+type : new rule
+name: ComplexSubClassEquality
+id: 11
+premise:  ?c1  <http://www.w3.org/2002/07/owl#hasValue>  ?i
+premise:  ?c1  <http://www.w3.org/2002/07/owl#onProperty>  ?p1
+premise:  ?c2  <http://www.w3.org/2002/07/owl#hasValue>  ?i
+premise:  ?c2  <http://www.w3.org/2002/07/owl#onProperty>  ?p2
+premise:  ?p1  <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>  ?p2
+filter: ?c1 != ?c2
+conclusion:  ?c1  <http://www.w3.org/2000/01/rdf-schema#subClassOf>  ?c2
+
+type : new consistency rule
+name: ClassInconsistency
+id: 12
+premise:  ?x  <http://www.w3.org/2002/07/owl#maxCardinality>  "0"^^<http://www.w3.org/2001/XMLSchema#nonNegativeInteger>
+premise:  ?x  <http://www.w3.org/2002/07/owl#onProperty>  ?p
+premise:  ?u  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  ?x
+premise:  ?u  ?p  ?y
+conclusion: false
+
+
+type : new rule
+name: ComplexEquivalentclass
+id: 13
+premise:  ?p1  <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>  ?p2
+premise:  ?class1  <http://www.w3.org/2002/07/owl#equivalentClass>  ?equiClass1
+premise:  ?equiClass1  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/2002/07/owl#Restriction>
+premise:  ?equiClass1  <http://www.w3.org/2002/07/owl#onProperty>  ?p1
+premise:  ?equiClass1  <http://www.w3.org/2002/07/owl#minCardinality>  ?card1
+premise:  ?class2  <http://www.w3.org/2002/07/owl#equivalentClass>  ?equiClass2
+premise:  ?equiClass2  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/2002/07/owl#Restriction>
+premise:  ?equiClass2  <http://www.w3.org/2002/07/owl#onProperty>  ?p2
+premise:  ?equiClass2  <http://www.w3.org/2002/07/owl#minCardinality>  ?card2
+filter: ?card1 >= ?card2
+conclusion:  ?class1  <http://www.w3.org/2000/01/rdf-schema#subClassOf>  ?class2
+
+
+type: new rule
+name: subProp
+id: 14
+premise:  ?x  ?p1  ?y
+premise:  ?p1  <http://www.w3.org/2000/01/rdf-schema#subPropertyOf>  ?p2
+conclusion:  ?x  ?p2  ?y
+
+type : new rule
+name: ComplexEquivalentclassNew
+id: 15
+premise:  ?class1  <http://www.w3.org/2002/07/owl#equivalentClass>  ?equiClass1
+premise:  ?equiClass1  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/2002/07/owl#Restriction>
+premise:  ?equiClass1  <http://www.w3.org/2002/07/owl#onProperty>  ?p1
+premise:  ?equiClass1  <http://www.w3.org/2002/07/owl#minCardinality>  ?card1
+premise:  ?class2  <http://www.w3.org/2002/07/owl#equivalentClass>  ?equiClass2
+premise:  ?equiClass2  <http://www.w3.org/1999/02/22-rdf-syntax-ns#type>  <http://www.w3.org/2002/07/owl#Restriction>
+premise:  ?equiClass2  <http://www.w3.org/2002/07/owl#onProperty>  ?p1
+premise:  ?equiClass2  <http://www.w3.org/2002/07/owl#minCardinality>  ?card2
+filter: ?card1 >= ?card2
+conclusion:  ?class1  <http://www.w3.org/2000/01/rdf-schema#subClassOf>  ?class2
